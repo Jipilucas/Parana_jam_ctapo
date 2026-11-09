@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ch7f0hcnxs7o6"]
+
+[ext_resource type="Material" uid="uid://b4vwct31xaylr" path="res://Materials/wall.tres" id="1_mh3gp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7tsqo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bsbiv"]
+size = Vector3(1, 0.6743164, 1)
+
+[node name="Wall" type="StaticBody3D" unique_id=100766867]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1004266059]
+shape = SubResource("BoxShape3D_7tsqo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1192913109]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, -0.3, 0)
+mesh = SubResource("BoxMesh_bsbiv")
+surface_material_override/0 = ExtResource("1_mh3gp")

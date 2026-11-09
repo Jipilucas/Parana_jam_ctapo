@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dca1j0em3r5qj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v1x5x"]
+noise_type = 0
+seed = -61
+frequency = 0.0069
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jfmre"]
+width = 493
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_v1x5x")
+
+[resource]
+albedo_color = Color(1, 0.21960784, 0, 1)
+albedo_texture = SubResource("NoiseTexture2D_jfmre")

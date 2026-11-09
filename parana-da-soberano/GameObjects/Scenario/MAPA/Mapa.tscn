@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://chf3db25umt07"]
+
+[ext_resource type="Material" uid="uid://8ubm4bayjvgy" path="res://GameObjects/Materials/verde.tres" id="1_hh8at"]
+[ext_resource type="Material" uid="uid://gbrwoy7h3are" path="res://GameObjects/Materials/lighting.tres" id="2_busn4"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_bsbiv"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_bsbiv"]
+vertices = PackedVector3Array(-8.284888, 0.5, -24.194838, -8.284888, 0.5, 24.305162, 8.215112, 0.5, 24.305162, 8.215112, 0.5, -24.194838)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7tsqo"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_7tsqo"]
+vertices = PackedVector3Array(9.416731, 0.5, -24.224531, 9.416731, 0.5, 24.275469, 38.916733, 0.5, 24.275469, 38.916733, 0.5, -24.224531)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+agent_max_climb = 28.25
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bsbiv"]
+
+[node name="Mapa" type="Node3D" unique_id=243098559]
+
+[node name="Mapa" type="StaticBody3D" parent="." unique_id=266653885]
+
+[node name="Plano" type="CollisionShape3D" parent="Mapa" unique_id=692114642]
+shape = SubResource("WorldBoundaryShape3D_bsbiv")
+
+[node name="NavTierraD" type="NavigationRegion3D" parent="Mapa" unique_id=2059765972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8220968, 0, 0)
+navigation_mesh = SubResource("NavigationMesh_bsbiv")
+navigation_layers = 4
+
+[node name="MeshTierra" type="MeshInstance3D" parent="Mapa/NavTierraD" unique_id=890894949]
+transform = Transform3D(8.784888, 0, 0, 0, 1, 0, 0, 0, 24.694838, 0, 0, 0)
+mesh = SubResource("PlaneMesh_7tsqo")
+surface_material_override/0 = ExtResource("1_hh8at")
+
+[node name="NavAgua" type="NavigationRegion3D" parent="Mapa" unique_id=1482188392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0375986, 0, 0)
+navigation_mesh = SubResource("NavigationMesh_7tsqo")
+navigation_layers = 2
+
+[node name="MeshAgua" type="MeshInstance3D" parent="Mapa/NavAgua" unique_id=19358290]
+transform = Transform3D(15.268213, 0, 0, 0, 1, 0, 0, 0, 24.724531, 24.184946, 0, 0)
+mesh = SubResource("PlaneMesh_bsbiv")
+surface_material_override/0 = ExtResource("2_busn4")

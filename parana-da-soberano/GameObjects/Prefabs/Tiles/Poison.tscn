@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b14mxjuoycqdd"]
+
+[ext_resource type="Material" uid="uid://2g31pkmyhwpf" path="res://Materials/poison.tres" id="1_qsk2p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7tsqo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bsbiv"]
+
+[node name="Poison" type="StaticBody3D" unique_id=100766867]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1004266059]
+shape = SubResource("BoxShape3D_7tsqo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1192913109]
+mesh = SubResource("BoxMesh_bsbiv")
+surface_material_override/0 = ExtResource("1_qsk2p")

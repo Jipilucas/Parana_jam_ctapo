@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://d13il78nnqawf"]
+
+[ext_resource type="Script" uid="uid://bkf84oirj5ih0" path="res://GameObjects/Prefabs/UI/ui.gd" id="1_hlu54"]
+
+[node name="Ui" type="Control" unique_id=1870188251]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hlu54")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1251988713]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Clean" type="Button" parent="VBoxContainer" unique_id=343995878]
+layout_mode = 2
+text = "Limpiar NPCs"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1989572393]
+layout_mode = 2
+alignment = 1
+
+[node name="barcopropio" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=93384522]
+layout_mode = 2
+text = "Barco propio
+"
+
+[node name="barcoenemigo" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1140408301]
+layout_mode = 2
+text = "Barco enemigo"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=469840727]
+layout_mode = 2
+
+[node name="tpte propio" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=364451608]
+layout_mode = 2
+text = "Transporte Propio"
+
+[node name="tpte enemigo" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=564322351]
+layout_mode = 2
+text = "Transporte enemigo"
+
+[connection signal="pressed" from="VBoxContainer/Clean" to="." method="_on_clean_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/barcopropio" to="." method="_on_comun_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/barcoenemigo" to="." method="_on_fire_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/tpte propio" to="." method="_on_cold_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/tpte enemigo" to="." method="_on_lighting_pressed"]

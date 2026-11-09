@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c670emqirxqjg"]
+
+[ext_resource type="Material" uid="uid://dinhcgv4o00q1" path="res://Materials/llegada.tres" id="1_gomoe"]
+[ext_resource type="Script" uid="uid://ddnkgoqj1f4ev" path="res://Prefabs/Tiles/end_tile.gd" id="1_iridj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7tsqo"]
+size = Vector3(1, 0.9589844, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bsbiv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iridj"]
+size = Vector3(1, 1.3583984, 1)
+
+[node name="End" type="StaticBody3D" unique_id=100766867]
+script = ExtResource("1_iridj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1004266059]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.020507813, 0)
+shape = SubResource("BoxShape3D_7tsqo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1192913109]
+mesh = SubResource("BoxMesh_bsbiv")
+surface_material_override/0 = ExtResource("1_gomoe")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1545101486]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1861045388]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6791992, 0)
+shape = SubResource("BoxShape3D_iridj")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

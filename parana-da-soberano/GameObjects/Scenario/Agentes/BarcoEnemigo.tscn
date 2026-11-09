@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://djmghsr8bcgs0"]
+
+[ext_resource type="Script" uid="uid://d07n3xqffgqj7" path="res://GameObjects/Scenario/NPC-Navegable.gd" id="1_yveax"]
+[ext_resource type="Shape3D" uid="uid://cvbq6pe1fxlhl" path="res://GameObjects/Materials/pnccapsulecollision.tres" id="2_1p5y5"]
+[ext_resource type="CylinderMesh" uid="uid://ci5db3g55ukoy" path="res://GameObjects/Resources/cilindermesh.tres" id="3_8tfmd"]
+[ext_resource type="Material" uid="uid://dca1j0em3r5qj" path="res://GameObjects/Materials/fire.tres" id="4_t3w62"]
+
+[node name="BarcoEnemigo" type="CharacterBody3D" unique_id=318639619 groups=["NPC"]]
+wall_min_slide_angle = 0.0
+script = ExtResource("1_yveax")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=597959821]
+transform = Transform3D(0.60530937, 0, 0, 0, 0.60530937, 0, 0, 0, 0.60530937, 0, 0.25, 0)
+shape = ExtResource("2_1p5y5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1354430915]
+transform = Transform3D(0.60530937, 0, 0, 0, 0.60530937, 0, 0, 0, 0.60530937, 0, 0.25, 0)
+mesh = ExtResource("3_8tfmd")
+surface_material_override/0 = ExtResource("4_t3w62")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=254037498]
+path_desired_distance = 5.64
+target_desired_distance = 4.09
+navigation_layers = 34
+path_postprocessing = 1
+avoidance_enabled = true
+height = 7.2
+radius = 12.13
+max_neighbors = 6
+max_speed = 242.56
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 1, 1, 0.48235294)

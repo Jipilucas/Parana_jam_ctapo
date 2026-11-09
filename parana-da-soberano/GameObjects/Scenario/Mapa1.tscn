@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://dllig6usfderj"]
+
+[ext_resource type="PackedScene" uid="uid://chf3db25umt07" path="res://GameObjects/Scenario/MAPA/Mapa.tscn" id="3_s25bh"]
+[ext_resource type="PackedScene" uid="uid://d13il78nnqawf" path="res://GameObjects/Prefabs/UI/UI.tscn" id="4_623lx"]
+[ext_resource type="PackedScene" uid="uid://btxjvjccasvfr" path="res://GameObjects/Prefabs/Generator/GeneradorNPC.tscn" id="5_o68t5"]
+[ext_resource type="PackedScene" uid="uid://bunwfvlyvx81e" path="res://GameObjects/Scenario/Agentes/BarcoPropio.tscn" id="11_0rg2o"]
+[ext_resource type="PackedScene" uid="uid://djmghsr8bcgs0" path="res://GameObjects/Scenario/Agentes/BarcoEnemigo.tscn" id="12_ua2op"]
+[ext_resource type="PackedScene" uid="uid://4t5lhyxpg78s" path="res://GameObjects/Scenario/Agentes/TransporteEnemigo.tscn" id="13_6ujcu"]
+[ext_resource type="PackedScene" uid="uid://0hufu0u4dhpp" path="res://GameObjects/Scenario/Agentes/TransportePropio.tscn" id="15_xh2pn"]
+
+[sub_resource type="Environment" id="Environment_bsbiv"]
+background_mode = 1
+background_color = Color(0, 0, 0.23529412, 1)
+background_energy_multiplier = 0.48
+
+[sub_resource type="BoxMesh" id="BoxMesh_7tsqo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bsbiv"]
+
+[node name="Mapa1" type="Node3D" unique_id=1735060267]
+
+[node name="ambiente" type="Node3D" parent="." unique_id=717919094]
+
+[node name="Camera3D2" type="Camera3D" parent="ambiente" unique_id=808872609]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 11.648, 440.72882, -7.4979763)
+visible = false
+keep_aspect = 0
+current = true
+fov = 5.7
+size = 19.11
+
+[node name="Camera3D" type="Camera3D" parent="ambiente" unique_id=952841730]
+transform = Transform3D(0.99999046, 0.0019852975, -0.0038854966, 0, 0.8904925, 0.45499787, 0.004363312, -0.45499352, 0.89048404, 14.8373, 23.79457, 46.080654)
+keep_aspect = 0
+current = true
+size = 19.11
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="ambiente" unique_id=1826761231]
+environment = SubResource("Environment_bsbiv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ambiente" unique_id=624784148]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.8660254, 0, -0.8660254, 0.49999997, 14, 12, -4)
+light_energy = 2.101
+sky_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1757794047]
+
+[node name="Ui" parent="CanvasLayer" unique_id=1870188251 instance=ExtResource("4_623lx")]
+
+[node name="GeneradorNpc" parent="." unique_id=1510017407 node_paths=PackedStringArray("spawn_point", "spawn_node") instance=ExtResource("5_o68t5")]
+NPC_1_Scene = ExtResource("12_ua2op")
+NPC_2_Scene = ExtResource("11_0rg2o")
+spawn_point = NodePath("spawnpoint")
+spawn_node = NodePath("../contenedor")
+
+[node name="spawnpoint" type="Node3D" parent="GeneradorNpc" unique_id=1854843534]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.36895, 2, 20.394361)
+
+[node name="GeneradorNpc2" parent="." unique_id=1084617126 node_paths=PackedStringArray("spawn_point", "spawn_node") instance=ExtResource("5_o68t5")]
+NPC_3_Scene = ExtResource("13_6ujcu")
+NPC_4_Scene = ExtResource("15_xh2pn")
+spawn_point = NodePath("spawnpoint")
+spawn_node = NodePath("../contenedor")
+
+[node name="spawnpoint" type="Node3D" parent="GeneradorNpc2" unique_id=886835601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.61055565, 2, -10.420158)
+
+[node name="contenedor" type="Node3D" parent="." unique_id=1042269581]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -1)
+
+[node name="Mapa" parent="." unique_id=243098559 instance=ExtResource("3_s25bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8068275, 0, 0.14904499)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1778195938 groups=["Meta"]]
+transform = Transform3D(2.381028, 0, 0, 0, 1, 0, 0, 0, 3.1009517, 12.681304, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=880018197]
+mesh = SubResource("BoxMesh_7tsqo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=695402342]
+shape = SubResource("BoxShape3D_bsbiv")

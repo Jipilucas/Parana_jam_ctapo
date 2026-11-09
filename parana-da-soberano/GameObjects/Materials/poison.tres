@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://2g31pkmyhwpf"]
+
+[sub_resource type="Gradient" id="Gradient_74f30"]
+offsets = PackedFloat32Array(0.5096774, 0.62580645, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.8, 0.8, 0.8, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4g7kt"]
+frequency = 0.0695
+fractal_type = 2
+fractal_lacunarity = 6.035
+fractal_gain = -0.27
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1wf77"]
+noise = SubResource("FastNoiseLite_4g7kt")
+color_ramp = SubResource("Gradient_74f30")
+
+[resource]
+albedo_color = Color(1, 1, 0.16470589, 1)
+albedo_texture = SubResource("NoiseTexture2D_1wf77")

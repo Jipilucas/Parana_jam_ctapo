@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c8x7efees8m1e"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4g7kt"]
+frequency = 0.0006
+fractal_gain = 0.08
+fractal_weighted_strength = 0.78
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1wf77"]
+noise = SubResource("FastNoiseLite_4g7kt")
+
+[resource]
+albedo_color = Color(0.16470589, 0.7411765, 1, 1)
+albedo_texture = SubResource("NoiseTexture2D_1wf77")

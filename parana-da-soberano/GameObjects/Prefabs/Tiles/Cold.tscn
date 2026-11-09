@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ch8gmp7xllk31"]
+
+[ext_resource type="Material" uid="uid://c8x7efees8m1e" path="res://Materials/cold.tres" id="1_6hsyf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7tsqo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bsbiv"]
+
+[node name="Cold" type="StaticBody3D" unique_id=100766867]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1004266059]
+shape = SubResource("BoxShape3D_7tsqo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1192913109]
+mesh = SubResource("BoxMesh_bsbiv")
+surface_material_override/0 = ExtResource("1_6hsyf")

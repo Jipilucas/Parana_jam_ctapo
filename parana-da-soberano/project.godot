@@ -11,13 +11,32 @@ config_version=5
 [application]
 
 config/name="Parana_da_soberano"
+run/main_scene="uid://dllig6usfderj"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Signals="*uid://djeevkxlwdvop"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[global_group]
+
+Meta=""
+
+[layer_names]
+
+3d_navigation/layer_1="Comun"
+3d_navigation/layer_2="Agua-Comun"
+3d_navigation/layer_3="Tierra-Comun"
+3d_navigation/layer_4="Agua-Propia"
+3d_navigation/layer_5="Tierra-Propia"
+3d_navigation/layer_6="Agua-Enemiga"
+3d_navigation/layer_7="Tierra-Enemiga"
 
 [physics]
 

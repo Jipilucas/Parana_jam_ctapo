@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://4t5lhyxpg78s"]
+
+[ext_resource type="Script" uid="uid://d07n3xqffgqj7" path="res://GameObjects/Scenario/NPC-Navegable.gd" id="1_xwaue"]
+[ext_resource type="BoxMesh" uid="uid://cqa63nj0rb0" path="res://GameObjects/Resources/boxmesh.tres" id="2_i4tn2"]
+[ext_resource type="Material" uid="uid://dca1j0em3r5qj" path="res://GameObjects/Materials/fire.tres" id="3_wflnb"]
+[ext_resource type="Shape3D" uid="uid://jb533hgcxs7t" path="res://GameObjects/Resources/boxshape.tres" id="4_74koa"]
+
+[node name="TransporteEnemigo" type="CharacterBody3D" unique_id=318639619 groups=["NPC"]]
+wall_min_slide_angle = 0.0
+script = ExtResource("1_xwaue")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=760554346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = ExtResource("2_i4tn2")
+surface_material_override/0 = ExtResource("3_wflnb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=236487586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = ExtResource("4_74koa")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=343264820]
+path_desired_distance = 2.82
+target_desired_distance = 4.87
+navigation_layers = 68
+path_postprocessing = 1
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 1, 1, 0.48235294)

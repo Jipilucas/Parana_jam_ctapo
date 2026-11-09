@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://0hufu0u4dhpp"]
+
+[ext_resource type="Script" uid="uid://d07n3xqffgqj7" path="res://GameObjects/Scenario/NPC-Navegable.gd" id="1_q5ul1"]
+[ext_resource type="Shape3D" uid="uid://jb533hgcxs7t" path="res://GameObjects/Resources/boxshape.tres" id="2_eib64"]
+[ext_resource type="Material" uid="uid://2g31pkmyhwpf" path="res://GameObjects/Materials/poison.tres" id="3_2l4wm"]
+[ext_resource type="BoxMesh" uid="uid://cqa63nj0rb0" path="res://GameObjects/Resources/boxmesh.tres" id="3_a6g1p"]
+
+[node name="TransportePropio" type="CharacterBody3D" unique_id=318639619 groups=["NPC"]]
+wall_min_slide_angle = 0.0
+script = ExtResource("1_q5ul1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=597959821]
+shape = ExtResource("2_eib64")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1354430915]
+mesh = ExtResource("3_a6g1p")
+surface_material_override/0 = ExtResource("3_2l4wm")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=867342643]
+path_desired_distance = 9.02
+target_desired_distance = 8.84
+path_max_distance = 36.81
+navigation_layers = 20
+path_postprocessing = 1
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 1, 1, 0.48235294)
