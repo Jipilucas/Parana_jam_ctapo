@@ -27,6 +27,7 @@ metadata/_custom_type_script = "uid://cef7imth31asg"
 
 [sub_resource type="Resource" id="Resource_bfop8"]
 script = ExtResource("5_78vn7")
+duracion = 5.0
 metadata/_custom_type_script = "uid://dt57u64g2m08c"
 
 [sub_resource type="Resource" id="Resource_78vn7"]
