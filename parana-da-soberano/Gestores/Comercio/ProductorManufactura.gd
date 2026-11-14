@@ -1,7 +1,6 @@
 extends Productor
 class_name ProductorManufactura
 
-
 func _init() -> void:
 	pass
 

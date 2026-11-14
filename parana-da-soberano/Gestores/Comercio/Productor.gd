@@ -1,9 +1,9 @@
 extends Node
 class_name Productor
 
-var necesario = RecursoStock
+var necesario : RecursoStock
 @export var necesario_cantidad : int
-var resultante = RecursoStock
+var resultante : RecursoStock
 @export var resultante_cantidad : int
 
 	
@@ -17,10 +17,13 @@ func Producir():
 	
 func Recibir(cant:int):
 	necesario.Cantidad += cant
-	print(self.name, ' recibe (+', cant, ') de', necesario.Nombre, ' stock=', necesario.Cantidad)
+	print(self.name, ' recibe (+', cant, ') de ', necesario.Nombre, ' stock=', necesario.Cantidad)
 	pass
 	
 func Despachar(cant:int):
 	resultante.Cantidad -= cant
-	print(self.name, ' despacha (+', cant, ') de', resultante.Nombre, ' stock=', resultante.Cantidad)
+	print(self.name, ' despacha (-', cant, ') de ', resultante.Nombre, ' stock=', resultante.Cantidad)
 	pass
+	
+func ver_cantidad_necesario() -> int:
+	return 999

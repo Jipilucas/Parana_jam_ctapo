@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://cgf5ab3ejjo06"]
 
-[ext_resource type="Script" uid="uid://cevem81bbvewp" path="res://Gestores/Comercio/MateriaPrima.gd" id="1_gle5r"]
 [ext_resource type="Script" uid="uid://d2dnwpyf8yokl" path="res://Gestores/Comandos/controlador_comandos.gd" id="2_7g8ww"]
 [ext_resource type="Script" uid="uid://dr0pxy3kx633g" path="res://Gestores/Comandos/Commands/command.gd" id="3_1gsyl"]
+[ext_resource type="Script" uid="uid://ts3adrbut3tf" path="res://Gestores/Comercio/ProductorMateriaPrima.gd" id="3_7g8ww"]
 [ext_resource type="Script" uid="uid://cfmwyqienhqvs" path="res://Gestores/Comercio/ProductorManufactura.gd" id="4_icsr1"]
 [ext_resource type="Script" uid="uid://hg4biibp3l6v" path="res://Gestores/Comandos/Commands/Comando_consumir.gd" id="4_q4nsn"]
 [ext_resource type="Script" uid="uid://dt57u64g2m08c" path="res://Gestores/Comandos/Commands/comando_esperar.gd" id="5_78vn7"]
 [ext_resource type="Script" uid="uid://cef7imth31asg" path="res://Gestores/Comandos/Commands/Comando_producir.gd" id="6_rakfu"]
+[ext_resource type="Script" uid="uid://doa67l78eprxx" path="res://Gestores/datos.gd" id="7_rakfu"]
+[ext_resource type="Script" uid="uid://dfd5afk1ytlqo" path="res://Gestores/Transportes/flete_tierra.gd" id="9_q4nsn"]
+[ext_resource type="Script" uid="uid://b8vho8fdq8lmn" path="res://Gestores/Comandos/Commands/Comando_Recibir.gd" id="9_rakfu"]
+[ext_resource type="Script" uid="uid://dcnsdbcuijdro" path="res://Gestores/Comandos/Commands/Comando_Despachar.gd" id="10_xxw72"]
+[ext_resource type="Script" uid="uid://b7ce7kjmsqnw0" path="res://Gestores/UI_Flete.gd" id="12_xxw72"]
 
 [sub_resource type="Resource" id="Resource_icsr1"]
 script = ExtResource("4_q4nsn")
@@ -24,23 +29,143 @@ metadata/_custom_type_script = "uid://cef7imth31asg"
 script = ExtResource("5_78vn7")
 metadata/_custom_type_script = "uid://dt57u64g2m08c"
 
+[sub_resource type="Resource" id="Resource_78vn7"]
+script = ExtResource("9_rakfu")
+metadata/_custom_type_script = "uid://b8vho8fdq8lmn"
+
+[sub_resource type="Resource" id="Resource_rakfu"]
+script = ExtResource("5_78vn7")
+metadata/_custom_type_script = "uid://dt57u64g2m08c"
+
+[sub_resource type="Resource" id="Resource_xxw72"]
+script = ExtResource("10_xxw72")
+metadata/_custom_type_script = "uid://dcnsdbcuijdro"
+
 [node name="TestScene" type="Node2D" unique_id=1323290699]
 
-[node name="Recursos" type="Node" parent="." unique_id=534657310]
-script = ExtResource("1_gle5r")
-metadata/_custom_type_script = "uid://cevem81bbvewp"
+[node name="EntidadProductora" type="Node2D" parent="." unique_id=1835311111]
+position = Vector2(567, 15)
 
-[node name="Entidad" type="Node2D" parent="." unique_id=1835311111]
-
-[node name="ControladorComandos" type="Node" parent="Entidad" unique_id=1416079326 node_paths=PackedStringArray("actor")]
-script = ExtResource("2_7g8ww")
-actor = NodePath("../ProductorManufactura")
-intervalo_rutina = 3.0
-rutina = Array[ExtResource("3_1gsyl")]([SubResource("Resource_icsr1"), SubResource("Resource_x0khw"), SubResource("Resource_s7bnt"), SubResource("Resource_bfop8")])
-metadata/_custom_type_script = "uid://d2dnwpyf8yokl"
-
-[node name="ProductorManufactura" type="Node" parent="Entidad" unique_id=1423789627]
+[node name="ProductorManufactura" type="Node" parent="EntidadProductora" unique_id=1423789627]
 script = ExtResource("4_icsr1")
 necesario_cantidad = 5
 resultante_cantidad = 6
 metadata/_custom_type_script = "uid://cfmwyqienhqvs"
+
+[node name="ControladorComandos" type="Node" parent="EntidadProductora" unique_id=1416079326 node_paths=PackedStringArray("actor")]
+script = ExtResource("2_7g8ww")
+actor = NodePath("../ProductorManufactura")
+rutina = Array[ExtResource("3_1gsyl")]([SubResource("Resource_icsr1"), SubResource("Resource_x0khw"), SubResource("Resource_s7bnt"), SubResource("Resource_bfop8")])
+metadata/_custom_type_script = "uid://d2dnwpyf8yokl"
+
+[node name="Datos" type="Control" parent="EntidadProductora" unique_id=820045441 node_paths=PackedStringArray("entidad", "comandos")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("7_rakfu")
+entidad = NodePath("../ProductorManufactura")
+comandos = NodePath("../ControladorComandos")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EntidadProductora/Datos" unique_id=1217949932]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Nombre" type="Label" parent="EntidadProductora/Datos/VBoxContainer" unique_id=1560444178]
+layout_mode = 2
+text = "nombre"
+
+[node name="Estado" type="Label" parent="EntidadProductora/Datos/VBoxContainer" unique_id=2081380022]
+layout_mode = 2
+text = "estado"
+
+[node name="Stock_input" type="Label" parent="EntidadProductora/Datos/VBoxContainer" unique_id=946033969]
+layout_mode = 2
+text = "stock input"
+
+[node name="Stock_output" type="Label" parent="EntidadProductora/Datos/VBoxContainer" unique_id=233436799]
+layout_mode = 2
+text = "stock output"
+
+[node name="EntidadProductora2" type="Node2D" parent="." unique_id=1719235936]
+position = Vector2(31, 18)
+
+[node name="ProductorMateriaPrima" type="Node" parent="EntidadProductora2" unique_id=338570567]
+script = ExtResource("3_7g8ww")
+resultante_cantidad = 10
+metadata/_custom_type_script = "uid://ts3adrbut3tf"
+
+[node name="ControladorComandos" type="Node" parent="EntidadProductora2" unique_id=1665318206 node_paths=PackedStringArray("actor")]
+script = ExtResource("2_7g8ww")
+actor = NodePath("../ProductorMateriaPrima")
+intervalo_rutina = 5.0
+rutina = Array[ExtResource("3_1gsyl")]([SubResource("Resource_icsr1"), SubResource("Resource_x0khw"), SubResource("Resource_s7bnt"), SubResource("Resource_bfop8")])
+metadata/_custom_type_script = "uid://d2dnwpyf8yokl"
+
+[node name="Datos" type="Control" parent="EntidadProductora2" unique_id=968845903 node_paths=PackedStringArray("entidad", "comandos")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("7_rakfu")
+entidad = NodePath("../ProductorMateriaPrima")
+comandos = NodePath("../../EntidadProductora/ControladorComandos")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EntidadProductora2/Datos" unique_id=53141957]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Nombre" type="Label" parent="EntidadProductora2/Datos/VBoxContainer" unique_id=1653081710]
+layout_mode = 2
+text = "nombre"
+
+[node name="Estado" type="Label" parent="EntidadProductora2/Datos/VBoxContainer" unique_id=1447076920]
+layout_mode = 2
+text = "estado"
+
+[node name="Stock_input" type="Label" parent="EntidadProductora2/Datos/VBoxContainer" unique_id=1265004477]
+layout_mode = 2
+text = "stock input"
+
+[node name="Stock_output" type="Label" parent="EntidadProductora2/Datos/VBoxContainer" unique_id=1707840208]
+layout_mode = 2
+text = "stock output"
+
+[node name="Flete" type="Node2D" parent="." unique_id=1374440158]
+position = Vector2(292, 17)
+
+[node name="FleteTierra2" type="Node" parent="Flete" unique_id=1299411554 node_paths=PackedStringArray("Remitente", "Destinatario")]
+script = ExtResource("9_q4nsn")
+Remitente = NodePath("../../EntidadProductora2/ProductorMateriaPrima")
+Destinatario = NodePath("../../EntidadProductora/ProductorManufactura")
+Capacidad = 11
+metadata/_custom_type_script = "uid://dfd5afk1ytlqo"
+
+[node name="ControladorComandos" type="Node" parent="Flete" unique_id=430758528 node_paths=PackedStringArray("actor")]
+script = ExtResource("2_7g8ww")
+actor = NodePath("../FleteTierra2")
+intervalo_rutina = 1.0
+rutina = Array[ExtResource("3_1gsyl")]([SubResource("Resource_78vn7"), SubResource("Resource_rakfu"), SubResource("Resource_xxw72")])
+metadata/_custom_type_script = "uid://d2dnwpyf8yokl"
+
+[node name="Datos" type="Control" parent="Flete" unique_id=889201533 node_paths=PackedStringArray("entidad", "comandos")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("12_xxw72")
+entidad = NodePath("../FleteTierra2")
+comandos = NodePath("../ControladorComandos")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Flete/Datos" unique_id=857088978]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Nombre" type="Label" parent="Flete/Datos/VBoxContainer" unique_id=148932403]
+layout_mode = 2
+text = "nombre"
+
+[node name="Estado" type="Label" parent="Flete/Datos/VBoxContainer" unique_id=821594033]
+layout_mode = 2
+text = "estado"
+
+[node name="Carga actual" type="Label" parent="Flete/Datos/VBoxContainer" unique_id=1958362375]
+layout_mode = 2
+text = "stock output"

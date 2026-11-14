@@ -22,6 +22,8 @@ signal comando_completado(comando: Command)
 var _ejecutando: bool = false
 var _activo: bool = false
 
+var comando_actual : String ='ninguno'
+
 func _ready() -> void:
 	if actor == null:
 		actor = get_parent()
@@ -59,6 +61,7 @@ func ejecutar_rutina() -> void:
 			comando_iniciado.emit(comando)
 			await comando.execute(actor)
 			comando_completado.emit(comando)
+			comando_actual = comando.get_command_name()
 	
 	_ejecutando = false
 	rutina_finalizada.emit()
