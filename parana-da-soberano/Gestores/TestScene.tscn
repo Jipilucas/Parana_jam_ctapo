@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cgf5ab3ejjo06"]
+
+[ext_resource type="Script" uid="uid://cevem81bbvewp" path="res://Gestores/Comercio/MateriaPrima.gd" id="1_gle5r"]
+[ext_resource type="Script" uid="uid://d2dnwpyf8yokl" path="res://Gestores/Comandos/controlador_comandos.gd" id="2_7g8ww"]
+[ext_resource type="Script" uid="uid://dr0pxy3kx633g" path="res://Gestores/Comandos/Commands/command.gd" id="3_1gsyl"]
+[ext_resource type="Script" uid="uid://cfmwyqienhqvs" path="res://Gestores/Comercio/ProductorManufactura.gd" id="4_icsr1"]
+[ext_resource type="Script" uid="uid://hg4biibp3l6v" path="res://Gestores/Comandos/Commands/Comando_consumir.gd" id="4_q4nsn"]
+[ext_resource type="Script" uid="uid://dt57u64g2m08c" path="res://Gestores/Comandos/Commands/comando_esperar.gd" id="5_78vn7"]
+[ext_resource type="Script" uid="uid://cef7imth31asg" path="res://Gestores/Comandos/Commands/Comando_producir.gd" id="6_rakfu"]
+
+[sub_resource type="Resource" id="Resource_icsr1"]
+script = ExtResource("4_q4nsn")
+metadata/_custom_type_script = "uid://hg4biibp3l6v"
+
+[sub_resource type="Resource" id="Resource_x0khw"]
+script = ExtResource("5_78vn7")
+metadata/_custom_type_script = "uid://dt57u64g2m08c"
+
+[sub_resource type="Resource" id="Resource_s7bnt"]
+script = ExtResource("6_rakfu")
+metadata/_custom_type_script = "uid://cef7imth31asg"
+
+[sub_resource type="Resource" id="Resource_bfop8"]
+script = ExtResource("5_78vn7")
+metadata/_custom_type_script = "uid://dt57u64g2m08c"
+
+[node name="TestScene" type="Node2D" unique_id=1323290699]
+
+[node name="Recursos" type="Node" parent="." unique_id=534657310]
+script = ExtResource("1_gle5r")
+metadata/_custom_type_script = "uid://cevem81bbvewp"
+
+[node name="Entidad" type="Node2D" parent="." unique_id=1835311111]
+
+[node name="ControladorComandos" type="Node" parent="Entidad" unique_id=1416079326 node_paths=PackedStringArray("actor")]
+script = ExtResource("2_7g8ww")
+actor = NodePath("../ProductorManufactura")
+intervalo_rutina = 3.0
+rutina = Array[ExtResource("3_1gsyl")]([SubResource("Resource_icsr1"), SubResource("Resource_x0khw"), SubResource("Resource_s7bnt"), SubResource("Resource_bfop8")])
+metadata/_custom_type_script = "uid://d2dnwpyf8yokl"
+
+[node name="ProductorManufactura" type="Node" parent="Entidad" unique_id=1423789627]
+script = ExtResource("4_icsr1")
+necesario_cantidad = 5
+resultante_cantidad = 6
+metadata/_custom_type_script = "uid://cfmwyqienhqvs"

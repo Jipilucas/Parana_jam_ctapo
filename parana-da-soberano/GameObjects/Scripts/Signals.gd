@@ -1,6 +1,4 @@
 extends Node
-
-
 # UI Signals
 signal create_npc_1
 signal create_npc_2
