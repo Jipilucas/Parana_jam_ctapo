@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bsofv2qtgrcml"]
+
+[ext_resource type="Script" uid="uid://b7ce7kjmsqnw0" path="res://Gestores/UI_Flete.gd" id="1_d8hxv"]
+
+[node name="Datos" type="Control" unique_id=338601756 node_paths=PackedStringArray("entidad", "comandos")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_d8hxv")
+entidad = NodePath("")
+comandos = NodePath("")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=286462393]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Nombre" type="Label" parent="VBoxContainer" unique_id=1388469997]
+layout_mode = 2
+text = "nombre"
+
+[node name="Estado" type="Label" parent="VBoxContainer" unique_id=850584957]
+layout_mode = 2
+text = "estado"
+
+[node name="Carga actual" type="Label" parent="VBoxContainer" unique_id=1919736560]
+layout_mode = 2
+text = "stock output"

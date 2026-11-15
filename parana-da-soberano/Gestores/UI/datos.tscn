@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dgfv7uaavlrv1"]
+
+[ext_resource type="Script" uid="uid://doa67l78eprxx" path="res://Gestores/datos.gd" id="1_onage"]
+
+[node name="Datos-empresa" type="Control" unique_id=565952476]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_onage")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=48646116]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Nombre" type="Label" parent="VBoxContainer" unique_id=941118943]
+layout_mode = 2
+text = "nombre"
+
+[node name="Estado" type="Label" parent="VBoxContainer" unique_id=1256828429]
+layout_mode = 2
+text = "estado"
+
+[node name="Stock_input" type="Label" parent="VBoxContainer" unique_id=1214161851]
+layout_mode = 2
+text = "stock input"
+
+[node name="Stock_output" type="Label" parent="VBoxContainer" unique_id=495711867]
+layout_mode = 2
+text = "stock output"

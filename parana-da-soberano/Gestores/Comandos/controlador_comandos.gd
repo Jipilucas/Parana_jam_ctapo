@@ -24,14 +24,17 @@ var _activo: bool = false
 
 var comando_actual : String ='ninguno'
 
+func activar():
+	_activo = true
+	
+func desactivar():
+	_activo = false
+
 func _ready() -> void:
 	if actor == null:
 		actor = get_parent()
-	
 	if auto_iniciar:
-		# En multijugador, la IA la comanda el Servidor / Host
-		if not multiplayer.has_multiplayer_peer() or multiplayer.is_server():
-			iniciar_ciclo.call_deferred()
+		iniciar_ciclo.call_deferred()
 
 ## Inicia el bucle repetitivo cada 'intervalo_rutina' segundos
 func iniciar_ciclo() -> void:
