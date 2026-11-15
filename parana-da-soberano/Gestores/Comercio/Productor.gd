@@ -185,19 +185,4 @@ func nacionalizar() -> bool:
 	faccion_actual = ConfigLogistica.Faccion.PROPIO
 	Partida.modificar_soberania(6.0, "Recuperación soberana de %s" % obtener_nombre())
 	estado_slot_cambiado.emit()
-	queue_redraw()
 	return true
-
-
-func _draw() -> void:
-	var color_base: Color = Color(0.35, 0.35, 0.4, 0.85)
-	if slot_ocupado:
-		match faccion_actual:
-			ConfigLogistica.Faccion.PROPIO:
-				color_base = Color(0.15, 0.55, 0.85, 0.9)
-			ConfigLogistica.Faccion.ENEMIGO:
-				color_base = Color(0.85, 0.25, 0.25, 0.9)
-			ConfigLogistica.Faccion.NEUTRAL:
-				color_base = Color(0.3, 0.65, 0.35, 0.9)
-	draw_circle(Vector2.ZERO, 18.0, color_base)
-	draw_arc(Vector2.ZERO, 18.0, 0.0, TAU, 32, Color.WHITE, 2.0)

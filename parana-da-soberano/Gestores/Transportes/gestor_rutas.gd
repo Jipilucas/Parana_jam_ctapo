@@ -68,6 +68,13 @@ func crear_ruta_en_ejecucion(origen: Productor, destino: Productor, tipo: Flete.
 	nuevo_flete.activa_al_inicio = false
 	nuevo_flete.global_position = (origen.global_position + destino.global_position) * 0.5
 
+	var linea := Line2D.new()
+	linea.name = "LineaRuta"
+	linea.width = 3.0
+	linea.default_color = Color(0.2, 0.75, 1.0, 0.85) if tipo == Flete.TipoFlete.MAR else Color(0.95, 0.7, 0.2, 0.85)
+	nuevo_flete.add_child(linea)
+	nuevo_flete.linea_visual = linea
+
 	var ctrl := ControladorComandos.new()
 	ctrl.name = "ControladorComandos"
 	ctrl.actor = nuevo_flete

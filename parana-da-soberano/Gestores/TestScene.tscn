@@ -1,20 +1,27 @@
 [gd_scene format=3 uid="uid://cgf5ab3ejjo06"]
 
-[ext_resource type="Script" path="res://Gestores/Comercio/Productor.gd" id="1_prod"]
-[ext_resource type="Script" path="res://Gestores/Comercio/config_logistica.gd" id="2_cfg"]
-[ext_resource type="Script" path="res://Gestores/Comandos/controlador_comandos.gd" id="3_ctrl"]
-[ext_resource type="Script" path="res://Gestores/Comandos/Commands/command.gd" id="4_cmd"]
-[ext_resource type="Script" path="res://Gestores/Comandos/Commands/Comando_consumir.gd" id="5_ccons"]
-[ext_resource type="Script" path="res://Gestores/Comandos/Commands/comando_esperar.gd" id="6_cesp"]
-[ext_resource type="Script" path="res://Gestores/Comandos/Commands/Comando_producir.gd" id="7_cprod"]
-[ext_resource type="Script" path="res://Gestores/Comandos/Commands/Comando_Recibir.gd" id="8_crec"]
-[ext_resource type="Script" path="res://Gestores/Comandos/Commands/Comando_Despachar.gd" id="9_cdesp"]
-[ext_resource type="Script" path="res://Gestores/Transportes/flete_tierra.gd" id="10_flete"]
-[ext_resource type="Script" path="res://Gestores/Transportes/gestor_rutas.gd" id="11_grutas"]
-[ext_resource type="Script" path="res://Gestores/Eventos/gestor_eventos.gd" id="12_geventos"]
-[ext_resource type="Script" path="res://Gestores/UI/hud_principal.gd" id="13_hud"]
+[ext_resource type="Script" uid="uid://bxpwdkso7coum" path="res://Gestores/Comercio/Productor.gd" id="1_prod"]
+[ext_resource type="Script" uid="uid://dawjvxehyvtl1" path="res://Gestores/Comercio/config_logistica.gd" id="2_cfg"]
+[ext_resource type="Script" uid="uid://d2dnwpyf8yokl" path="res://Gestores/Comandos/controlador_comandos.gd" id="3_ctrl"]
+[ext_resource type="Script" uid="uid://dr0pxy3kx633g" path="res://Gestores/Comandos/Commands/command.gd" id="4_cmd"]
+[ext_resource type="Script" uid="uid://hg4biibp3l6v" path="res://Gestores/Comandos/Commands/Comando_consumir.gd" id="5_ccons"]
+[ext_resource type="Script" uid="uid://dt57u64g2m08c" path="res://Gestores/Comandos/Commands/comando_esperar.gd" id="6_cesp"]
+[ext_resource type="Script" uid="uid://cef7imth31asg" path="res://Gestores/Comandos/Commands/Comando_producir.gd" id="7_cprod"]
+[ext_resource type="Script" uid="uid://b8vho8fdq8lmn" path="res://Gestores/Comandos/Commands/Comando_Recibir.gd" id="8_crec"]
+[ext_resource type="Script" uid="uid://dcnsdbcuijdro" path="res://Gestores/Comandos/Commands/Comando_Despachar.gd" id="9_cdesp"]
+[ext_resource type="Script" uid="uid://dfd5afk1ytlqo" path="res://Gestores/Transportes/flete_tierra.gd" id="10_flete"]
+[ext_resource type="Script" uid="uid://vnivcbjgirr0" path="res://Gestores/Transportes/gestor_rutas.gd" id="11_grutas"]
+[ext_resource type="Script" uid="uid://lcofxuy56h4l" path="res://Gestores/Eventos/gestor_eventos.gd" id="12_geventos"]
+[ext_resource type="PackedScene" path="res://Gestores/UI/hud_principal.tscn" id="13_hud"]
 [ext_resource type="PackedScene" uid="uid://dgfv7uaavlrv1" path="res://Gestores/UI/datos.tscn" id="14_uidatos"]
 [ext_resource type="PackedScene" uid="uid://bsofv2qtgrcml" path="res://Gestores/UI/datos-felte.tscn" id="15_uiflete"]
+
+[sub_resource type="Resource" id="Cfg_AgroNeutral"]
+script = ExtResource("2_cfg")
+nombre_mostrar = "Agro Litoral"
+cantidad_consumo = 0
+cantidad_produccion = 14
+stock_inicial_salida = 25
 
 [sub_resource type="Resource" id="Resource_cmd_consumir"]
 script = ExtResource("5_ccons")
@@ -26,28 +33,6 @@ duracion = 2.0
 [sub_resource type="Resource" id="Resource_cmd_producir"]
 script = ExtResource("7_cprod")
 
-[sub_resource type="Resource" id="Resource_cmd_recibir"]
-script = ExtResource("8_crec")
-
-[sub_resource type="Resource" id="Resource_cmd_esperar_1s"]
-script = ExtResource("6_cesp")
-duracion = 1.2
-
-[sub_resource type="Resource" id="Resource_cmd_despachar"]
-script = ExtResource("9_cdesp")
-
-[sub_resource type="Resource" id="Cfg_AgroNeutral"]
-script = ExtResource("2_cfg")
-nombre_mostrar = "Agro Litoral"
-tipo_entidad = 0
-faccion_inicial = 0
-bien_entrada = 0
-cantidad_consumo = 0
-bien_salida = 1
-cantidad_produccion = 14
-stock_inicial_entrada = 0
-stock_inicial_salida = 25
-
 [sub_resource type="Resource" id="Cfg_IndPropia"]
 script = ExtResource("2_cfg")
 nombre_mostrar = "Industria Nacional"
@@ -56,9 +41,7 @@ faccion_inicial = 1
 bien_entrada = 1
 cantidad_consumo = 6
 bien_salida = 2
-cantidad_produccion = 10
 stock_inicial_entrada = 12
-stock_inicial_salida = 10
 impacto_soberania_propio = 1.5
 
 [sub_resource type="Resource" id="Cfg_IndEnemiga"]
@@ -75,7 +58,6 @@ stock_inicial_salida = 6
 impacto_soberania_propio = 1.5
 impacto_soberania_enemigo = -1.0
 costo_compra = 110
-tier_ciencia_requerido = 2
 
 [sub_resource type="Resource" id="Cfg_SlotIndVacio"]
 script = ExtResource("2_cfg")
@@ -83,12 +65,10 @@ nombre_mostrar = "Polo Industrial Norte"
 tipo_entidad = 1
 faccion_inicial = 1
 bien_entrada = 1
-cantidad_consumo = 5
 bien_salida = 2
 cantidad_produccion = 12
 stock_inicial_entrada = 10
 stock_inicial_salida = 8
-impacto_soberania_propio = 2.0
 
 [sub_resource type="Resource" id="Cfg_Ciudad"]
 script = ExtResource("2_cfg")
@@ -96,7 +76,6 @@ nombre_mostrar = "Ciudad del Paraná"
 tipo_entidad = 3
 faccion_inicial = 1
 bien_entrada = 2
-cantidad_consumo = 5
 bien_salida = 0
 cantidad_produccion = 0
 stock_inicial_entrada = 10
@@ -109,7 +88,6 @@ script = ExtResource("2_cfg")
 nombre_mostrar = "Puerto Soberano"
 tipo_entidad = 2
 faccion_inicial = 1
-modo_puerto = 2
 bien_entrada = 2
 cantidad_consumo = 6
 bien_salida = 2
@@ -137,228 +115,271 @@ ganancia_enemigo = 3
 impacto_soberania_propio = 3.0
 impacto_soberania_enemigo = -2.0
 costo_compra = 140
-tier_ciencia_requerido = 2
 
-[node name="TestScene" type="Node2D"]
+[sub_resource type="Resource" id="Resource_cmd_recibir"]
+script = ExtResource("8_crec")
 
-[node name="AgroLitoral" type="Node2D" parent="." node_paths=PackedStringArray("controlador")]
-position = Vector2(70, 140)
+[sub_resource type="Resource" id="Resource_cmd_esperar_1s"]
+script = ExtResource("6_cesp")
+duracion = 1.2
+
+[sub_resource type="Resource" id="Resource_cmd_despachar"]
+script = ExtResource("9_cdesp")
+
+[node name="TestScene" type="Node2D" unique_id=1656906367]
+
+[node name="AgroLitoral" type="Node2D" parent="." unique_id=955049289 node_paths=PackedStringArray("controlador")]
+position = Vector2(14, 124)
 script = ExtResource("1_prod")
-slot_ocupado = true
 config = SubResource("Cfg_AgroNeutral")
 controlador = NodePath("ControladorComandos")
+metadata/_edit_group_ = true
 
-[node name="ControladorComandos" type="Node" parent="AgroLitoral" node_paths=PackedStringArray("actor")]
+[node name="ControladorComandos" type="Node" parent="AgroLitoral" unique_id=1974064149 node_paths=PackedStringArray("actor")]
 script = ExtResource("3_ctrl")
 actor = NodePath("..")
 intervalo_rutina = 3.0
 rutina = Array[ExtResource("4_cmd")]([SubResource("Resource_cmd_consumir"), SubResource("Resource_cmd_esperar_2s"), SubResource("Resource_cmd_producir")])
 
-[node name="Datos" parent="AgroLitoral" node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("14_uidatos")]
+[node name="Datos" parent="AgroLitoral" unique_id=1860121118 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("14_uidatos")]
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
+metadata/_edit_use_anchors_ = true
 
-[node name="IndustriaNacional" type="Node2D" parent="." node_paths=PackedStringArray("controlador")]
-position = Vector2(440, 130)
+[node name="IndustriaNacional" type="Node2D" parent="." unique_id=221882591 node_paths=PackedStringArray("controlador")]
+position = Vector2(360, 187)
 script = ExtResource("1_prod")
-slot_ocupado = true
 config = SubResource("Cfg_IndPropia")
 controlador = NodePath("ControladorComandos")
+metadata/_edit_group_ = true
 
-[node name="ControladorComandos" type="Node" parent="IndustriaNacional" node_paths=PackedStringArray("actor")]
+[node name="ControladorComandos" type="Node" parent="IndustriaNacional" unique_id=1300314801 node_paths=PackedStringArray("actor")]
 script = ExtResource("3_ctrl")
 actor = NodePath("..")
 intervalo_rutina = 3.5
 rutina = Array[ExtResource("4_cmd")]([SubResource("Resource_cmd_consumir"), SubResource("Resource_cmd_esperar_2s"), SubResource("Resource_cmd_producir")])
 
-[node name="Datos" parent="IndustriaNacional" node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("14_uidatos")]
+[node name="Datos" parent="IndustriaNacional" unique_id=743442373 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("14_uidatos")]
+offset_left = 51.0
+offset_top = -74.0
+offset_right = 51.0
+offset_bottom = -74.0
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
+metadata/_edit_use_anchors_ = true
 
-[node name="PlantaExtranjera" type="Node2D" parent="." node_paths=PackedStringArray("controlador")]
-position = Vector2(440, 320)
+[node name="PlantaExtranjera" type="Node2D" parent="." unique_id=445995948 node_paths=PackedStringArray("controlador")]
+position = Vector2(411, 314)
 script = ExtResource("1_prod")
-slot_ocupado = true
 config = SubResource("Cfg_IndEnemiga")
 controlador = NodePath("ControladorComandos")
+metadata/_edit_group_ = true
 
-[node name="ControladorComandos" type="Node" parent="PlantaExtranjera" node_paths=PackedStringArray("actor")]
+[node name="ControladorComandos" type="Node" parent="PlantaExtranjera" unique_id=1501299925 node_paths=PackedStringArray("actor")]
 script = ExtResource("3_ctrl")
 actor = NodePath("..")
 intervalo_rutina = 4.0
 rutina = Array[ExtResource("4_cmd")]([SubResource("Resource_cmd_consumir"), SubResource("Resource_cmd_esperar_2s"), SubResource("Resource_cmd_producir")])
 
-[node name="Datos" parent="PlantaExtranjera" node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("14_uidatos")]
+[node name="Datos" parent="PlantaExtranjera" unique_id=1729995081 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("14_uidatos")]
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
+metadata/_edit_use_anchors_ = true
 
-[node name="SlotIndustriaVacio" type="Node2D" parent="." node_paths=PackedStringArray("controlador")]
-position = Vector2(440, 500)
+[node name="SlotIndustriaVacio" type="Node2D" parent="." unique_id=171085398 node_paths=PackedStringArray("controlador")]
+position = Vector2(411, 518)
 script = ExtResource("1_prod")
 slot_ocupado = false
 costo_construir_en_slot = 85
 config = SubResource("Cfg_SlotIndVacio")
 controlador = NodePath("ControladorComandos")
+metadata/_edit_group_ = true
 
-[node name="ControladorComandos" type="Node" parent="SlotIndustriaVacio" node_paths=PackedStringArray("actor")]
+[node name="ControladorComandos" type="Node" parent="SlotIndustriaVacio" unique_id=562509789 node_paths=PackedStringArray("actor")]
 script = ExtResource("3_ctrl")
 actor = NodePath("..")
 intervalo_rutina = 3.5
 rutina = Array[ExtResource("4_cmd")]([SubResource("Resource_cmd_consumir"), SubResource("Resource_cmd_esperar_2s"), SubResource("Resource_cmd_producir")])
 auto_iniciar = false
 
-[node name="Datos" parent="SlotIndustriaVacio" node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("14_uidatos")]
+[node name="Datos" parent="SlotIndustriaVacio" unique_id=389288962 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("14_uidatos")]
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
+metadata/_edit_use_anchors_ = true
 
-[node name="CiudadParana" type="Node2D" parent="." node_paths=PackedStringArray("controlador")]
-position = Vector2(860, 130)
+[node name="CiudadParana" type="Node2D" parent="." unique_id=1539211978 node_paths=PackedStringArray("controlador")]
+position = Vector2(876, 133)
 script = ExtResource("1_prod")
-slot_ocupado = true
 config = SubResource("Cfg_Ciudad")
 controlador = NodePath("ControladorComandos")
+metadata/_edit_group_ = true
 
-[node name="ControladorComandos" type="Node" parent="CiudadParana" node_paths=PackedStringArray("actor")]
+[node name="ControladorComandos" type="Node" parent="CiudadParana" unique_id=1338109569 node_paths=PackedStringArray("actor")]
 script = ExtResource("3_ctrl")
 actor = NodePath("..")
 intervalo_rutina = 4.0
 rutina = Array[ExtResource("4_cmd")]([SubResource("Resource_cmd_consumir"), SubResource("Resource_cmd_esperar_2s"), SubResource("Resource_cmd_producir")])
 
-[node name="Datos" parent="CiudadParana" node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("14_uidatos")]
+[node name="Datos" parent="CiudadParana" unique_id=807767267 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("14_uidatos")]
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
+metadata/_edit_use_anchors_ = true
 
-[node name="PuertoSoberano" type="Node2D" parent="." node_paths=PackedStringArray("controlador")]
-position = Vector2(860, 340)
+[node name="PuertoSoberano" type="Node2D" parent="." unique_id=1473926082 node_paths=PackedStringArray("controlador")]
+position = Vector2(876, 488)
 script = ExtResource("1_prod")
-slot_ocupado = true
 config = SubResource("Cfg_PuertoPropio")
 controlador = NodePath("ControladorComandos")
+metadata/_edit_group_ = true
 
-[node name="ControladorComandos" type="Node" parent="PuertoSoberano" node_paths=PackedStringArray("actor")]
+[node name="ControladorComandos" type="Node" parent="PuertoSoberano" unique_id=1555412117 node_paths=PackedStringArray("actor")]
 script = ExtResource("3_ctrl")
 actor = NodePath("..")
 intervalo_rutina = 4.0
 rutina = Array[ExtResource("4_cmd")]([SubResource("Resource_cmd_consumir"), SubResource("Resource_cmd_esperar_2s"), SubResource("Resource_cmd_producir")])
 
-[node name="Datos" parent="PuertoSoberano" node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("14_uidatos")]
+[node name="Datos" parent="PuertoSoberano" unique_id=1775309050 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("14_uidatos")]
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
+metadata/_edit_use_anchors_ = true
 
-[node name="PuertoExtranjero" type="Node2D" parent="." node_paths=PackedStringArray("controlador")]
-position = Vector2(70, 440)
+[node name="PuertoExtranjero" type="Node2D" parent="." unique_id=1167241465 node_paths=PackedStringArray("controlador")]
+position = Vector2(14, 458)
 script = ExtResource("1_prod")
-slot_ocupado = true
 config = SubResource("Cfg_PuertoEnemigo")
 controlador = NodePath("ControladorComandos")
+metadata/_edit_group_ = true
 
-[node name="ControladorComandos" type="Node" parent="PuertoExtranjero" node_paths=PackedStringArray("actor")]
+[node name="ControladorComandos" type="Node" parent="PuertoExtranjero" unique_id=1868734245 node_paths=PackedStringArray("actor")]
 script = ExtResource("3_ctrl")
 actor = NodePath("..")
 intervalo_rutina = 4.5
 rutina = Array[ExtResource("4_cmd")]([SubResource("Resource_cmd_consumir"), SubResource("Resource_cmd_esperar_2s"), SubResource("Resource_cmd_producir")])
 
-[node name="Datos" parent="PuertoExtranjero" node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("14_uidatos")]
+[node name="Datos" parent="PuertoExtranjero" unique_id=153974626 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("14_uidatos")]
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
+metadata/_edit_use_anchors_ = true
 
-[node name="Ruta_Agro_IndPropia" type="Node2D" parent="." node_paths=PackedStringArray("Remitente", "Destinatario", "controlador")]
-position = Vector2(245, 130)
+[node name="Ruta_Agro_IndPropia" type="Node2D" parent="." unique_id=1587010033 node_paths=PackedStringArray("Remitente", "Destinatario", "controlador")]
+position = Vector2(246, 133)
 script = ExtResource("10_flete")
 nombre_ruta = "Agro -> Ind.Nac"
-tipo_flete = 0
-activa_al_inicio = true
 Remitente = NodePath("../AgroLitoral")
 Destinatario = NodePath("../IndustriaNacional")
 Capacidad = 8
 costo_habilitar = 30
 costo_por_viaje = 2
 controlador = NodePath("ControladorComandos")
+metadata/_edit_group_ = true
 
-[node name="ControladorComandos" type="Node" parent="Ruta_Agro_IndPropia" node_paths=PackedStringArray("actor")]
+[node name="ControladorComandos" type="Node" parent="Ruta_Agro_IndPropia" unique_id=1702689427 node_paths=PackedStringArray("actor")]
 script = ExtResource("3_ctrl")
 actor = NodePath("..")
 intervalo_rutina = 2.0
 rutina = Array[ExtResource("4_cmd")]([SubResource("Resource_cmd_recibir"), SubResource("Resource_cmd_esperar_1s"), SubResource("Resource_cmd_despachar")])
 
-[node name="DatosFlete" parent="Ruta_Agro_IndPropia" node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("15_uiflete")]
+[node name="LineaRuta" type="Line2D" parent="Ruta_Agro_IndPropia" unique_id=1967149124]
+width = 3.0
+default_color = Color(0.95, 0.7, 0.2, 0.85)
+
+[node name="DatosFlete" parent="Ruta_Agro_IndPropia" unique_id=323087384 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("15_uiflete")]
+offset_right = 0.0
+offset_bottom = 0.0
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
+metadata/_edit_use_anchors_ = true
 
-[node name="Ruta_Agro_PuertoEnemigo" type="Node2D" parent="." node_paths=PackedStringArray("Remitente", "Destinatario", "controlador")]
-position = Vector2(70, 290)
+[node name="Ruta_Agro_PuertoEnemigo" type="Node2D" parent="." unique_id=1309447594 node_paths=PackedStringArray("Remitente", "Destinatario", "controlador")]
+position = Vector2(14, 341)
 script = ExtResource("10_flete")
 nombre_ruta = "Fuga Agro -> Pto.Extranjero"
-tipo_flete = 0
-activa_al_inicio = true
 Remitente = NodePath("../AgroLitoral")
 Destinatario = NodePath("../PuertoExtranjero")
 Capacidad = 6
 costo_habilitar = 25
 costo_por_viaje = 1
 controlador = NodePath("ControladorComandos")
+metadata/_edit_group_ = true
 
-[node name="ControladorComandos" type="Node" parent="Ruta_Agro_PuertoEnemigo" node_paths=PackedStringArray("actor")]
+[node name="ControladorComandos" type="Node" parent="Ruta_Agro_PuertoEnemigo" unique_id=1197979709 node_paths=PackedStringArray("actor")]
 script = ExtResource("3_ctrl")
 actor = NodePath("..")
 intervalo_rutina = 3.5
 rutina = Array[ExtResource("4_cmd")]([SubResource("Resource_cmd_recibir"), SubResource("Resource_cmd_esperar_1s"), SubResource("Resource_cmd_despachar")])
 
-[node name="DatosFlete" parent="Ruta_Agro_PuertoEnemigo" node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("15_uiflete")]
+[node name="LineaRuta" type="Line2D" parent="Ruta_Agro_PuertoEnemigo" unique_id=753684654]
+width = 3.0
+default_color = Color(0.95, 0.4, 0.3, 0.85)
+
+[node name="DatosFlete" parent="Ruta_Agro_PuertoEnemigo" unique_id=1753885578 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("15_uiflete")]
+offset_right = 0.0
+offset_bottom = 0.0
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
+metadata/_edit_use_anchors_ = true
 
-[node name="Ruta_IndPropia_Ciudad" type="Node2D" parent="." node_paths=PackedStringArray("Remitente", "Destinatario", "controlador")]
-position = Vector2(650, 120)
+[node name="Ruta_IndPropia_Ciudad" type="Node2D" parent="." unique_id=1047874121 node_paths=PackedStringArray("Remitente", "Destinatario", "controlador")]
+position = Vector2(665, 133)
 script = ExtResource("10_flete")
 nombre_ruta = "Ind.Nac -> Ciudad"
-tipo_flete = 0
-activa_al_inicio = true
 Remitente = NodePath("../IndustriaNacional")
 Destinatario = NodePath("../CiudadParana")
 Capacidad = 6
 costo_habilitar = 35
 costo_por_viaje = 2
 controlador = NodePath("ControladorComandos")
+metadata/_edit_group_ = true
 
-[node name="ControladorComandos" type="Node" parent="Ruta_IndPropia_Ciudad" node_paths=PackedStringArray("actor")]
+[node name="ControladorComandos" type="Node" parent="Ruta_IndPropia_Ciudad" unique_id=196518167 node_paths=PackedStringArray("actor")]
 script = ExtResource("3_ctrl")
 actor = NodePath("..")
 intervalo_rutina = 2.5
 rutina = Array[ExtResource("4_cmd")]([SubResource("Resource_cmd_recibir"), SubResource("Resource_cmd_esperar_1s"), SubResource("Resource_cmd_despachar")])
 
-[node name="DatosFlete" parent="Ruta_IndPropia_Ciudad" node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("15_uiflete")]
+[node name="LineaRuta" type="Line2D" parent="Ruta_IndPropia_Ciudad" unique_id=1551696305]
+width = 3.0
+default_color = Color(0.95, 0.7, 0.2, 0.85)
+
+[node name="DatosFlete" parent="Ruta_IndPropia_Ciudad" unique_id=691496826 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("15_uiflete")]
+offset_right = 0.0
+offset_bottom = 0.0
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
+metadata/_edit_use_anchors_ = true
 
-[node name="Ruta_Mar_IndPropia_Puerto" type="Node2D" parent="." node_paths=PackedStringArray("Remitente", "Destinatario", "controlador")]
-position = Vector2(650, 270)
+[node name="Ruta_Mar_IndPropia_Puerto" type="Node2D" parent="." unique_id=531563669 node_paths=PackedStringArray("Remitente", "Destinatario", "controlador")]
+position = Vector2(665, 263)
 script = ExtResource("10_flete")
 nombre_ruta = "Fluvial Ind -> Pto.Soberano"
 tipo_flete = 1
-activa_al_inicio = true
 Remitente = NodePath("../IndustriaNacional")
 Destinatario = NodePath("../PuertoSoberano")
-Capacidad = 10
 costo_habilitar = 55
-costo_por_viaje = 3
 controlador = NodePath("ControladorComandos")
+metadata/_edit_group_ = true
 
-[node name="ControladorComandos" type="Node" parent="Ruta_Mar_IndPropia_Puerto" node_paths=PackedStringArray("actor")]
+[node name="ControladorComandos" type="Node" parent="Ruta_Mar_IndPropia_Puerto" unique_id=1079805055 node_paths=PackedStringArray("actor")]
 script = ExtResource("3_ctrl")
 actor = NodePath("..")
 intervalo_rutina = 3.0
 rutina = Array[ExtResource("4_cmd")]([SubResource("Resource_cmd_recibir"), SubResource("Resource_cmd_esperar_1s"), SubResource("Resource_cmd_despachar")])
 
-[node name="DatosFlete" parent="Ruta_Mar_IndPropia_Puerto" node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("15_uiflete")]
+[node name="LineaRuta" type="Line2D" parent="Ruta_Mar_IndPropia_Puerto" unique_id=16345166]
+width = 3.0
+default_color = Color(0.2, 0.75, 1, 0.85)
+
+[node name="DatosFlete" parent="Ruta_Mar_IndPropia_Puerto" unique_id=694379806 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("15_uiflete")]
+offset_right = 0.0
+offset_bottom = 0.0
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
+metadata/_edit_use_anchors_ = true
 
-[node name="Ruta_Puerto_Ciudad" type="Node2D" parent="." node_paths=PackedStringArray("Remitente", "Destinatario", "controlador")]
-position = Vector2(960, 240)
+[node name="Ruta_Puerto_Ciudad" type="Node2D" parent="." unique_id=93960132 node_paths=PackedStringArray("Remitente", "Destinatario", "controlador")]
+position = Vector2(894, 368)
 script = ExtResource("10_flete")
 nombre_ruta = "Import. Puerto -> Ciudad"
-tipo_flete = 0
 activa_al_inicio = false
 Remitente = NodePath("../PuertoSoberano")
 Destinatario = NodePath("../CiudadParana")
@@ -366,20 +387,28 @@ Capacidad = 8
 costo_habilitar = 45
 costo_por_viaje = 4
 controlador = NodePath("ControladorComandos")
+metadata/_edit_group_ = true
 
-[node name="ControladorComandos" type="Node" parent="Ruta_Puerto_Ciudad" node_paths=PackedStringArray("actor")]
+[node name="ControladorComandos" type="Node" parent="Ruta_Puerto_Ciudad" unique_id=212163555 node_paths=PackedStringArray("actor")]
 script = ExtResource("3_ctrl")
 actor = NodePath("..")
 intervalo_rutina = 3.0
 rutina = Array[ExtResource("4_cmd")]([SubResource("Resource_cmd_recibir"), SubResource("Resource_cmd_esperar_1s"), SubResource("Resource_cmd_despachar")])
 auto_iniciar = false
 
-[node name="DatosFlete" parent="Ruta_Puerto_Ciudad" node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("15_uiflete")]
+[node name="LineaRuta" type="Line2D" parent="Ruta_Puerto_Ciudad" unique_id=817954353]
+width = 3.0
+default_color = Color(0.95, 0.7, 0.2, 0.85)
+
+[node name="DatosFlete" parent="Ruta_Puerto_Ciudad" unique_id=855764506 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("15_uiflete")]
+offset_right = 0.0
+offset_bottom = 0.0
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
+metadata/_edit_use_anchors_ = true
 
-[node name="Ruta_Mar_Slot_Puerto" type="Node2D" parent="." node_paths=PackedStringArray("Remitente", "Destinatario", "controlador")]
-position = Vector2(650, 460)
+[node name="Ruta_Mar_Slot_Puerto" type="Node2D" parent="." unique_id=2139618974 node_paths=PackedStringArray("Remitente", "Destinatario", "controlador")]
+position = Vector2(665, 420)
 script = ExtResource("10_flete")
 nombre_ruta = "Fluvial PoloNorte -> Pto"
 tipo_flete = 1
@@ -388,28 +417,34 @@ Remitente = NodePath("../SlotIndustriaVacio")
 Destinatario = NodePath("../PuertoSoberano")
 Capacidad = 12
 costo_habilitar = 65
-costo_por_viaje = 3
 controlador = NodePath("ControladorComandos")
+metadata/_edit_group_ = true
 
-[node name="ControladorComandos" type="Node" parent="Ruta_Mar_Slot_Puerto" node_paths=PackedStringArray("actor")]
+[node name="ControladorComandos" type="Node" parent="Ruta_Mar_Slot_Puerto" unique_id=239349209 node_paths=PackedStringArray("actor")]
 script = ExtResource("3_ctrl")
 actor = NodePath("..")
 intervalo_rutina = 3.0
 rutina = Array[ExtResource("4_cmd")]([SubResource("Resource_cmd_recibir"), SubResource("Resource_cmd_esperar_1s"), SubResource("Resource_cmd_despachar")])
 auto_iniciar = false
 
-[node name="DatosFlete" parent="Ruta_Mar_Slot_Puerto" node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("15_uiflete")]
+[node name="LineaRuta" type="Line2D" parent="Ruta_Mar_Slot_Puerto" unique_id=837939572]
+width = 3.0
+default_color = Color(0.2, 0.75, 1, 0.85)
+
+[node name="DatosFlete" parent="Ruta_Mar_Slot_Puerto" unique_id=517292380 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("15_uiflete")]
+offset_right = 0.0
+offset_bottom = 0.0
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
+metadata/_edit_use_anchors_ = true
 
-[node name="GestorRutas" type="Node2D" parent="."]
+[node name="GestorRutas" type="Node2D" parent="." unique_id=1310782407]
 script = ExtResource("11_grutas")
 
-[node name="GestorEventos" type="Node" parent="."]
+[node name="GestorEventos" type="Node" parent="." unique_id=1845493683]
 script = ExtResource("12_geventos")
 intervalo_eventos = 25.0
 
-[node name="HUDPrincipal" type="CanvasLayer" parent="." node_paths=PackedStringArray("gestor_rutas", "gestor_eventos")]
-script = ExtResource("13_hud")
+[node name="HUDPrincipal" parent="." unique_id=1888180789 node_paths=PackedStringArray("gestor_rutas", "gestor_eventos") instance=ExtResource("13_hud")]
 gestor_rutas = NodePath("../GestorRutas")
 gestor_eventos = NodePath("../GestorEventos")

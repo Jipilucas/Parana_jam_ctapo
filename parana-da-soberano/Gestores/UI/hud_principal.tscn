@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://bk57sjve4q578"]
+
+[ext_resource type="Script" uid="uid://cha41rh3ybykh" path="res://Gestores/UI/hud_principal.gd" id="1_hud"]
+
+[node name="HUDPrincipal" type="CanvasLayer" unique_id=1845110227 node_paths=PackedStringArray("lbl_soberania", "bar_soberania", "lbl_dinero", "lbl_ciencia", "lbl_astilleros", "lbl_magdalena", "lbl_modo_ruta", "lbl_log", "btn_inv_ciencia", "btn_inv_magdalena", "btn_inv_astillero", "btn_ruta_tierra", "btn_ruta_mar", "btn_cancelar_ruta", "btn_evento_test", "panel_evento", "lbl_titulo_evento", "lbl_desc_evento", "btn_opcion_1", "btn_opcion_2", "btn_opcion_3")]
+script = ExtResource("1_hud")
+lbl_soberania = NodePath("BarraSuperior/VBoxContainer/FilaIndicadores/LblSoberania")
+bar_soberania = NodePath("BarraSuperior/VBoxContainer/FilaIndicadores/BarSoberania")
+lbl_dinero = NodePath("BarraSuperior/VBoxContainer/FilaIndicadores/LblDinero")
+lbl_ciencia = NodePath("BarraSuperior/VBoxContainer/FilaIndicadores/LblCiencia")
+lbl_astilleros = NodePath("BarraSuperior/VBoxContainer/FilaIndicadores/LblAstilleros")
+lbl_magdalena = NodePath("BarraSuperior/VBoxContainer/FilaIndicadores/LblMagdalena")
+lbl_modo_ruta = NodePath("BarraSuperior/VBoxContainer/FilaAvisos/LblModoRuta")
+lbl_log = NodePath("BarraSuperior/VBoxContainer/FilaAvisos/LblLog")
+btn_inv_ciencia = NodePath("PanelContainer/Botones/BtnInvCiencia")
+btn_inv_magdalena = NodePath("PanelContainer/Botones/BtnInvMagdalena")
+btn_inv_astillero = NodePath("PanelContainer/Botones/BtnInvAstillero")
+btn_ruta_tierra = NodePath("PanelContainer/Botones/BtnRutaTierra")
+btn_ruta_mar = NodePath("PanelContainer/Botones/BtnRutaMar")
+btn_cancelar_ruta = NodePath("PanelContainer/Botones/BtnCancelarRuta")
+btn_evento_test = NodePath("PanelContainer/Botones/BtnEventoTest")
+panel_evento = NodePath("PanelEvento")
+lbl_titulo_evento = NodePath("PanelEvento/VBoxEvento/LblTituloEvento")
+lbl_desc_evento = NodePath("PanelEvento/VBoxEvento/LblDescEvento")
+btn_opcion_1 = NodePath("PanelEvento/VBoxEvento/OpcionesContainer/BtnOpcion1")
+btn_opcion_2 = NodePath("PanelEvento/VBoxEvento/OpcionesContainer/BtnOpcion2")
+btn_opcion_3 = NodePath("PanelEvento/VBoxEvento/OpcionesContainer/BtnOpcion3")
+
+[node name="BarraSuperior" type="PanelContainer" parent="." unique_id=1938076175]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 14.0
+offset_top = 4.0
+offset_right = -29.0
+offset_bottom = 58.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BarraSuperior" unique_id=2143938707]
+layout_mode = 2
+
+[node name="FilaIndicadores" type="HBoxContainer" parent="BarraSuperior/VBoxContainer" unique_id=1323206773]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="LblSoberania" type="Label" parent="BarraSuperior/VBoxContainer/FilaIndicadores" unique_id=2144980138]
+layout_mode = 2
+text = "Soberanía: 20.0%"
+
+[node name="BarSoberania" type="ProgressBar" parent="BarraSuperior/VBoxContainer/FilaIndicadores" unique_id=114700611]
+custom_minimum_size = Vector2(140, 22)
+layout_mode = 2
+value = 20.0
+
+[node name="LblDinero" type="Label" parent="BarraSuperior/VBoxContainer/FilaIndicadores" unique_id=449950574]
+layout_mode = 2
+text = "Dinero: $300"
+
+[node name="LblCiencia" type="Label" parent="BarraSuperior/VBoxContainer/FilaIndicadores" unique_id=491958477]
+layout_mode = 2
+text = "Ciencia: Tier 1 (x1.00)"
+
+[node name="LblAstilleros" type="Label" parent="BarraSuperior/VBoxContainer/FilaIndicadores" unique_id=1309701417]
+layout_mode = 2
+text = "Fletes Mar: 1 / 1 Astilleros"
+
+[node name="LblMagdalena" type="Label" parent="BarraSuperior/VBoxContainer/FilaIndicadores" unique_id=863346503]
+layout_mode = 2
+text = "Canal Magdalena: 0% (+0% Sob)"
+
+[node name="FilaAvisos" type="HBoxContainer" parent="BarraSuperior/VBoxContainer" unique_id=1308716607]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LblModoRuta" type="Label" parent="BarraSuperior/VBoxContainer/FilaAvisos" unique_id=586357583]
+modulate = Color(1, 0.85, 0.2, 1)
+layout_mode = 2
+
+[node name="LblLog" type="Label" parent="BarraSuperior/VBoxContainer/FilaAvisos" unique_id=800440359]
+layout_mode = 2
+text = "Objetivo: Alcanzar 100% de Soberanía Nacional (Dragar Canal Magdalena otorga +70% fijo)."
+
+[node name="PanelEvento" type="PanelContainer" parent="." unique_id=1258489138]
+visible = false
+offset_left = 360.0
+offset_top = 110.0
+offset_right = 800.0
+offset_bottom = 320.0
+
+[node name="VBoxEvento" type="VBoxContainer" parent="PanelEvento" unique_id=2036466039]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="LblTituloEvento" type="Label" parent="PanelEvento/VBoxEvento" unique_id=1341996520]
+modulate = Color(1, 0.9, 0.3, 1)
+layout_mode = 2
+text = "EVENTO"
+
+[node name="LblDescEvento" type="Label" parent="PanelEvento/VBoxEvento" unique_id=310223346]
+custom_minimum_size = Vector2(410, 48)
+layout_mode = 2
+text = "Descripción del evento..."
+autowrap_mode = 3
+
+[node name="OpcionesContainer" type="VBoxContainer" parent="PanelEvento/VBoxEvento" unique_id=801585544]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="BtnOpcion1" type="Button" parent="PanelEvento/VBoxEvento/OpcionesContainer" unique_id=1417444240]
+layout_mode = 2
+text = "Opción 1"
+
+[node name="BtnOpcion2" type="Button" parent="PanelEvento/VBoxEvento/OpcionesContainer" unique_id=487949295]
+layout_mode = 2
+text = "Opción 2"
+
+[node name="BtnOpcion3" type="Button" parent="PanelEvento/VBoxEvento/OpcionesContainer" unique_id=1051204744]
+layout_mode = 2
+text = "Opción 3"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1052720966]
+offset_left = 897.0
+offset_top = 58.0
+offset_right = 1144.0
+offset_bottom = 264.0
+
+[node name="Botones" type="VBoxContainer" parent="PanelContainer" unique_id=956986627]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="BtnInvCiencia" type="Button" parent="PanelContainer/Botones" unique_id=842275756]
+layout_mode = 2
+text = "Invertir Ciencia ($100)"
+
+[node name="BtnInvMagdalena" type="Button" parent="PanelContainer/Botones" unique_id=163070629]
+layout_mode = 2
+text = "Dragar Magdalena +20% ($150)"
+
+[node name="BtnInvAstillero" type="Button" parent="PanelContainer/Botones" unique_id=697376044]
+layout_mode = 2
+text = "Construir Astillero ($120)"
+
+[node name="BtnRutaTierra" type="Button" parent="PanelContainer/Botones" unique_id=104476057]
+layout_mode = 2
+text = "+ Nueva Ruta Tierra"
+
+[node name="BtnRutaMar" type="Button" parent="PanelContainer/Botones" unique_id=851942328]
+layout_mode = 2
+text = "+ Nueva Ruta Mar"
+
+[node name="BtnCancelarRuta" type="Button" parent="PanelContainer/Botones" unique_id=59613351]
+visible = false
+layout_mode = 2
+text = "Cancelar Conexión"
+
+[node name="BtnEventoTest" type="Button" parent="PanelContainer/Botones" unique_id=351094319]
+layout_mode = 2
+text = "Disparar Evento Ahora"
+
+[connection signal="pressed" from="PanelEvento/VBoxEvento/OpcionesContainer/BtnOpcion1" to="." method="_on_btn_opcion_1_pressed"]
+[connection signal="pressed" from="PanelEvento/VBoxEvento/OpcionesContainer/BtnOpcion2" to="." method="_on_btn_opcion_2_pressed"]
+[connection signal="pressed" from="PanelEvento/VBoxEvento/OpcionesContainer/BtnOpcion3" to="." method="_on_btn_opcion_3_pressed"]
+[connection signal="pressed" from="PanelContainer/Botones/BtnInvCiencia" to="." method="_on_btn_inv_ciencia_pressed"]
+[connection signal="pressed" from="PanelContainer/Botones/BtnInvMagdalena" to="." method="_on_btn_inv_magdalena_pressed"]
+[connection signal="pressed" from="PanelContainer/Botones/BtnInvAstillero" to="." method="_on_btn_inv_astillero_pressed"]
+[connection signal="pressed" from="PanelContainer/Botones/BtnRutaTierra" to="." method="_on_btn_ruta_tierra_pressed"]
+[connection signal="pressed" from="PanelContainer/Botones/BtnRutaMar" to="." method="_on_btn_ruta_mar_pressed"]
+[connection signal="pressed" from="PanelContainer/Botones/BtnCancelarRuta" to="." method="_on_btn_cancelar_ruta_pressed"]
+[connection signal="pressed" from="PanelContainer/Botones/BtnEventoTest" to="." method="_on_btn_evento_test_pressed"]

@@ -4,14 +4,13 @@ extends Control
 @export var entidad: Productor
 @export var comandos: ControladorComandos
 
-@onready var _vbox: VBoxContainer = $VBoxContainer
-@onready var _lbl_nombre: Label = $VBoxContainer/Nombre
-@onready var _lbl_estado: Label = $VBoxContainer/Estado
-@onready var _lbl_input: Label = $VBoxContainer/Stock_input
-@onready var _lbl_output: Label = $VBoxContainer/Stock_output
-
-var _btn_accion_slot: Button
-var _btn_conectar: Button
+@export_group("Nodos UI (Opcionales, auto-asignados)")
+@export var lbl_nombre: Label
+@export var lbl_estado: Label
+@export var lbl_input: Label
+@export var lbl_output: Label
+@export var btn_accion_slot: Button
+@export var btn_conectar: Button
 
 
 func _ready() -> void:
@@ -20,81 +19,67 @@ func _ready() -> void:
 	if comandos == null and entidad != null:
 		comandos = entidad.controlador
 
-	if _vbox:
-		var panel_bg := StyleBoxFlat.new()
-		panel_bg.bg_color = Color(0.08, 0.1, 0.14, 0.85)
-		panel_bg.corner_radius_top_left = 6
-		panel_bg.corner_radius_top_right = 6
-		panel_bg.corner_radius_bottom_left = 6
-		panel_bg.corner_radius_bottom_right = 6
-		panel_bg.content_margin_left = 8
-		panel_bg.content_margin_right = 8
-		panel_bg.content_margin_top = 6
-		panel_bg.content_margin_bottom = 6
-
-		var panel := PanelContainer.new()
-		panel.add_theme_stylebox_override("panel", panel_bg)
-		remove_child(_vbox)
-		panel.add_child(_vbox)
-		add_child(panel)
-
-		_btn_accion_slot = Button.new()
-		_btn_accion_slot.pressed.connect(_on_btn_accion_pressed)
-		_vbox.add_child(_btn_accion_slot)
-
-		_btn_conectar = Button.new()
-		_btn_conectar.text = "Seleccionar p/ Ruta"
-		_btn_conectar.pressed.connect(_on_btn_conectar_pressed)
-		_vbox.add_child(_btn_conectar)
+	if lbl_nombre == null:
+		lbl_nombre = get_node_or_null("PanelContainer/VBoxContainer/Nombre") as Label
+	if lbl_estado == null:
+		lbl_estado = get_node_or_null("PanelContainer/VBoxContainer/Estado") as Label
+	if lbl_input == null:
+		lbl_input = get_node_or_null("PanelContainer/VBoxContainer/Stock_input") as Label
+	if lbl_output == null:
+		lbl_output = get_node_or_null("PanelContainer/VBoxContainer/Stock_output") as Label
+	if btn_accion_slot == null:
+		btn_accion_slot = get_node_or_null("PanelContainer/VBoxContainer/BtnAccionSlot") as Button
+	if btn_conectar == null:
+		btn_conectar = get_node_or_null("PanelContainer/VBoxContainer/BtnConectar") as Button
 
 
 func _process(_delta: float) -> void:
-	if entidad == null or entidad.config == null or _lbl_nombre == null:
+	if entidad == null or entidad.config == null or lbl_nombre == null:
 		return
 
 	var cfg: ConfigLogistica = entidad.config
 	var etiqueta_faccion: String = ConfigLogistica.nombre_faccion(entidad.faccion_actual)
 
 	if not entidad.slot_ocupado:
-		_lbl_nombre.text = "[SLOT VACÍO] %s" % entidad.obtener_nombre()
-		_lbl_estado.text = "Sin construir"
-		_lbl_input.text = "Entrada (%s): -" % ConfigLogistica.nombre_bien(cfg.bien_entrada)
-		_lbl_output.text = "Salida (%s): -" % ConfigLogistica.nombre_bien(cfg.bien_salida)
-		if _btn_accion_slot:
-			_btn_accion_slot.visible = true
-			_btn_accion_slot.text = "Construir ($%d)" % entidad.costo_construir_en_slot
+		lbl_nombre.text = "[SLOT VACÍO] %s" % entidad.obtener_nombre()
+		lbl_estado.text = "Sin construir"
+		lbl_input.text = "Entrada (%s): -" % ConfigLogistica.nombre_bien(cfg.bien_entrada)
+		lbl_output.text = "Salida (%s): -" % ConfigLogistica.nombre_bien(cfg.bien_salida)
+		if btn_accion_slot:
+			btn_accion_slot.visible = true
+			btn_accion_slot.text = "Construir ($%d)" % entidad.costo_construir_en_slot
 		return
 
-	_lbl_nombre.text = "%s [%s]" % [entidad.obtener_nombre(), etiqueta_faccion]
-	_lbl_estado.text = "Ciclo: %s" % (comandos.comando_actual if comandos else "activo")
+	lbl_nombre.text = "%s [%s]" % [entidad.obtener_nombre(), etiqueta_faccion]
+	lbl_estado.text = "Ciclo: %s" % (comandos.comando_actual if comandos else "activo")
 
 	if cfg.bien_entrada != ConfigLogistica.TipoBien.NINGUNO:
-		_lbl_input.text = "In (%s): %d (cons: %d)" % [
+		lbl_input.text = "In (%s): %d (cons: %d)" % [
 			ConfigLogistica.nombre_bien(cfg.bien_entrada),
 			entidad.stock_entrada,
 			cfg.cantidad_consumo
 		]
 	else:
-		_lbl_input.text = "In: No requiere"
+		lbl_input.text = "In: No requiere"
 
 	if cfg.bien_salida != ConfigLogistica.TipoBien.NINGUNO:
-		_lbl_output.text = "Out (%s): %d (+%d)" % [
+		lbl_output.text = "Out (%s): %d (+%d)" % [
 			ConfigLogistica.nombre_bien(cfg.bien_salida),
 			entidad.stock_salida,
 			cfg.cantidad_produccion + entidad.bonus_produccion
 		]
 	else:
-		_lbl_output.text = "Meta: Consume -> +%.1f%% Sob / +$%d" % [
+		lbl_output.text = "Meta: Consume -> +%.1f%% Sob / +$%d" % [
 			cfg.impacto_soberania_propio,
 			cfg.ganancia_propio
 		]
 
-	if _btn_accion_slot:
+	if btn_accion_slot:
 		if entidad.faccion_actual == ConfigLogistica.Faccion.ENEMIGO:
-			_btn_accion_slot.visible = true
-			_btn_accion_slot.text = "Nacionalizar ($%d | Ciencia %d)" % [cfg.costo_compra, cfg.tier_ciencia_requerido]
+			btn_accion_slot.visible = true
+			btn_accion_slot.text = "Nacionalizar ($%d | Ciencia %d)" % [cfg.costo_compra, cfg.tier_ciencia_requerido]
 		else:
-			_btn_accion_slot.visible = false
+			btn_accion_slot.visible = false
 
 
 func _on_btn_accion_pressed() -> void:

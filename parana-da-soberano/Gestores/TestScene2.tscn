@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dnvqirv01aapp"]
+
+[ext_resource type="PackedScene" uid="uid://bv32h65i1687b" path="res://Gestores/Comercio/Scenes/productor2D.tscn" id="1_j6nga"]
+[ext_resource type="Script" uid="uid://dawjvxehyvtl1" path="res://Gestores/Comercio/config_logistica.gd" id="2_ik08m"]
+[ext_resource type="PackedScene" uid="uid://cicn37rtqkdt8" path="res://Gestores/Comercio/Scenes/Ruta.tscn" id="2_s2r6c"]
+[ext_resource type="Script" uid="uid://co2o222mfulk" path="res://Gestores/camera_2d.gd" id="7_hal4f"]
+[ext_resource type="Script" uid="uid://vnivcbjgirr0" path="res://Gestores/Transportes/gestor_rutas.gd" id="13_8jnw6"]
+[ext_resource type="Script" uid="uid://lcofxuy56h4l" path="res://Gestores/Eventos/gestor_eventos.gd" id="14_py8nj"]
+[ext_resource type="PackedScene" uid="uid://bk57sjve4q578" path="res://Gestores/UI/hud_principal.tscn" id="15_w2vpa"]
+
+[sub_resource type="Resource" id="Resource_7m8j4"]
+script = ExtResource("2_ik08m")
+nombre_mostrar = "AgroGark"
+metadata/_custom_type_script = "uid://dawjvxehyvtl1"
+
+[sub_resource type="Resource" id="Resource_u46nm"]
+script = ExtResource("2_ik08m")
+nombre_mostrar = "Fritz"
+tipo_entidad = 1
+faccion_inicial = 2
+bien_entrada = 1
+cantidad_consumo = 10
+bien_salida = 2
+cantidad_produccion = 5
+metadata/_custom_type_script = "uid://dawjvxehyvtl1"
+
+[sub_resource type="Resource" id="Resource_hal4f"]
+script = ExtResource("2_ik08m")
+nombre_mostrar = "Marolio"
+metadata/_custom_type_script = "uid://dawjvxehyvtl1"
+
+[node name="TestScene" type="Node2D" unique_id=1656906367]
+
+[node name="AgroProductor" parent="." unique_id=2002332135 instance=ExtResource("1_j6nga")]
+position = Vector2(147, 390)
+config = SubResource("Resource_7m8j4")
+
+[node name="IndProductor" parent="." unique_id=251399497 instance=ExtResource("1_j6nga")]
+position = Vector2(770, 506)
+config = SubResource("Resource_u46nm")
+
+[node name="Ruta" parent="." unique_id=751793760 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("2_s2r6c")]
+position = Vector2(360, 272)
+Remitente = NodePath("../AgroProductor")
+Destinatario = NodePath("../IndProductor")
+
+[node name="IndProductor2" parent="." unique_id=1315610195 instance=ExtResource("1_j6nga")]
+position = Vector2(339, 903)
+slot_ocupado = false
+config = SubResource("Resource_hal4f")
+
+[node name="GestorRutas" type="Node2D" parent="." unique_id=1310782407]
+position = Vector2(-7, 0)
+script = ExtResource("13_8jnw6")
+
+[node name="GestorEventos" type="Node" parent="." unique_id=1845493683]
+script = ExtResource("14_py8nj")
+intervalo_eventos = 25.0
+
+[node name="HUDPrincipal" parent="." unique_id=1888180789 node_paths=PackedStringArray("gestor_rutas", "gestor_eventos") instance=ExtResource("15_w2vpa")]
+gestor_rutas = NodePath("../GestorRutas")
+gestor_eventos = NodePath("../GestorEventos")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=992948584]
+position = Vector2(576, 323)
+script = ExtResource("7_hal4f")
+metadata/_edit_lock_ = true

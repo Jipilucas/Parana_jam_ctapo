@@ -24,6 +24,7 @@ enum TipoFlete {
 
 @export_group("Referencias Opcionales")
 @export var controlador: ControladorComandos
+@export var linea_visual: Line2D
 
 var Carga_Actual: int = 0
 var ruta_habilitada: bool = false
@@ -48,8 +49,11 @@ func _ready() -> void:
 	else:
 		ruta_habilitada = false
 
+	if linea_visual == null and has_node("LineaRuta"):
+		linea_visual = $LineaRuta as Line2D
+
 	_sincronizar_controlador()
-	queue_redraw()
+	_actualizar_linea_visual()
 
 
 func _exit_tree() -> void:
@@ -59,7 +63,7 @@ func _exit_tree() -> void:
 
 
 func _process(_delta: float) -> void:
-	queue_redraw()
+	_actualizar_linea_visual()
 
 
 func _sincronizar_controlador() -> void:
@@ -143,26 +147,13 @@ func Despachar(cant: int = Capacidad) -> void:
 		flete_actualizado.emit()
 
 
-func _draw() -> void:
-	if Remitente == null or Destinatario == null:
+func _actualizar_linea_visual() -> void:
+	if linea_visual == null or Remitente == null or Destinatario == null:
 		return
-	var p_origen: Vector2 = to_local(Remitente.global_position)
-	var p_destino: Vector2 = to_local(Destinatario.global_position)
-
-	var color_linea: Color
+	var p_origen: Vector2 = linea_visual.to_local(Remitente.global_position)
+	var p_destino: Vector2 = linea_visual.to_local(Destinatario.global_position)
+	linea_visual.points = PackedVector2Array([p_origen, p_destino])
 	if not ruta_habilitada:
-		color_linea = Color(0.55, 0.55, 0.55, 0.45)
-	elif tipo_flete == TipoFlete.MAR:
-		color_linea = Color(0.2, 0.75, 1.0, 0.85)
+		linea_visual.modulate.a = 0.35
 	else:
-		color_linea = Color(0.95, 0.7, 0.2, 0.85)
-
-	draw_line(p_origen, p_destino, color_linea, 3.0 if ruta_habilitada else 2.0)
-
-	# Dibujar flecha de dirección hacia el destinatario
-	var dir: Vector2 = (p_destino - p_origen).normalized()
-	var punto_flecha: Vector2 = p_origen.lerp(p_destino, 0.65)
-	var ala_izq: Vector2 = punto_flecha - dir.rotated(0.45) * 12.0
-	var ala_der: Vector2 = punto_flecha - dir.rotated(-0.45) * 12.0
-	draw_line(punto_flecha, ala_izq, color_linea, 3.0)
-	draw_line(punto_flecha, ala_der, color_linea, 3.0)
+		linea_visual.modulate.a = 1.0

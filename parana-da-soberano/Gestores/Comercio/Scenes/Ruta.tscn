@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cicn37rtqkdt8"]
+
+[ext_resource type="Script" uid="uid://dfd5afk1ytlqo" path="res://Gestores/Transportes/flete_tierra.gd" id="1_u46nm"]
+[ext_resource type="Script" uid="uid://d2dnwpyf8yokl" path="res://Gestores/Comandos/controlador_comandos.gd" id="2_7m8j4"]
+[ext_resource type="Script" uid="uid://dr0pxy3kx633g" path="res://Gestores/Comandos/Commands/command.gd" id="3_5ubl5"]
+[ext_resource type="Script" uid="uid://b8vho8fdq8lmn" path="res://Gestores/Comandos/Commands/Comando_Recibir.gd" id="4_hagly"]
+[ext_resource type="Script" uid="uid://dt57u64g2m08c" path="res://Gestores/Comandos/Commands/comando_esperar.gd" id="5_p5lgp"]
+[ext_resource type="Script" uid="uid://dcnsdbcuijdro" path="res://Gestores/Comandos/Commands/Comando_Despachar.gd" id="6_xxqjn"]
+[ext_resource type="PackedScene" uid="uid://bsofv2qtgrcml" path="res://Gestores/UI/datos-felte.tscn" id="7_t3tqj"]
+
+[sub_resource type="Resource" id="Resource_cmd_recibir"]
+script = ExtResource("4_hagly")
+
+[sub_resource type="Resource" id="Resource_cmd_esperar_1s"]
+script = ExtResource("5_p5lgp")
+duracion = 1.2
+
+[sub_resource type="Resource" id="Resource_cmd_despachar"]
+script = ExtResource("6_xxqjn")
+
+[node name="Ruta_Agro_IndPropia" type="Node2D" unique_id=751793760 node_paths=PackedStringArray("controlador")]
+script = ExtResource("1_u46nm")
+Capacidad = 8
+costo_habilitar = 30
+costo_por_viaje = 2
+controlador = NodePath("ControladorComandos")
+
+[node name="ControladorComandos" type="Node" parent="." unique_id=1194232843 node_paths=PackedStringArray("actor")]
+script = ExtResource("2_7m8j4")
+actor = NodePath("..")
+intervalo_rutina = 2.0
+rutina = Array[ExtResource("3_5ubl5")]([SubResource("Resource_cmd_recibir"), SubResource("Resource_cmd_esperar_1s"), SubResource("Resource_cmd_despachar")])
+
+[node name="LineaRuta" type="Line2D" parent="." unique_id=953007215]
+width = 3.0
+default_color = Color(0.95, 0.7, 0.2, 0.85)
+
+[node name="DatosFlete" parent="." unique_id=338601756 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("7_t3tqj")]
+entidad = NodePath("..")
+comandos = NodePath("../ControladorComandos")
+metadata/_edit_use_anchors_ = true

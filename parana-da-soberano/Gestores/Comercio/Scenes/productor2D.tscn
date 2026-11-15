@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bv32h65i1687b"]
+
+[ext_resource type="Script" uid="uid://bxpwdkso7coum" path="res://Gestores/Comercio/Productor.gd" id="1_7yuts"]
+[ext_resource type="Script" uid="uid://dawjvxehyvtl1" path="res://Gestores/Comercio/config_logistica.gd" id="2_euo24"]
+[ext_resource type="Script" uid="uid://d2dnwpyf8yokl" path="res://Gestores/Comandos/controlador_comandos.gd" id="3_pbxcf"]
+[ext_resource type="Script" uid="uid://dr0pxy3kx633g" path="res://Gestores/Comandos/Commands/command.gd" id="4_i46wv"]
+[ext_resource type="Script" uid="uid://hg4biibp3l6v" path="res://Gestores/Comandos/Commands/Comando_consumir.gd" id="5_foq81"]
+[ext_resource type="Script" uid="uid://dt57u64g2m08c" path="res://Gestores/Comandos/Commands/comando_esperar.gd" id="6_wkh5u"]
+[ext_resource type="Script" uid="uid://cef7imth31asg" path="res://Gestores/Comandos/Commands/Comando_producir.gd" id="7_57jc2"]
+[ext_resource type="PackedScene" uid="uid://dgfv7uaavlrv1" path="res://Gestores/UI/datos.tscn" id="8_2ex76"]
+[ext_resource type="Texture2D" uid="uid://ctlu3k8mn24v4" path="res://icon.svg" id="9_pbxcf"]
+[ext_resource type="Script" uid="uid://n5q154m8q2xd" path="res://Gestores/Comercio/Scenes/sprite_logistica.gd" id="10_i46wv"]
+
+[sub_resource type="Resource" id="Cfg_IndPropia"]
+script = ExtResource("2_euo24")
+faccion_inicial = 1
+
+[sub_resource type="Resource" id="Resource_cmd_consumir"]
+script = ExtResource("5_foq81")
+
+[sub_resource type="Resource" id="Resource_cmd_esperar_2s"]
+script = ExtResource("6_wkh5u")
+duracion = 2.0
+
+[sub_resource type="Resource" id="Resource_cmd_producir"]
+script = ExtResource("7_57jc2")
+
+[node name="Logistica" type="Node2D" unique_id=2002332135 node_paths=PackedStringArray("controlador")]
+script = ExtResource("1_7yuts")
+config = SubResource("Cfg_IndPropia")
+controlador = NodePath("ControladorComandos")
+metadata/_edit_group_ = true
+
+[node name="ControladorComandos" type="Node" parent="." unique_id=309920489 node_paths=PackedStringArray("actor")]
+script = ExtResource("3_pbxcf")
+actor = NodePath("..")
+intervalo_rutina = 3.5
+rutina = Array[ExtResource("4_i46wv")]([SubResource("Resource_cmd_consumir"), SubResource("Resource_cmd_esperar_2s"), SubResource("Resource_cmd_producir")])
+
+[node name="Datos" parent="." unique_id=565952476 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("8_2ex76")]
+offset_left = -95.0
+offset_top = -239.0
+offset_right = -95.0
+offset_bottom = -239.0
+entidad = NodePath("..")
+comandos = NodePath("../ControladorComandos")
+metadata/_edit_use_anchors_ = true
+
+[node name="SpriteLogistica" type="Sprite2D" parent="." unique_id=1146333627 node_paths=PackedStringArray("padre")]
+texture = ExtResource("9_pbxcf")
+script = ExtResource("10_i46wv")
+padre = NodePath("..")
