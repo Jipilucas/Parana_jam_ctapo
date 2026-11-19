@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dawjvxehyvtl1" path="res://Gestores/Comercio/config_logistica.gd" id="2_ik08m"]
 [ext_resource type="PackedScene" uid="uid://cicn37rtqkdt8" path="res://Gestores/Comercio/Scenes/Ruta.tscn" id="2_s2r6c"]
 [ext_resource type="Script" uid="uid://co2o222mfulk" path="res://Gestores/camera_2d.gd" id="7_hal4f"]
+[ext_resource type="Texture2D" uid="uid://etifkcnkaoiy" path="res://Assets/mapa parana 2.jpeg" id="8_y4law"]
 [ext_resource type="Script" uid="uid://vnivcbjgirr0" path="res://Gestores/Transportes/gestor_rutas.gd" id="13_8jnw6"]
 [ext_resource type="Script" uid="uid://lcofxuy56h4l" path="res://Gestores/Eventos/gestor_eventos.gd" id="14_py8nj"]
 [ext_resource type="PackedScene" uid="uid://bk57sjve4q578" path="res://Gestores/UI/hud_principal.tscn" id="15_w2vpa"]
@@ -31,21 +32,26 @@ metadata/_custom_type_script = "uid://dawjvxehyvtl1"
 
 [node name="TestScene" type="Node2D" unique_id=1656906367]
 
+[node name="MapaParana2" type="Sprite2D" parent="." unique_id=227241710]
+scale = Vector2(2.085, 2.085)
+texture = ExtResource("8_y4law")
+metadata/_edit_lock_ = true
+
 [node name="AgroProductor" parent="." unique_id=2002332135 instance=ExtResource("1_j6nga")]
-position = Vector2(147, 390)
+position = Vector2(-1160, -100)
 config = SubResource("Resource_7m8j4")
 
 [node name="IndProductor" parent="." unique_id=251399497 instance=ExtResource("1_j6nga")]
-position = Vector2(770, 506)
+position = Vector2(-681, 423)
 config = SubResource("Resource_u46nm")
 
 [node name="Ruta" parent="." unique_id=751793760 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("2_s2r6c")]
-position = Vector2(360, 272)
+position = Vector2(-1032, 141)
 Remitente = NodePath("../AgroProductor")
 Destinatario = NodePath("../IndProductor")
 
 [node name="IndProductor2" parent="." unique_id=1315610195 instance=ExtResource("1_j6nga")]
-position = Vector2(339, 903)
+position = Vector2(-488, -36)
 slot_ocupado = false
 config = SubResource("Resource_hal4f")
 
@@ -64,4 +70,6 @@ gestor_eventos = NodePath("../GestorEventos")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=992948584]
 position = Vector2(576, 323)
 script = ExtResource("7_hal4f")
+min_zoom = 0.1
+max_zoom = 2.125
 metadata/_edit_lock_ = true

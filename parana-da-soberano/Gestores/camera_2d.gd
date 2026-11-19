@@ -40,6 +40,7 @@ func _process(delta: float) -> void:
 			position.y = clampf(position.y, min_pos.y, max_pos.y)
 
 
+
 func _get_keyboard_input() -> Vector2:
 	# Podés reemplazar ui_left/right/up/down por tus propios actions (ej: "move_left", "move_right", etc.)
 	return Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -64,3 +65,19 @@ func _get_edge_pan_input() -> Vector2:
 		dir.y += 1.0
 		
 	return dir
+
+@export_group("zoom")
+@export var min_zoom: float = 0.5
+@export var max_zoom: float = 2.0
+@export var zoom_factor: float = 0.1
+@export var zoom_duration: float = 0.2
+var _zoom_level: float = 1.0
+func _set_zoom_level(value: float) -> void:
+	_zoom_level = clamp(value, min_zoom, max_zoom)
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "zoom", Vector2(_zoom_level,_zoom_level), zoom_duration)
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("zoom_in"):
+		_set_zoom_level(_zoom_level + zoom_factor)
+	elif event.is_action_pressed("zoom_out"):
+		_set_zoom_level(_zoom_level - zoom_factor)
