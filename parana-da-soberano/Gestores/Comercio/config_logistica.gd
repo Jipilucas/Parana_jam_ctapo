@@ -15,14 +15,14 @@ enum Faccion {
 }
 
 enum TipoBien {
-	NINGUNO,
+	CUALQUIERA,
 	MATERIA_PRIMA,
 	MANUFACTURA
 }
 
 enum ModoPuerto {
 	EXPORTADOR,
-	IMPORTADOR_MANUFACTURA,
+	IMPORTADOR,
 	MIXTO
 }
 
@@ -33,7 +33,7 @@ enum ModoPuerto {
 @export var modo_puerto: ModoPuerto = ModoPuerto.MIXTO
 
 @export_group("Conversión de Recursos")
-@export var bien_entrada: TipoBien = TipoBien.NINGUNO
+@export var bien_entrada: TipoBien = TipoBien.CUALQUIERA
 @export var cantidad_consumo: int = 5
 @export var bien_salida: TipoBien = TipoBien.MATERIA_PRIMA
 @export var cantidad_produccion: int = 10
@@ -51,6 +51,14 @@ enum ModoPuerto {
 @export var impacto_soberania_propio: float = 2.0
 ## Cambio en Soberanía (%) por ciclo cuando opera como ENEMIGA (usualmente negativo)
 @export var impacto_soberania_enemigo: float = -1.5
+## Multiplicador de ganancia al exportar MANUFACTURA respecto a MATERIA_PRIMA en un Puerto
+@export var multiplicador_ganancia_manufactura: float = 2.5
+## Multiplicador de soberanía al exportar MANUFACTURA respecto a MATERIA_PRIMA en un Puerto
+@export var multiplicador_soberania_manufactura: float = 2.0
+## Multa en dinero por ciclo si una CIUDAD no tiene el mínimo de insumos para consumir
+@export var multa_desabastecimiento_dinero: int = 20
+## Multa en Soberanía (%) por ciclo si una CIUDAD no tiene el mínimo de insumos (negativo)
+@export var multa_desabastecimiento_soberania: float = -1.0
 
 @export_group("Compra / Nacionalización")
 @export var costo_compra: int = 120
@@ -64,7 +72,7 @@ static func nombre_bien(bien: TipoBien) -> String:
 		TipoBien.MANUFACTURA:
 			return "Manufactura"
 		_:
-			return "Ninguno"
+			return "Cualquiera"
 
 
 static func nombre_faccion(faccion: Faccion) -> String:

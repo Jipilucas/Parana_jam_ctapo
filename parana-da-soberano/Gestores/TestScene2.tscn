@@ -38,6 +38,7 @@ bien_entrada = 2
 cantidad_consumo = 10
 bien_salida = 2
 ganancia_propio = 10
+impacto_soberania_propio = 5.0
 impacto_soberania_enemigo = -2.0
 
 [sub_resource type="Resource" id="Resource_snfgk"]
@@ -74,8 +75,9 @@ nombre_mostrar = "Ciudad"
 tipo_entidad = 3
 faccion_inicial = 1
 bien_entrada = 2
-cantidad_consumo = 10
 bien_salida = 0
+cantidad_produccion = 0
+stock_inicial_entrada = 20
 ganancia_propio = 10
 
 [sub_resource type="Resource" id="Resource_rqk4y"]
@@ -106,11 +108,18 @@ ganancia_propio = 15
 
 [sub_resource type="Resource" id="Resource_b5x7s"]
 script = ExtResource("2_ik08m")
-nombre_mostrar = "Puerto"
+nombre_mostrar = "Puerto Export"
 tipo_entidad = 2
-bien_entrada = 1
-cantidad_consumo = 10
-ganancia_propio = 10
+modo_puerto = 0
+cantidad_consumo = 0
+bien_salida = 0
+cantidad_produccion = 0
+stock_inicial_salida = 0
+ganancia_propio = 0
+ganancia_enemigo = 0
+costo_importacion_puerto = 0
+impacto_soberania_propio = 0.0
+impacto_soberania_enemigo = 0.0
 
 [node name="TestScene" type="Node2D" unique_id=1656906367]
 
@@ -120,7 +129,7 @@ gestor_eventos = NodePath("../GestorEventos")
 
 [node name="GestorEventos" type="Node" parent="." unique_id=1845493683]
 script = ExtResource("14_py8nj")
-intervalo_eventos = 25.0
+intervalo_eventos = 40.0
 
 [node name="MapaParana2" type="Sprite2D" parent="." unique_id=227241710]
 texture_filter = 5
@@ -193,6 +202,10 @@ Destinatario = NodePath("../Ciudad")
 position = Vector2(-2866, -1131)
 config = SubResource("Resource_rqk4y")
 
+[node name="Agro2" parent="Node2D2" unique_id=481571347 instance=ExtResource("6_s2r6c")]
+position = Vector2(-3083, 773)
+config = SubResource("Resource_rqk4y")
+
 [node name="Puerto2" parent="Node2D2" unique_id=987279927 instance=ExtResource("9_q3ccy")]
 position = Vector2(-960, -382)
 config = SubResource("Resource_dbfhj")
@@ -217,16 +230,18 @@ position = Vector2(439, 6067)
 config = SubResource("Resource_b5x7s")
 
 [node name="FleteMar" parent="." unique_id=100994729 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("12_xvdge")]
-position = Vector2(503, 5398)
+position = Vector2(-812, -114)
 Remitente = NodePath("../Node2D2/Puerto2")
 Destinatario = NodePath("../Exterior")
 
 [node name="FleteMar2" parent="." unique_id=537820389 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("12_xvdge")]
-position = Vector2(-7, 5398)
+position = Vector2(-1269, 1003)
 Remitente = NodePath("../Node2D3/Puerto")
 Destinatario = NodePath("../Exterior")
+faccion_inicial = 2
 
 [node name="FleteMar3" parent="." unique_id=909251160 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("12_xvdge")]
-position = Vector2(-564, 5398)
+position = Vector2(-993, 393)
 Remitente = NodePath("../Node2D3/Puerto3")
 Destinatario = NodePath("../Exterior")
+faccion_inicial = 2

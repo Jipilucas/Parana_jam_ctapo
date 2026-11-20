@@ -84,7 +84,7 @@ func aplicar_opcion(opcion: OpcionEvento) -> void:
 	if opcion.delta_capacidad_fletes != 0 or opcion.delta_costo_viaje_fletes != 0:
 		for nodo in get_tree().get_nodes_in_group("fletes"):
 			var flt := nodo as Flete
-			if flt:
+			if flt and not flt.es_enemigo():
 				flt.Capacidad = maxi(2, flt.Capacidad + opcion.delta_capacidad_fletes)
 				flt.costo_por_viaje = maxi(0, flt.costo_por_viaje + opcion.delta_costo_viaje_fletes)
 				flt.flete_actualizado.emit()
