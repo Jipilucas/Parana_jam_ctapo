@@ -53,26 +53,52 @@ func _process(_delta: float) -> void:
 	lbl_nombre.text = "%s [%s]" % [entidad.obtener_nombre(), etiqueta_faccion]
 	lbl_estado.text = "Ciclo: %s" % (comandos.comando_actual if comandos else "activo")
 
-	if cfg.bien_entrada != ConfigLogistica.TipoBien.NINGUNO:
-		lbl_input.text = "In (%s): %d (cons: %d)" % [
-			ConfigLogistica.nombre_bien(cfg.bien_entrada),
-			entidad.stock_entrada,
-			cfg.cantidad_consumo
-		]
+	if entidad.es_puerto():
+		var mp_in: int = entidad.contar_por_tipo(entidad.cola_entrada, ConfigLogistica.TipoBien.MATERIA_PRIMA)
+		var man_in: int = entidad.contar_por_tipo(entidad.cola_entrada, ConfigLogistica.TipoBien.MANUFACTURA)
+		var mp_out: int = entidad.contar_por_tipo(entidad.cola_salida, ConfigLogistica.TipoBien.MATERIA_PRIMA)
+		var man_out: int = entidad.contar_por_tipo(entidad.cola_salida, ConfigLogistica.TipoBien.MANUFACTURA)
+		if cfg.cantidad_consumo > 0:
+			lbl_input.text = "In: %d (MP:%d | Man:%d) [cons:%d]" % [
+				entidad.stock_entrada,
+				mp_in,
+				man_in,
+				cfg.cantidad_consumo
+			]
+			if entidad.stock_salida > 0:
+				var sig: String = ConfigLogistica.nombre_bien(entidad.obtener_siguiente_bien_salida())
+				lbl_output.text = "Out: %d (MP:%d | Man:%d) [Sig:%s]" % [
+					entidad.stock_salida,
+					mp_out,
+					man_out,
+					sig
+				]
+			else:
+				lbl_output.text = "Out: 0 (MP:0 | Man:0)"
+		else:
+			lbl_input.text = "Recibido: %d (MP:%d | Man:%d)" % [entidad.stock_entrada, mp_in, man_in]
+			lbl_output.text = "Destino Exportación"
 	else:
-		lbl_input.text = "In: No requiere"
+		if cfg.tipo_entidad != ConfigLogistica.TipoEntidad.MATERIA_PRIMA:
+			lbl_input.text = "In (%s): %d (cons: %d)" % [
+				ConfigLogistica.nombre_bien(cfg.bien_entrada),
+				entidad.stock_entrada,
+				cfg.cantidad_consumo
+			]
+		else:
+			lbl_input.text = "In: No requiere"
 
-	if cfg.bien_salida != ConfigLogistica.TipoBien.NINGUNO:
-		lbl_output.text = "Out (%s): %d (+%d)" % [
-			ConfigLogistica.nombre_bien(cfg.bien_salida),
-			entidad.stock_salida,
-			cfg.cantidad_produccion + entidad.bonus_produccion
-		]
-	else:
-		lbl_output.text = "Meta: Consume -> +%.1f%% Sob / +$%d" % [
-			cfg.impacto_soberania_propio,
-			cfg.ganancia_propio
-		]
+		if cfg.tipo_entidad != ConfigLogistica.TipoEntidad.CIUDAD:
+			lbl_output.text = "Out (%s): %d (+%d)" % [
+				ConfigLogistica.nombre_bien(cfg.bien_salida),
+				entidad.stock_salida,
+				cfg.cantidad_produccion + entidad.bonus_produccion
+			]
+		else:
+			lbl_output.text = "Meta: Consume -> +%.1f%% Sob / +$%d" % [
+				cfg.impacto_soberania_propio,
+				cfg.ganancia_propio
+			]
 
 	if btn_accion_slot:
 		if entidad.faccion_actual == ConfigLogistica.Faccion.ENEMIGO:

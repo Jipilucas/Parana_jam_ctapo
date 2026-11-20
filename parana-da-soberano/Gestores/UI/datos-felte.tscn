@@ -37,4 +37,10 @@ text = "Costo viaje: $2"
 layout_mode = 2
 text = "Habilitar / Pausar"
 
+[node name="BtnEliminarEnemigo" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1919736563]
+visible = false
+layout_mode = 2
+text = "Eliminar ($100)"
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/BtnToggleRuta" to="." method="_on_btn_toggle_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/BtnEliminarEnemigo" to="." method="_on_btn_eliminar_pressed"]
