@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b8vho8fdq8lmn" path="res://Gestores/Comandos/Commands/Comando_Recibir.gd" id="4_7xbp8"]
 [ext_resource type="Script" uid="uid://dt57u64g2m08c" path="res://Gestores/Comandos/Commands/comando_esperar.gd" id="5_lmiic"]
 [ext_resource type="Script" uid="uid://dcnsdbcuijdro" path="res://Gestores/Comandos/Commands/Comando_Despachar.gd" id="6_hkys6"]
+[ext_resource type="Texture2D" uid="uid://d11erkxc4part" path="res://Assets/Texture_ruta.png" id="7_pdn4k"]
 [ext_resource type="PackedScene" uid="uid://bsofv2qtgrcml" path="res://Gestores/UI/datos-felte.tscn" id="7_qxcm4"]
 [ext_resource type="Texture2D" uid="uid://ngv5tfly2841" path="res://Gestores/Comercio/Scenes/Fletes/assets/FleteTierra.png" id="8_fcui0"]
 [ext_resource type="Texture2D" uid="uid://dsm7tajpuijas" path="res://Assets/regalias_2.png" id="9_bqj5f"]
@@ -105,6 +106,8 @@ rutina = Array[ExtResource("3_rh0qf")]([SubResource("Resource_cmd_recibir"), Sub
 
 [node name="LineaRuta" type="Line2D" parent="." unique_id=953007215]
 default_color = Color(0.917339, 0.646208, 1.1551381e-06, 1)
+texture = ExtResource("7_pdn4k")
+texture_mode = 1
 
 [node name="DatosFlete" parent="." unique_id=338601756 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("7_qxcm4")]
 entidad = NodePath("..")
