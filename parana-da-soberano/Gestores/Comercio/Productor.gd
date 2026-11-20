@@ -23,7 +23,7 @@ var stock_entrada: int = 0
 var stock_salida: int = 0
 var bonus_produccion: int = 0
 var _insumo_consumido_en_ciclo: bool = false
-var _cantidad_a_exportar: int = 0
+#var _cantidad_a_exportar: int = 0
 
 
 
@@ -59,7 +59,7 @@ func obtener_nombre() -> String:
 
 func Consumir() -> void:
 	_insumo_consumido_en_ciclo = false
-	_cantidad_a_exportar = 0
+	#_cantidad_a_exportar = 0
 
 	if not slot_ocupado or config == null:
 		return
@@ -84,13 +84,13 @@ func Consumir() -> void:
 		ConfigLogistica.TipoEntidad.PUERTO:
 			# 1) Si tiene bienes de entrada (Materia Prima o Manufactura), consume un lote para exportar
 			if stock_entrada >= config.cantidad_consumo:
-				_cantidad_a_exportar = config.cantidad_consumo
-				stock_entrada -= _cantidad_a_exportar
+				#_cantidad_a_exportar = config.cantidad_consumo
+				stock_entrada -= config.cantidad_consumo
 				_insumo_consumido_en_ciclo = true
 				stock_actualizado.emit()
 			# 2) Si el puerto también abastece Manufactura importada a la Ciudad y tiene poco stock de salida
-			elif config.modo_puerto != ConfigLogistica.ModoPuerto.EXPORTADOR and stock_salida < config.cantidad_produccion * 2:
-				_insumo_consumido_en_ciclo = true
+			#elif config.modo_puerto != ConfigLogistica.ModoPuerto.EXPORTADOR and stock_salida < config.cantidad_produccion * 2:
+				#_insumo_consumido_en_ciclo = true
 
 func mostrar_intercambio(cant_reg:float=0,cant_sob:float=0):
 	if label_regalias == null or label_soberania == null or anim_player == null: return
@@ -128,8 +128,10 @@ func Producir() -> void:
 			mostrar_intercambio(ganancia_ciudad, config.impacto_soberania_propio)
 
 		ConfigLogistica.TipoEntidad.PUERTO:
-			if _cantidad_a_exportar > 0:
+				stock_salida += cant_producida
+			#if _cantidad_a_exportar > 0:
 				if faccion_actual == ConfigLogistica.Faccion.PROPIO:
+					# Si exporta manufactura gana mas que si exporta materia prima
 					var ingreso: int = int(round(float(config.ganancia_propio) * Partida.multiplicador_ganancia))
 					Partida.modificar_dinero(ingreso, "Exportación en %s" % obtener_nombre())
 					Partida.modificar_soberania(config.impacto_soberania_propio, "Exportación Soberana (%s)" % obtener_nombre())
@@ -138,18 +140,20 @@ func Producir() -> void:
 					Partida.modificar_dinero(config.ganancia_enemigo, "Regalía mínima en %s" % obtener_nombre())
 					Partida.modificar_soberania(config.impacto_soberania_enemigo, "Fuga por %s" % obtener_nombre())
 					mostrar_intercambio(config.ganancia_enemigo,config.impacto_soberania_enemigo)
-			elif config.modo_puerto != ConfigLogistica.ModoPuerto.EXPORTADOR:
-				# Importa manufactura para que un flete pueda llevarla a la Ciudad
-				stock_salida += cant_producida
-				if config.costo_importacion_puerto > 0:
-					Partida.modificar_dinero(-config.costo_importacion_puerto, "Importación de Manufactura (%s)" % obtener_nombre())
-					mostrar_intercambio(-config.costo_importacion_puerto)
-				if faccion_actual == ConfigLogistica.Faccion.ENEMIGO:
-					Partida.modificar_soberania(config.impacto_soberania_enemigo * 0.5, "Dependencia importadora (%s)" % obtener_nombre())
-					mostrar_intercambio(0,config.impacto_soberania_enemigo * 0.5)
+			#if config.modo_puerto == ConfigLogistica.ModoPuerto.IMPORTADOR:
+				## Importa manufactura para que un flete pueda llevarla a la Ciudad
+				#stock_salida += cant_producida
+				#if config.costo_importacion_puerto > 0:
+					#Partida.modificar_dinero(-config.costo_importacion_puerto, "Importación de Manufactura (%s)" % obtener_nombre())
+					#mostrar_intercambio(-config.costo_importacion_puerto)
+				#if faccion_actual == ConfigLogistica.Faccion.ENEMIGO:
+					#Partida.modificar_soberania(config.impacto_soberania_enemigo * 0.5, "Dependencia importadora (%s)" % obtener_nombre())
+					#mostrar_intercambio(0,config.impacto_soberania_enemigo * 0.5)
+			#elif config.modo_puerto == ConfigLogistica.ModoPuerto.IMPORTADOR:
+				#Partida.mensaje_log.emit("Puerto Exportador Recibe cargamento")
 
 	_insumo_consumido_en_ciclo = false
-	_cantidad_a_exportar = 0
+	#_cantidad_a_exportar = 0
 	stock_actualizado.emit()
 
 

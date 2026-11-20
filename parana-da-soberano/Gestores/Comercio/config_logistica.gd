@@ -15,14 +15,14 @@ enum Faccion {
 }
 
 enum TipoBien {
-	NINGUNO,
+	CUALQUIERA,
 	MATERIA_PRIMA,
 	MANUFACTURA
 }
 
 enum ModoPuerto {
 	EXPORTADOR,
-	IMPORTADOR_MANUFACTURA,
+	IMPORTADOR,
 	MIXTO
 }
 
@@ -33,7 +33,7 @@ enum ModoPuerto {
 @export var modo_puerto: ModoPuerto = ModoPuerto.MIXTO
 
 @export_group("Conversión de Recursos")
-@export var bien_entrada: TipoBien = TipoBien.NINGUNO
+@export var bien_entrada: TipoBien = TipoBien.CUALQUIERA
 @export var cantidad_consumo: int = 5
 @export var bien_salida: TipoBien = TipoBien.MATERIA_PRIMA
 @export var cantidad_produccion: int = 10
