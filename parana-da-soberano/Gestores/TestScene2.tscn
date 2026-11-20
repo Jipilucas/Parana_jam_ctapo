@@ -1,71 +1,98 @@
 [gd_scene format=3 uid="uid://dnvqirv01aapp"]
 
-[ext_resource type="PackedScene" uid="uid://bv32h65i1687b" path="res://Gestores/Comercio/Scenes/productor2D.tscn" id="1_j6nga"]
 [ext_resource type="Script" uid="uid://dawjvxehyvtl1" path="res://Gestores/Comercio/config_logistica.gd" id="2_ik08m"]
-[ext_resource type="PackedScene" uid="uid://cicn37rtqkdt8" path="res://Gestores/Comercio/Scenes/Ruta.tscn" id="2_s2r6c"]
+[ext_resource type="Texture2D" uid="uid://ev75fka5wr8b" path="res://Assets/mapa.png" id="3_y4law"]
+[ext_resource type="PackedScene" uid="uid://cppccqf8b5e4g" path="res://Gestores/Comercio/Scenes/LocacionesBase/Agro.tscn" id="6_s2r6c"]
 [ext_resource type="Script" uid="uid://co2o222mfulk" path="res://Gestores/camera_2d.gd" id="7_hal4f"]
-[ext_resource type="Texture2D" uid="uid://etifkcnkaoiy" path="res://Assets/mapa parana 2.jpeg" id="8_y4law"]
+[ext_resource type="PackedScene" uid="uid://bn5371db6omwq" path="res://Gestores/Comercio/Scenes/LocacionesBase/Industria.tscn" id="7_mvvbc"]
+[ext_resource type="PackedScene" uid="uid://1m12sncern0y" path="res://Gestores/Comercio/Scenes/Fletes/FleteTierra.tscn" id="8_v3pjp"]
+[ext_resource type="PackedScene" uid="uid://c2skbu4kvlbvr" path="res://Gestores/Comercio/Scenes/LocacionesBase/Puerto.tscn" id="9_q3ccy"]
+[ext_resource type="PackedScene" uid="uid://bksvocqo3tx2t" path="res://Gestores/Comercio/Scenes/LocacionesBase/Ciudad.tscn" id="11_q3ccy"]
 [ext_resource type="Script" uid="uid://vnivcbjgirr0" path="res://Gestores/Transportes/gestor_rutas.gd" id="13_8jnw6"]
 [ext_resource type="Script" uid="uid://lcofxuy56h4l" path="res://Gestores/Eventos/gestor_eventos.gd" id="14_py8nj"]
 [ext_resource type="PackedScene" uid="uid://bk57sjve4q578" path="res://Gestores/UI/hud_principal.tscn" id="15_w2vpa"]
 
-[sub_resource type="Resource" id="Resource_7m8j4"]
+[sub_resource type="Resource" id="Resource_xvdge"]
 script = ExtResource("2_ik08m")
-nombre_mostrar = "AgroGark"
-metadata/_custom_type_script = "uid://dawjvxehyvtl1"
+nombre_mostrar = "Agro"
+ganancia_propio = 10
 
-[sub_resource type="Resource" id="Resource_u46nm"]
+[sub_resource type="Resource" id="Resource_4n6vb"]
 script = ExtResource("2_ik08m")
-nombre_mostrar = "Fritz"
+nombre_mostrar = "Industria"
 tipo_entidad = 1
-faccion_inicial = 2
+faccion_inicial = 1
 bien_entrada = 1
 cantidad_consumo = 10
 bien_salida = 2
 cantidad_produccion = 5
-metadata/_custom_type_script = "uid://dawjvxehyvtl1"
+ganancia_propio = 15
 
-[sub_resource type="Resource" id="Resource_hal4f"]
+[sub_resource type="Resource" id="Resource_5gohb"]
 script = ExtResource("2_ik08m")
-nombre_mostrar = "Marolio"
-metadata/_custom_type_script = "uid://dawjvxehyvtl1"
+nombre_mostrar = "Puerto"
+tipo_entidad = 2
+faccion_inicial = 1
+bien_entrada = 1
+cantidad_consumo = 10
+ganancia_propio = 10
+
+[sub_resource type="Resource" id="Resource_ajgmc"]
+script = ExtResource("2_ik08m")
+nombre_mostrar = "Puerto"
+tipo_entidad = 2
+faccion_inicial = 2
+bien_salida = 2
+ganancia_propio = 10
+
+[sub_resource type="Resource" id="Resource_ik08m"]
+script = ExtResource("2_ik08m")
+nombre_mostrar = "Ciudad"
+tipo_entidad = 3
+bien_entrada = 2
+cantidad_consumo = 10
+bien_salida = 0
+ganancia_propio = 10
+
+[sub_resource type="Resource" id="Resource_dbfhj"]
+script = ExtResource("2_ik08m")
+nombre_mostrar = "Puerto"
+tipo_entidad = 2
+faccion_inicial = 2
+bien_entrada = 1
+cantidad_consumo = 10
+ganancia_propio = 10
+
+[sub_resource type="Resource" id="Resource_q3ccy"]
+script = ExtResource("2_ik08m")
+nombre_mostrar = "Industria"
+tipo_entidad = 1
+bien_entrada = 1
+cantidad_consumo = 10
+bien_salida = 2
+cantidad_produccion = 5
+ganancia_propio = 15
 
 [node name="TestScene" type="Node2D" unique_id=1656906367]
 
-[node name="MapaParana2" type="Sprite2D" parent="." unique_id=227241710]
-scale = Vector2(2.085, 2.085)
-texture = ExtResource("8_y4law")
-metadata/_edit_lock_ = true
-
-[node name="AgroProductor" parent="." unique_id=2002332135 instance=ExtResource("1_j6nga")]
-position = Vector2(-1160, -100)
-config = SubResource("Resource_7m8j4")
-
-[node name="IndProductor" parent="." unique_id=251399497 instance=ExtResource("1_j6nga")]
-position = Vector2(-681, 423)
-config = SubResource("Resource_u46nm")
-
-[node name="Ruta" parent="." unique_id=751793760 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("2_s2r6c")]
-position = Vector2(-1032, 141)
-Remitente = NodePath("../AgroProductor")
-Destinatario = NodePath("../IndProductor")
-
-[node name="IndProductor2" parent="." unique_id=1315610195 instance=ExtResource("1_j6nga")]
-position = Vector2(-488, -36)
-slot_ocupado = false
-config = SubResource("Resource_hal4f")
-
-[node name="GestorRutas" type="Node2D" parent="." unique_id=1310782407]
-position = Vector2(-7, 0)
-script = ExtResource("13_8jnw6")
+[node name="HUDPrincipal" parent="." unique_id=1888180789 node_paths=PackedStringArray("gestor_rutas", "gestor_eventos") instance=ExtResource("15_w2vpa")]
+gestor_rutas = NodePath("../GestorRutas")
+gestor_eventos = NodePath("../GestorEventos")
 
 [node name="GestorEventos" type="Node" parent="." unique_id=1845493683]
 script = ExtResource("14_py8nj")
 intervalo_eventos = 25.0
 
-[node name="HUDPrincipal" parent="." unique_id=1888180789 node_paths=PackedStringArray("gestor_rutas", "gestor_eventos") instance=ExtResource("15_w2vpa")]
-gestor_rutas = NodePath("../GestorRutas")
-gestor_eventos = NodePath("../GestorEventos")
+[node name="MapaParana2" type="Sprite2D" parent="." unique_id=227241710]
+texture_filter = 5
+position = Vector2(-7, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("3_y4law")
+metadata/_edit_lock_ = true
+
+[node name="GestorRutas" type="Node2D" parent="." unique_id=1310782407]
+position = Vector2(-7, 0)
+script = ExtResource("13_8jnw6")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=992948584]
 position = Vector2(576, 323)
@@ -73,3 +100,64 @@ script = ExtResource("7_hal4f")
 min_zoom = 0.1
 max_zoom = 2.125
 metadata/_edit_lock_ = true
+
+[node name="Node2D" type="Node2D" parent="." unique_id=773177816]
+
+[node name="Agro" parent="Node2D" unique_id=2002332135 instance=ExtResource("6_s2r6c")]
+position = Vector2(-2771, -1780)
+config = SubResource("Resource_xvdge")
+
+[node name="FleteTierra" parent="Node2D" unique_id=751793760 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
+position = Vector2(-2308, -1892)
+Remitente = NodePath("../Agro")
+Destinatario = NodePath("../Industria")
+
+[node name="Industria" parent="Node2D" unique_id=1170946521 instance=ExtResource("7_mvvbc")]
+position = Vector2(-1639, -1532)
+config = SubResource("Resource_4n6vb")
+
+[node name="Puerto" parent="Node2D" unique_id=777391857 instance=ExtResource("9_q3ccy")]
+position = Vector2(-628, -1194)
+config = SubResource("Resource_5gohb")
+
+[node name="FleteTierra2" parent="Node2D" unique_id=604154332 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
+position = Vector2(-1227, -1507)
+Remitente = NodePath("../Industria")
+Destinatario = NodePath("../Puerto")
+
+[node name="Puerto2" parent="Node2D" unique_id=1879632945 instance=ExtResource("9_q3ccy")]
+position = Vector2(-191, 102)
+
+[node name="Node2D3" type="Node2D" parent="." unique_id=482664022]
+
+[node name="Puerto" parent="Node2D3" unique_id=1194214783 instance=ExtResource("9_q3ccy")]
+position = Vector2(-1257, 309)
+config = SubResource("Resource_ajgmc")
+
+[node name="Ciudad" parent="Node2D3" unique_id=1958207568 instance=ExtResource("11_q3ccy")]
+position = Vector2(-2308, -60)
+config = SubResource("Resource_ik08m")
+
+[node name="FleteTierra2" parent="Node2D3" unique_id=1684214272 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
+position = Vector2(-1860, -2)
+Remitente = NodePath("../Puerto")
+Destinatario = NodePath("../Ciudad")
+
+[node name="Node2D2" type="Node2D" parent="." unique_id=242408953]
+
+[node name="Agro" parent="Node2D2" unique_id=1238192005 instance=ExtResource("6_s2r6c")]
+position = Vector2(-2866, -1131)
+
+[node name="Puerto2" parent="Node2D2" unique_id=987279927 instance=ExtResource("9_q3ccy")]
+position = Vector2(-960, -382)
+config = SubResource("Resource_dbfhj")
+
+[node name="FleteTierra" parent="Node2D2" unique_id=963816246 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
+position = Vector2(-1953, -889)
+Remitente = NodePath("../Agro")
+Destinatario = NodePath("../Puerto2")
+
+[node name="Industria" parent="." unique_id=723007278 instance=ExtResource("7_mvvbc")]
+position = Vector2(-2888, -317)
+slot_ocupado = false
+config = SubResource("Resource_q3ccy")
