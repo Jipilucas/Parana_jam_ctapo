@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dgfv7uaavlrv1" path="res://Gestores/UI/datos.tscn" id="8_0btxc"]
 [ext_resource type="Texture2D" uid="uid://ntv52whaw5k3" path="res://Gestores/Comercio/Scenes/LocacionesBase/assets/Industria.png" id="9_rfhok"]
 [ext_resource type="Script" uid="uid://n5q154m8q2xd" path="res://Gestores/Comercio/Scenes/sprite_logistica.gd" id="10_2ux4y"]
+[ext_resource type="Texture2D" uid="uid://dsm7tajpuijas" path="res://Assets/regalias_2.png" id="11_fwkes"]
+[ext_resource type="Texture2D" uid="uid://c32la5pbmfn28" path="res://Assets/soberania_2.png" id="12_ia47v"]
 
 [sub_resource type="Resource" id="Cfg_IndPropia"]
 script = ExtResource("2_8r52i")
@@ -48,78 +50,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LabelRegalias:modulate")
+tracks/0/path = NodePath("LabelRegalias:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LabelRegalias:visible")
+tracks/1/path = NodePath("LabelRegalias:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("LabelSoberania:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("LabelSoberania:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_tw1kq"]
-resource_name = "mostrar"
-length = 1.8666667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LabelRegalias:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.033333335, 0.8, 1.5333333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.23529412)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LabelRegalias:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -128,10 +78,10 @@ tracks/2/path = NodePath("LabelSoberania:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.033333335, 0.8, 1.56),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -140,10 +90,62 @@ tracks/3/path = NodePath("LabelSoberania:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tw1kq"]
+resource_name = "mostrar"
+length = 1.8666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelRegalias:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelRegalias:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335, 0.8, 1.5333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.23529412)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LabelSoberania:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(1.5666667),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LabelSoberania:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.033333335, 0.8, 1.56),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8r52i"]
@@ -183,24 +185,34 @@ script = ExtResource("10_2ux4y")
 padre = NodePath("..")
 
 [node name="LabelRegalias" type="Label" parent="." unique_id=291281362]
-offset_left = 95.0
+offset_left = 181.0
 offset_top = -61.0
-offset_right = 183.0
+offset_right = 269.0
 offset_bottom = 7.0
 text = "- $10"
 label_settings = SubResource("LabelSettings_rfhok")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SpriteRegalias" type="Sprite2D" parent="LabelRegalias" unique_id=1773567408]
+position = Vector2(-37, 28.000002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_fwkes")
+
 [node name="LabelSoberania" type="Label" parent="." unique_id=1553557802]
-offset_left = 95.0
-offset_top = -11.0
-offset_right = 183.0
-offset_bottom = 57.0
+offset_left = 187.0
+offset_top = 7.0
+offset_right = 275.0
+offset_bottom = 75.0
 text = "%10"
 label_settings = SubResource("LabelSettings_8r52i")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SpriteSoberanía" type="Sprite2D" parent="LabelSoberania" unique_id=1623895474]
+position = Vector2(-39, 30.999989)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("12_ia47v")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=689812391]
 libraries/ = SubResource("AnimationLibrary_8r52i")
