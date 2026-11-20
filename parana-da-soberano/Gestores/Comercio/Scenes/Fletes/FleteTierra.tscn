@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dcnsdbcuijdro" path="res://Gestores/Comandos/Commands/Comando_Despachar.gd" id="6_hkys6"]
 [ext_resource type="PackedScene" uid="uid://bsofv2qtgrcml" path="res://Gestores/UI/datos-felte.tscn" id="7_qxcm4"]
 [ext_resource type="Texture2D" uid="uid://ngv5tfly2841" path="res://Gestores/Comercio/Scenes/Fletes/assets/FleteTierra.png" id="8_fcui0"]
+[ext_resource type="Texture2D" uid="uid://dsm7tajpuijas" path="res://Assets/regalias_2.png" id="9_bqj5f"]
 
 [sub_resource type="Resource" id="Resource_cmd_recibir"]
 script = ExtResource("4_7xbp8")
@@ -120,11 +121,16 @@ libraries/ = SubResource("AnimationLibrary_bqj5f")
 autoplay = &"mostrar"
 
 [node name="Label" type="Label" parent="." unique_id=869565256]
-offset_left = 146.0
-offset_top = 139.0
-offset_right = 234.0
-offset_bottom = 207.0
+offset_left = 224.0
+offset_top = 141.0
+offset_right = 312.0
+offset_bottom = 209.0
 text = "- $10"
 label_settings = SubResource("LabelSettings_fcui0")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SpriteRegalias" type="Sprite2D" parent="Label" unique_id=290154304]
+position = Vector2(-37, 28.000002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_bqj5f")
