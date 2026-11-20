@@ -8,8 +8,11 @@
 [ext_resource type="Script" uid="uid://dt57u64g2m08c" path="res://Gestores/Comandos/Commands/comando_esperar.gd" id="6_44krc"]
 [ext_resource type="Script" uid="uid://cef7imth31asg" path="res://Gestores/Comandos/Commands/Comando_producir.gd" id="7_5w0wb"]
 [ext_resource type="PackedScene" uid="uid://dgfv7uaavlrv1" path="res://Gestores/UI/datos.tscn" id="8_itluf"]
-[ext_resource type="Texture2D" uid="uid://d0kts5dn5076a" path="res://Gestores/Comercio/Scenes/LocacionesBase/assets/Agro.png" id="9_rni0n"]
+[ext_resource type="Texture2D" uid="uid://b6skewlygrtp1" path="res://Assets/fondo_blanco.png" id="9_78cog"]
 [ext_resource type="Script" uid="uid://n5q154m8q2xd" path="res://Gestores/Comercio/Scenes/sprite_logistica.gd" id="10_v17u1"]
+[ext_resource type="Texture2D" uid="uid://dsm7tajpuijas" path="res://Assets/regalias_2.png" id="11_78cog"]
+[ext_resource type="Texture2D" uid="uid://jakycqyse3ct" path="res://Assets/agro_1.png" id="11_pex2u"]
+[ext_resource type="Texture2D" uid="uid://c32la5pbmfn28" path="res://Assets/soberania_2.png" id="12_pex2u"]
 
 [sub_resource type="Resource" id="Cfg_IndPropia"]
 script = ExtResource("2_g2r54")
@@ -173,29 +176,42 @@ metadata/_edit_use_anchors_ = true
 
 [node name="SpriteLogistica" type="Sprite2D" parent="." unique_id=1146333627 node_paths=PackedStringArray("padre")]
 scale = Vector2(0.3513459, 0.31461495)
-texture = ExtResource("9_rni0n")
+texture = ExtResource("9_78cog")
 script = ExtResource("10_v17u1")
 padre = NodePath("..")
 
+[node name="Sprite2D" type="Sprite2D" parent="SpriteLogistica" unique_id=979337042]
+texture = ExtResource("11_pex2u")
+
 [node name="LabelRegalias" type="Label" parent="." unique_id=758353770]
-offset_left = 95.0
+offset_left = 181.0
 offset_top = -61.0
-offset_right = 183.0
+offset_right = 269.0
 offset_bottom = 7.0
 text = "- $10"
 label_settings = SubResource("LabelSettings_rni0n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SpriteRegalias" type="Sprite2D" parent="LabelRegalias" unique_id=945330614]
+position = Vector2(-37, 28.000002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_78cog")
+
 [node name="LabelSoberania" type="Label" parent="." unique_id=2123357937]
-offset_left = 95.0
-offset_top = -11.0
-offset_right = 183.0
-offset_bottom = 57.0
+offset_left = 187.0
+offset_top = 7.0
+offset_right = 275.0
+offset_bottom = 75.0
 text = "%10"
 label_settings = SubResource("LabelSettings_oms1m")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SpriteSoberanía" type="Sprite2D" parent="LabelSoberania" unique_id=738337788]
+position = Vector2(-39, 30.999989)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("12_pex2u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1589763185]
 libraries/ = SubResource("AnimationLibrary_78cog")
