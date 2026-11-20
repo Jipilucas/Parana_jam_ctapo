@@ -26,6 +26,10 @@ enum TipoFlete {
 @export var controlador: ControladorComandos
 @export var linea_visual: Line2D
 
+@export_group("User Interface")
+@export var textlabel : Label
+@export var anim_player : AnimationPlayer
+
 var Carga_Actual: int = 0
 var ruta_habilitada: bool = false
 var _registrado_en_astillero: bool = false
@@ -131,8 +135,14 @@ func Recibir(cant: int = Capacidad) -> void:
 		Carga_Actual += extraido
 		if costo_por_viaje > 0:
 			Partida.modificar_dinero(-costo_por_viaje, "Flete %s" % obtener_nombre_ruta())
+			mostrar_dinero(costo_por_viaje)
 		flete_actualizado.emit()
 
+func mostrar_dinero(cant):
+	if textlabel == null or anim_player == null: return
+	textlabel.visible = true
+	textlabel.text = '-$' + str(cant)
+	anim_player.play("mostrar")
 
 func Despachar(cant: int = Capacidad) -> void:
 	if not ruta_habilitada or Destinatario == null or not Destinatario.slot_ocupado:
@@ -146,6 +156,8 @@ func Despachar(cant: int = Capacidad) -> void:
 		Carga_Actual -= entregado
 		flete_actualizado.emit()
 
+
+	
 
 func _actualizar_linea_visual() -> void:
 	if linea_visual == null or Remitente == null or Destinatario == null:

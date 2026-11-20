@@ -31,10 +31,134 @@ duracion = 2.0
 [sub_resource type="Resource" id="Resource_cmd_producir"]
 script = ExtResource("7_vch6l")
 
-[node name="Industria" type="Node2D" unique_id=2002332135 node_paths=PackedStringArray("controlador")]
+[sub_resource type="LabelSettings" id="LabelSettings_rfhok"]
+font_size = 35
+font_color = Color(0.79345477, 0.74226034, 0, 1)
+outline_size = 2
+outline_color = Color(0.2627451, 0.6509804, 0.2627451, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8r52i"]
+font_size = 35
+font_color = Color(2.117753e-06, 0.7737097, 0.99432534, 1)
+outline_size = 2
+outline_color = Color(0.2627451, 0.6509804, 0.2627451, 1)
+
+[sub_resource type="Animation" id="Animation_u1jr2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelRegalias:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelRegalias:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LabelSoberania:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LabelSoberania:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tw1kq"]
+resource_name = "mostrar"
+length = 1.8666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelRegalias:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.8, 1.5333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.23529412)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelRegalias:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LabelSoberania:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335, 0.8, 1.56),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LabelSoberania:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8r52i"]
+_data = {
+&"RESET": SubResource("Animation_u1jr2"),
+&"mostrar": SubResource("Animation_tw1kq")
+}
+
+[node name="Industria" type="Node2D" unique_id=2002332135 node_paths=PackedStringArray("controlador", "anim_player", "label_regalias", "label_soberania")]
 script = ExtResource("1_rfhok")
 config = SubResource("Cfg_IndPropia")
 controlador = NodePath("ControladorComandos")
+anim_player = NodePath("AnimationPlayer")
+label_regalias = NodePath("LabelRegalias")
+label_soberania = NodePath("LabelSoberania")
 metadata/_edit_group_ = true
 
 [node name="ControladorComandos" type="Node" parent="." unique_id=309920489 node_paths=PackedStringArray("actor")]
@@ -57,3 +181,27 @@ scale = Vector2(0.25049332, 0.26437423)
 texture = ExtResource("9_rfhok")
 script = ExtResource("10_2ux4y")
 padre = NodePath("..")
+
+[node name="LabelRegalias" type="Label" parent="." unique_id=291281362]
+offset_left = 95.0
+offset_top = -61.0
+offset_right = 183.0
+offset_bottom = 7.0
+text = "- $10"
+label_settings = SubResource("LabelSettings_rfhok")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelSoberania" type="Label" parent="." unique_id=1553557802]
+offset_left = 95.0
+offset_top = -11.0
+offset_right = 183.0
+offset_bottom = 57.0
+text = "%10"
+label_settings = SubResource("LabelSettings_8r52i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=689812391]
+libraries/ = SubResource("AnimationLibrary_8r52i")
+autoplay = &"mostrar"

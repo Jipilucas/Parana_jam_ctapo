@@ -13,12 +13,18 @@ signal estado_slot_cambiado
 @export_group("Referencias Opcionales")
 @export var controlador: ControladorComandos
 
+@export_group("UserInterface")
+@export var anim_player:AnimationPlayer
+@export var label_regalias :Label
+@export var label_soberania:Label
+
 var faccion_actual: ConfigLogistica.Faccion = ConfigLogistica.Faccion.NEUTRAL
 var stock_entrada: int = 0
 var stock_salida: int = 0
 var bonus_produccion: int = 0
 var _insumo_consumido_en_ciclo: bool = false
 var _cantidad_a_exportar: int = 0
+
 
 
 func _ready() -> void:
@@ -86,7 +92,16 @@ func Consumir() -> void:
 			elif config.modo_puerto != ConfigLogistica.ModoPuerto.EXPORTADOR and stock_salida < config.cantidad_produccion * 2:
 				_insumo_consumido_en_ciclo = true
 
-
+func mostrar_intercambio(cant_reg:float=0,cant_sob:float=0):
+	if label_regalias == null or label_soberania == null or anim_player == null: return
+	label_regalias.text = '$' + str(cant_reg)
+	label_soberania.text = '%' + str(cant_sob)
+	
+	if cant_reg != 0: label_regalias.visible = true
+	if cant_sob != 0: label_soberania.visible = true
+	
+	anim_player.play("mostrar")
+	
 func Producir() -> void:
 	if not slot_ocupado or config == null or not _insumo_consumido_en_ciclo:
 		return
@@ -101,13 +116,16 @@ func Producir() -> void:
 			stock_salida += cant_producida
 			if faccion_actual == ConfigLogistica.Faccion.PROPIO:
 				Partida.modificar_soberania(config.impacto_soberania_propio, "Industria Nacional (%s)" % obtener_nombre())
+				mostrar_intercambio(0,config.impacto_soberania_propio)
 			elif faccion_actual == ConfigLogistica.Faccion.ENEMIGO:
 				Partida.modificar_soberania(config.impacto_soberania_enemigo, "Industria Extranjera (%s)" % obtener_nombre())
+				mostrar_intercambio(0,config.impacto_soberania_enemigo)
 
 		ConfigLogistica.TipoEntidad.CIUDAD:
 			var ganancia_ciudad: int = int(round(float(config.ganancia_propio) * Partida.multiplicador_ganancia))
 			Partida.modificar_dinero(ganancia_ciudad, "Consumo en %s" % obtener_nombre())
 			Partida.modificar_soberania(config.impacto_soberania_propio, "Abastecimiento a %s" % obtener_nombre())
+			mostrar_intercambio(ganancia_ciudad, config.impacto_soberania_propio)
 
 		ConfigLogistica.TipoEntidad.PUERTO:
 			if _cantidad_a_exportar > 0:
@@ -115,16 +133,20 @@ func Producir() -> void:
 					var ingreso: int = int(round(float(config.ganancia_propio) * Partida.multiplicador_ganancia))
 					Partida.modificar_dinero(ingreso, "Exportación en %s" % obtener_nombre())
 					Partida.modificar_soberania(config.impacto_soberania_propio, "Exportación Soberana (%s)" % obtener_nombre())
+					mostrar_intercambio(ingreso,config.impacto_soberania_propio)
 				else:
 					Partida.modificar_dinero(config.ganancia_enemigo, "Regalía mínima en %s" % obtener_nombre())
 					Partida.modificar_soberania(config.impacto_soberania_enemigo, "Fuga por %s" % obtener_nombre())
+					mostrar_intercambio(config.ganancia_enemigo,config.impacto_soberania_enemigo)
 			elif config.modo_puerto != ConfigLogistica.ModoPuerto.EXPORTADOR:
 				# Importa manufactura para que un flete pueda llevarla a la Ciudad
 				stock_salida += cant_producida
 				if config.costo_importacion_puerto > 0:
 					Partida.modificar_dinero(-config.costo_importacion_puerto, "Importación de Manufactura (%s)" % obtener_nombre())
+					mostrar_intercambio(-config.costo_importacion_puerto)
 				if faccion_actual == ConfigLogistica.Faccion.ENEMIGO:
 					Partida.modificar_soberania(config.impacto_soberania_enemigo * 0.5, "Dependencia importadora (%s)" % obtener_nombre())
+					mostrar_intercambio(0,config.impacto_soberania_enemigo * 0.5)
 
 	_insumo_consumido_en_ciclo = false
 	_cantidad_a_exportar = 0
@@ -157,6 +179,7 @@ func construir_en_slot() -> bool:
 	Partida.modificar_dinero(-costo_construir_en_slot, "Construcción de %s" % obtener_nombre())
 	activar_slot_como_propio()
 	Partida.modificar_soberania(4.0, "Nueva planta nacional (%s)" % obtener_nombre())
+	mostrar_intercambio(-costo_construir_en_slot, 4.0)
 	return true
 
 
@@ -185,4 +208,5 @@ func nacionalizar() -> bool:
 	faccion_actual = ConfigLogistica.Faccion.PROPIO
 	Partida.modificar_soberania(6.0, "Recuperación soberana de %s" % obtener_nombre())
 	estado_slot_cambiado.emit()
+	mostrar_intercambio(-config.costo_compra,6.0)
 	return true

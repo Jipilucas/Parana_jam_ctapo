@@ -19,7 +19,74 @@ duracion = 1.2
 [sub_resource type="Resource" id="Resource_cmd_despachar"]
 script = ExtResource("6_whox4")
 
-[node name="FleteMar" type="Node2D" unique_id=751793760 node_paths=PackedStringArray("controlador")]
+[sub_resource type="LabelSettings" id="LabelSettings_eoyjp"]
+font_size = 35
+font_color = Color(0.85490197, 0.18431373, 0, 1)
+outline_size = 7
+outline_color = Color(0.2627451, 0.19215687, 0.2627451, 1)
+
+[sub_resource type="Animation" id="Animation_u1jr2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tw1kq"]
+resource_name = "mostrar"
+length = 1.8666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667, 0.8, 1.5333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.23529412)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06666667, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u1jr2"]
+_data = {
+&"RESET": SubResource("Animation_u1jr2"),
+&"mostrar": SubResource("Animation_tw1kq")
+}
+
+[node name="FleteMar" type="Node2D" unique_id=751793760 node_paths=PackedStringArray("controlador", "linea_visual", "textlabel", "anim_player")]
 script = ExtResource("1_tw1kq")
 nombre_ruta = "FleteMar"
 tipo_flete = 1
@@ -27,6 +94,9 @@ Capacidad = 8
 costo_habilitar = 30
 costo_por_viaje = 2
 controlador = NodePath("ControladorComandos")
+linea_visual = NodePath("LineaRuta")
+textlabel = NodePath("Label")
+anim_player = NodePath("AnimationPlayer")
 
 [node name="ControladorComandos" type="Node" parent="." unique_id=1194232843 node_paths=PackedStringArray("actor")]
 script = ExtResource("2_u1jr2")
@@ -46,3 +116,17 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(84.00001, 187.99998)
 scale = Vector2(0.20341034, 0.2145594)
 texture = ExtResource("8_tw1kq")
+
+[node name="Label" type="Label" parent="." unique_id=422596185]
+offset_left = 148.0
+offset_top = 142.0
+offset_right = 236.0
+offset_bottom = 210.0
+text = "- $10"
+label_settings = SubResource("LabelSettings_eoyjp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=819948002]
+libraries/ = SubResource("AnimationLibrary_u1jr2")
+autoplay = &"mostrar"

@@ -7,7 +7,7 @@ signal victoria_alcanzada
 signal derrota_alcanzada
 
 @export_group("Estado Inicial")
-@export var dinero: int = 300
+@export var dinero: int = 3000
 @export var soberania: float = 20.0
 @export var tier_ciencia: int = 1
 @export var astilleros_nacionales: int = 1

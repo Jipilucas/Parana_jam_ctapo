@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://1m12sncern0y" path="res://Gestores/Comercio/Scenes/Fletes/FleteTierra.tscn" id="8_v3pjp"]
 [ext_resource type="PackedScene" uid="uid://c2skbu4kvlbvr" path="res://Gestores/Comercio/Scenes/LocacionesBase/Puerto.tscn" id="9_q3ccy"]
 [ext_resource type="PackedScene" uid="uid://bksvocqo3tx2t" path="res://Gestores/Comercio/Scenes/LocacionesBase/Ciudad.tscn" id="11_q3ccy"]
+[ext_resource type="PackedScene" uid="uid://c4kmpjxx2at0o" path="res://Gestores/Comercio/Scenes/Fletes/FleteMar.tscn" id="12_xvdge"]
 [ext_resource type="Script" uid="uid://vnivcbjgirr0" path="res://Gestores/Transportes/gestor_rutas.gd" id="13_8jnw6"]
 [ext_resource type="Script" uid="uid://lcofxuy56h4l" path="res://Gestores/Eventos/gestor_eventos.gd" id="14_py8nj"]
 [ext_resource type="PackedScene" uid="uid://bk57sjve4q578" path="res://Gestores/UI/hud_principal.tscn" id="15_w2vpa"]
@@ -33,9 +34,20 @@ script = ExtResource("2_ik08m")
 nombre_mostrar = "Puerto"
 tipo_entidad = 2
 faccion_inicial = 1
+bien_entrada = 2
+cantidad_consumo = 10
+bien_salida = 2
+ganancia_propio = 10
+impacto_soberania_enemigo = -2.0
+
+[sub_resource type="Resource" id="Resource_snfgk"]
+script = ExtResource("2_ik08m")
+nombre_mostrar = "Puerto"
+tipo_entidad = 2
 bien_entrada = 1
 cantidad_consumo = 10
 ganancia_propio = 10
+impacto_soberania_enemigo = -2.0
 
 [sub_resource type="Resource" id="Resource_ajgmc"]
 script = ExtResource("2_ik08m")
@@ -44,14 +56,32 @@ tipo_entidad = 2
 faccion_inicial = 2
 bien_salida = 2
 ganancia_propio = 10
+impacto_soberania_enemigo = -2.0
+
+[sub_resource type="Resource" id="Resource_1d3yi"]
+script = ExtResource("2_ik08m")
+nombre_mostrar = "Puerto"
+tipo_entidad = 2
+faccion_inicial = 2
+bien_entrada = 1
+cantidad_consumo = 10
+ganancia_propio = 10
+impacto_soberania_enemigo = -2.0
 
 [sub_resource type="Resource" id="Resource_ik08m"]
 script = ExtResource("2_ik08m")
 nombre_mostrar = "Ciudad"
 tipo_entidad = 3
+faccion_inicial = 1
 bien_entrada = 2
 cantidad_consumo = 10
 bien_salida = 0
+ganancia_propio = 10
+
+[sub_resource type="Resource" id="Resource_rqk4y"]
+script = ExtResource("2_ik08m")
+nombre_mostrar = "Agro"
+cantidad_produccion = 20
 ganancia_propio = 10
 
 [sub_resource type="Resource" id="Resource_dbfhj"]
@@ -62,6 +92,7 @@ faccion_inicial = 2
 bien_entrada = 1
 cantidad_consumo = 10
 ganancia_propio = 10
+impacto_soberania_enemigo = -2.0
 
 [sub_resource type="Resource" id="Resource_q3ccy"]
 script = ExtResource("2_ik08m")
@@ -72,6 +103,14 @@ cantidad_consumo = 10
 bien_salida = 2
 cantidad_produccion = 5
 ganancia_propio = 15
+
+[sub_resource type="Resource" id="Resource_b5x7s"]
+script = ExtResource("2_ik08m")
+nombre_mostrar = "Puerto"
+tipo_entidad = 2
+bien_entrada = 1
+cantidad_consumo = 10
+ganancia_propio = 10
 
 [node name="TestScene" type="Node2D" unique_id=1656906367]
 
@@ -127,19 +166,24 @@ Destinatario = NodePath("../Puerto")
 
 [node name="Puerto2" parent="Node2D" unique_id=1879632945 instance=ExtResource("9_q3ccy")]
 position = Vector2(-191, 102)
+config = SubResource("Resource_snfgk")
 
 [node name="Node2D3" type="Node2D" parent="." unique_id=482664022]
 
 [node name="Puerto" parent="Node2D3" unique_id=1194214783 instance=ExtResource("9_q3ccy")]
-position = Vector2(-1257, 309)
+position = Vector2(-1452, 773)
 config = SubResource("Resource_ajgmc")
 
+[node name="Puerto3" parent="Node2D3" unique_id=713110383 instance=ExtResource("9_q3ccy")]
+position = Vector2(-1227, 141)
+config = SubResource("Resource_1d3yi")
+
 [node name="Ciudad" parent="Node2D3" unique_id=1958207568 instance=ExtResource("11_q3ccy")]
-position = Vector2(-2308, -60)
+position = Vector2(-2503, 404)
 config = SubResource("Resource_ik08m")
 
 [node name="FleteTierra2" parent="Node2D3" unique_id=1684214272 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
-position = Vector2(-1860, -2)
+position = Vector2(-2055, 462)
 Remitente = NodePath("../Puerto")
 Destinatario = NodePath("../Ciudad")
 
@@ -147,6 +191,7 @@ Destinatario = NodePath("../Ciudad")
 
 [node name="Agro" parent="Node2D2" unique_id=1238192005 instance=ExtResource("6_s2r6c")]
 position = Vector2(-2866, -1131)
+config = SubResource("Resource_rqk4y")
 
 [node name="Puerto2" parent="Node2D2" unique_id=987279927 instance=ExtResource("9_q3ccy")]
 position = Vector2(-960, -382)
@@ -157,7 +202,31 @@ position = Vector2(-1953, -889)
 Remitente = NodePath("../Agro")
 Destinatario = NodePath("../Puerto2")
 
+[node name="FleteTierra2" parent="Node2D2" unique_id=818835001 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
+position = Vector2(-2055, -513)
+Remitente = NodePath("../Agro")
+Destinatario = NodePath("../../Node2D3/Puerto3")
+
 [node name="Industria" parent="." unique_id=723007278 instance=ExtResource("7_mvvbc")]
-position = Vector2(-2888, -317)
+position = Vector2(-3083, 147)
 slot_ocupado = false
 config = SubResource("Resource_q3ccy")
+
+[node name="Exterior" parent="." unique_id=324945466 instance=ExtResource("9_q3ccy")]
+position = Vector2(439, 6067)
+config = SubResource("Resource_b5x7s")
+
+[node name="FleteMar" parent="." unique_id=100994729 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("12_xvdge")]
+position = Vector2(503, 5398)
+Remitente = NodePath("../Node2D2/Puerto2")
+Destinatario = NodePath("../Exterior")
+
+[node name="FleteMar2" parent="." unique_id=537820389 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("12_xvdge")]
+position = Vector2(-7, 5398)
+Remitente = NodePath("../Node2D3/Puerto")
+Destinatario = NodePath("../Exterior")
+
+[node name="FleteMar3" parent="." unique_id=909251160 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("12_xvdge")]
+position = Vector2(-564, 5398)
+Remitente = NodePath("../Node2D3/Puerto3")
+Destinatario = NodePath("../Exterior")
