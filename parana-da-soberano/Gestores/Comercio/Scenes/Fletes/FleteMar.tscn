@@ -8,8 +8,9 @@
 [ext_resource type="Script" uid="uid://dcnsdbcuijdro" path="res://Gestores/Comandos/Commands/Comando_Despachar.gd" id="6_whox4"]
 [ext_resource type="PackedScene" uid="uid://bsofv2qtgrcml" path="res://Gestores/UI/datos-felte.tscn" id="7_06x1j"]
 [ext_resource type="Texture2D" uid="uid://d11erkxc4part" path="res://Assets/Texture_ruta.png" id="7_eoyjp"]
-[ext_resource type="Texture2D" uid="uid://d00t2w65pow3a" path="res://Gestores/Comercio/Scenes/Fletes/assets/FleteMar.png" id="8_tw1kq"]
+[ext_resource type="Texture2D" uid="uid://b6skewlygrtp1" path="res://Assets/fondo_blanco.png" id="9_q7lqk"]
 [ext_resource type="Texture2D" uid="uid://dsm7tajpuijas" path="res://Assets/regalias_2.png" id="9_u1jr2"]
+[ext_resource type="Texture2D" uid="uid://b4vblhoqrx2oy" path="res://Assets/flete_maritimo_1.png" id="10_gxrb3"]
 
 [sub_resource type="Resource" id="Resource_cmd_recibir"]
 script = ExtResource("4_q7lqk")
@@ -117,14 +118,17 @@ comandos = NodePath("../ControladorComandos")
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1417223891]
-position = Vector2(84.00001, 187.99998)
-scale = Vector2(0.20341034, 0.2145594)
-texture = ExtResource("8_tw1kq")
+position = Vector2(84, 244.99998)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_q7lqk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D" unique_id=1065944651]
+texture = ExtResource("10_gxrb3")
 
 [node name="Label" type="Label" parent="." unique_id=422596185]
-offset_left = 224.0
+offset_left = 261.0
 offset_top = 141.0
-offset_right = 312.0
+offset_right = 349.0
 offset_bottom = 209.0
 text = "- $10"
 label_settings = SubResource("LabelSettings_eoyjp")
