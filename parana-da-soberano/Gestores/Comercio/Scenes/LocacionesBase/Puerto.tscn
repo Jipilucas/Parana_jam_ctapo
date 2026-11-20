@@ -8,8 +8,9 @@
 [ext_resource type="Script" uid="uid://dt57u64g2m08c" path="res://Gestores/Comandos/Commands/comando_esperar.gd" id="6_disd3"]
 [ext_resource type="Script" uid="uid://cef7imth31asg" path="res://Gestores/Comandos/Commands/Comando_producir.gd" id="7_le050"]
 [ext_resource type="PackedScene" uid="uid://dgfv7uaavlrv1" path="res://Gestores/UI/datos.tscn" id="8_nqef2"]
-[ext_resource type="Texture2D" uid="uid://ybk5npxnq8bo" path="res://Gestores/Comercio/Scenes/LocacionesBase/assets/puerto.png" id="9_m5784"]
+[ext_resource type="Texture2D" uid="uid://b6skewlygrtp1" path="res://Assets/fondo_blanco.png" id="9_8mdpq"]
 [ext_resource type="Script" uid="uid://n5q154m8q2xd" path="res://Gestores/Comercio/Scenes/sprite_logistica.gd" id="10_qxqvv"]
+[ext_resource type="Texture2D" uid="uid://bj44bqdo4lfyx" path="res://Assets/puerto_1.png" id="11_vssv3"]
 
 [sub_resource type="Resource" id="Cfg_IndPropia"]
 script = ExtResource("2_8mdpq")
@@ -176,9 +177,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="SpriteLogistica" type="Sprite2D" parent="." unique_id=1146333627 node_paths=PackedStringArray("padre")]
 scale = Vector2(0.52082765, 0.46854603)
-texture = ExtResource("9_m5784")
+texture = ExtResource("9_8mdpq")
 script = ExtResource("10_qxqvv")
 padre = NodePath("..")
+
+[node name="SpritePuerto" type="Sprite2D" parent="SpriteLogistica" unique_id=67182760]
+texture = ExtResource("11_vssv3")
 
 [node name="LabelRegalias" type="Label" parent="." unique_id=237896836]
 offset_left = 95.0
