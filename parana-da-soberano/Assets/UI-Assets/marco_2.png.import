@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8770c7dkbj75"
-path="res://.godot/imported/marco_1Solido.png-6f903c528cba1ecb6005b021d4f493f8.ctex"
+uid="uid://c84edh0uxyk7"
+path="res://.godot/imported/marco_2.png-6413c3f5be3f26bd4b239821ca46ceb6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/marco_1Solido.png"
-dest_files=["res://.godot/imported/marco_1Solido.png-6f903c528cba1ecb6005b021d4f493f8.ctex"]
+source_file="res://Assets/UI-Assets/marco_2.png"
+dest_files=["res://.godot/imported/marco_2.png-6413c3f5be3f26bd4b239821ca46ceb6.ctex"]
 
 [params]
 

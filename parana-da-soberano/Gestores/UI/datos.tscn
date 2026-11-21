@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dgfv7uaavlrv1"]
 
 [ext_resource type="Script" uid="uid://doa67l78eprxx" path="res://Gestores/datos.gd" id="1_onage"]
-[ext_resource type="Texture2D" uid="uid://c84edh0uxyk7" path="res://Assets/marco_2.png" id="2_4eudl"]
-[ext_resource type="Texture2D" uid="uid://c8770c7dkbj75" path="res://Assets/marco_1Solido.png" id="2_hiph6"]
+[ext_resource type="Texture2D" uid="uid://c84edh0uxyk7" path="res://Assets/UI-Assets/marco_2.png" id="2_4eudl"]
+[ext_resource type="Texture2D" uid="uid://c8770c7dkbj75" path="res://Assets/UI-Assets/marco_1Solido.png" id="2_hiph6"]
 [ext_resource type="Theme" uid="uid://bdmxsqf50jslt" path="res://Configs/Marco3Base/Boton_marco_2.tres" id="2_nyaal"]
-[ext_resource type="Texture2D" uid="uid://drcm71534rq3p" path="res://Assets/marco_1.png" id="2_vuu4p"]
+[ext_resource type="Texture2D" uid="uid://drcm71534rq3p" path="res://Assets/UI-Assets/marco_1.png" id="2_vuu4p"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_esxmk"]
 texture = ExtResource("2_hiph6")
