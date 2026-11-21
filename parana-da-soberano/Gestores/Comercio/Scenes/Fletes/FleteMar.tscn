@@ -112,13 +112,18 @@ default_color = Color(0.6500832, 0.109281786, 0.4141649, 1)
 texture = ExtResource("7_eoyjp")
 texture_mode = 1
 
-[node name="DatosFlete" parent="." unique_id=338601756 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("7_06x1j")]
+[node name="Datos" parent="." unique_id=338601756 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("7_06x1j")]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -10.779625
+offset_top = -80.57715
+offset_right = -10.779625
+offset_bottom = -80.57715
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
-metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1417223891]
-position = Vector2(91, 348)
+position = Vector2(-2.7796173, 9.422882)
 scale = Vector2(0.44326514, 0.47590968)
 texture = ExtResource("9_q7lqk")
 metadata/_edit_group_ = true
@@ -127,10 +132,10 @@ metadata/_edit_group_ = true
 texture = ExtResource("10_gxrb3")
 
 [node name="Label" type="Label" parent="." unique_id=422596185]
-offset_left = 277.0
-offset_top = 315.0
-offset_right = 365.0
-offset_bottom = 383.0
+offset_left = 183.22037
+offset_top = -23.577148
+offset_right = 271.22037
+offset_bottom = 44.42285
 text = "- $10"
 label_settings = SubResource("LabelSettings_eoyjp")
 horizontal_alignment = 1

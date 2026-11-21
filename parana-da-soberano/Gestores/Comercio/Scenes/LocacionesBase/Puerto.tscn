@@ -169,10 +169,10 @@ intervalo_rutina = 3.5
 rutina = Array[ExtResource("4_dtujo")]([SubResource("Resource_cmd_consumir"), SubResource("Resource_cmd_esperar_2s"), SubResource("Resource_cmd_producir")])
 
 [node name="Datos" parent="." unique_id=565952476 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("8_nqef2")]
-offset_left = -91.0
-offset_top = -328.0
-offset_right = -91.0
-offset_bottom = -328.0
+offset_left = 236.0
+offset_top = -39.0
+offset_right = 331.0
+offset_bottom = -39.0
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
 metadata/_edit_use_anchors_ = true

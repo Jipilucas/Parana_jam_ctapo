@@ -160,6 +160,8 @@ impacto_soberania_enemigo = 0.0
 [node name="TestScene" type="Node2D" unique_id=1656906367]
 
 [node name="Mapa" type="Node2D" parent="." unique_id=1769207250]
+position = Vector2(1026, 393)
+scale = Vector2(1.045, 1.045)
 
 [node name="ColorRect2" type="ColorRect" parent="Mapa" unique_id=497619844]
 offset_left = -4315.0
@@ -192,6 +194,8 @@ scale = Vector2(4, 4)
 texture = ExtResource("2_4n6vb")
 
 [node name="HUDPrincipal" parent="." unique_id=1888180789 node_paths=PackedStringArray("gestor_rutas", "gestor_eventos") instance=ExtResource("15_w2vpa")]
+scale = Vector2(0.9, 0.9)
+transform = Transform2D(0.9, 0, 0, 0.9, 0, 0)
 gestor_rutas = NodePath("../GestorRutas")
 gestor_eventos = NodePath("../GestorEventos")
 
@@ -290,18 +294,18 @@ position = Vector2(439, 6067)
 config = SubResource("Resource_b5x7s")
 
 [node name="FleteMar" parent="." unique_id=100994729 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("12_xvdge")]
-position = Vector2(-812, -114)
+position = Vector2(-731, 19)
 Remitente = NodePath("../Node2D2/Puerto2")
 Destinatario = NodePath("../Exterior")
 
 [node name="FleteMar2" parent="." unique_id=537820389 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("12_xvdge")]
-position = Vector2(-1269, 1003)
+position = Vector2(-1163, 1144)
 Remitente = NodePath("../Node2D3/Puerto")
 Destinatario = NodePath("../Exterior")
 faccion_inicial = 2
 
 [node name="FleteMar3" parent="." unique_id=909251160 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("12_xvdge")]
-position = Vector2(-993, 393)
+position = Vector2(-912, 488)
 Remitente = NodePath("../Node2D3/Puerto3")
 Destinatario = NodePath("../Exterior")
 faccion_inicial = 2

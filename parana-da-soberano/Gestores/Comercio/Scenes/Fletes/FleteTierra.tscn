@@ -99,6 +99,12 @@ controlador = NodePath("ControladorComandos")
 textlabel = NodePath("Label")
 anim_player = NodePath("AnimationPlayer")
 
+[node name="Datos" parent="." unique_id=338601756 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("7_qxcm4")]
+offset_right = 0.0
+offset_bottom = 0.0
+entidad = NodePath("..")
+comandos = NodePath("../ControladorComandos")
+
 [node name="ControladorComandos" type="Node" parent="." unique_id=1194232843 node_paths=PackedStringArray("actor")]
 script = ExtResource("2_1ik52")
 actor = NodePath("..")
@@ -110,13 +116,8 @@ default_color = Color(0.91764706, 0.64705884, 0, 1)
 texture = ExtResource("7_pdn4k")
 texture_mode = 1
 
-[node name="DatosFlete" parent="." unique_id=338601756 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("7_qxcm4")]
-entidad = NodePath("..")
-comandos = NodePath("../ControladorComandos")
-metadata/_edit_use_anchors_ = true
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1417223891]
-position = Vector2(76, 305)
+position = Vector2(9.000004, 57.000004)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("9_kfmjw")
 metadata/_edit_group_ = true
@@ -129,10 +130,10 @@ libraries/ = SubResource("AnimationLibrary_bqj5f")
 autoplay = &"mostrar"
 
 [node name="Label" type="Label" parent="." unique_id=869565256]
-offset_left = 225.0
-offset_top = 264.0
-offset_right = 313.0
-offset_bottom = 332.0
+offset_left = 158.0
+offset_top = 16.000004
+offset_right = 246.0
+offset_bottom = 84.0
 text = "- $10"
 label_settings = SubResource("LabelSettings_fcui0")
 horizontal_alignment = 1

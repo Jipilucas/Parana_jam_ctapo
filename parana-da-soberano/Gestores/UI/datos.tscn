@@ -85,16 +85,32 @@ modulate_color = Color(8.288057, 8.288057, 8.288057, 0.28235295)
 
 [node name="Datos-empresa" type="Control" unique_id=565952476]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 190.0
-offset_bottom = 145.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -72.5
+offset_right = 95.0
+offset_bottom = 72.5
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_onage")
 
 [node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=477617519]
-layout_mode = 0
-offset_top = -1.0
-offset_right = 190.0
-offset_bottom = 208.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.4950001
+anchor_top = -1.741
+anchor_right = -2.4950001
+anchor_bottom = -1.741
+offset_left = -119.44998
+offset_top = -317.055
+offset_right = 119.55002
+offset_bottom = -0.054992676
+grow_horizontal = 2
+grow_vertical = 0
 tooltip_text = "Indica los datos de la entidad."
 theme_override_styles/title_panel = SubResource("StyleBoxTexture_esxmk")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxTexture_esxmk")
@@ -102,10 +118,12 @@ theme_override_styles/title_collapsed_panel = SubResource("StyleBoxTexture_esxmk
 theme_override_styles/title_collapsed_hover_panel = SubResource("StyleBoxTexture_esxmk")
 theme_override_styles/focus = SubResource("StyleBoxTexture_esxmk")
 theme_override_styles/panel = SubResource("StyleBoxTexture_y33vu")
+folded = true
 title = "Abrir"
 title_position = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="FoldableContainer" unique_id=141239811]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="FoldableContainer/PanelContainer" unique_id=48646116]
@@ -148,11 +166,18 @@ theme = ExtResource("2_nyaal")
 text = "Seleccionar p/ Ruta"
 
 [node name="TextureButton" type="TextureButton" parent="." unique_id=175682073]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 261.0
-offset_right = 231.0
-offset_bottom = 308.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.4950001
+anchor_top = -1.7720001
+anchor_right = -2.4950001
+anchor_bottom = -1.7720001
+offset_left = -134.94998
+offset_top = -0.05999756
+offset_right = 135.05002
+offset_bottom = 214.94
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="FoldableContainer/PanelContainer/VBoxContainer/BtnAccionSlot" to="." method="_on_btn_accion_pressed"]
 [connection signal="pressed" from="FoldableContainer/PanelContainer/VBoxContainer/BtnConectar" to="." method="_on_btn_conectar_pressed"]

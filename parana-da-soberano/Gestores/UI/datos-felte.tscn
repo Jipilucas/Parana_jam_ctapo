@@ -40,25 +40,37 @@ font_color = Color(0.15686275, 1, 1, 1)
 
 [node name="Datos" type="Control" unique_id=338601756]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 175.0
-offset_bottom = 120.0
+anchor_right = 0.19600001
+anchor_bottom = 0.432
+offset_right = -50.792007
+offset_bottom = -159.936
 script = ExtResource("1_d8hxv")
 
 [node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=1931528576]
-layout_mode = 0
-offset_right = 24.0
-offset_bottom = 32.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.36900002
+anchor_top = -1.8080001
+anchor_right = 0.92300004
+anchor_bottom = 0.5
+offset_left = 64.575005
+offset_top = 216.96
+offset_right = -64.52501
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_styles/title_panel = SubResource("StyleBoxTexture_tf8nk")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxTexture_tf8nk")
 theme_override_styles/title_collapsed_panel = SubResource("StyleBoxTexture_tf8nk")
 theme_override_styles/title_collapsed_hover_panel = SubResource("StyleBoxTexture_tf8nk")
 theme_override_styles/focus = SubResource("StyleBoxTexture_tf8nk")
 theme_override_styles/panel = SubResource("StyleBoxTexture_hiph6")
+folded = true
 title = "Abrir"
 title_position = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="FoldableContainer" unique_id=881920112]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="FoldableContainer/PanelContainer" unique_id=286462393]
@@ -100,11 +112,18 @@ theme_override_styles/hover = ExtResource("4_fkqap")
 text = "Eliminar ($100)"
 
 [node name="TextureButton" type="TextureButton" parent="." unique_id=1890377209]
-layout_mode = 0
-offset_left = -9.0
-offset_top = 147.0
-offset_right = 184.0
-offset_bottom = 312.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.5
+offset_top = -8.0
+offset_right = 87.5
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="FoldableContainer/PanelContainer/VBoxContainer/BtnToggleRuta" to="." method="_on_btn_toggle_pressed"]
 [connection signal="pressed" from="FoldableContainer/PanelContainer/VBoxContainer/BtnEliminarEnemigo" to="." method="_on_btn_eliminar_pressed"]

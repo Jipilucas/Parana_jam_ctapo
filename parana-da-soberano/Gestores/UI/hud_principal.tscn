@@ -1,17 +1,40 @@
 [gd_scene format=3 uid="uid://bk57sjve4q578"]
 
 [ext_resource type="Script" uid="uid://cha41rh3ybykh" path="res://Gestores/UI/hud_principal.gd" id="1_hud"]
+[ext_resource type="Theme" uid="uid://bdmxsqf50jslt" path="res://Configs/Marco3Base/Boton_marco_2.tres" id="2_esxmk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esxmk"]
+bg_color = Color(0.18039216, 0.18039216, 0.18039216, 0.89411765)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y33vu"]
+font_size = 20
+font_color = Color(0.15686275, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_esxmk"]
+font_color = Color(0.96862745, 0.8666667, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ak0m"]
+font_color = Color(0.28235295, 1, 0.36862746, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sjjlt"]
+font_color = Color(1, 0.29411766, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c0kiu"]
+font_color = Color(0, 0.7526474, 0.75301546, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjjlt"]
+bg_color = Color(0.6431373, 0.53333336, 0.84705883, 0.41960785)
 
 [node name="HUDPrincipal" type="CanvasLayer" unique_id=1845110227 node_paths=PackedStringArray("lbl_soberania", "bar_soberania", "lbl_dinero", "lbl_ciencia", "lbl_astilleros", "lbl_magdalena", "lbl_modo_ruta", "lbl_log", "btn_inv_ciencia", "btn_inv_magdalena", "btn_inv_astillero", "btn_ruta_tierra", "btn_ruta_mar", "btn_cancelar_ruta", "btn_evento_test", "panel_evento", "lbl_titulo_evento", "lbl_desc_evento", "btn_opcion_1", "btn_opcion_2", "btn_opcion_3")]
 script = ExtResource("1_hud")
-lbl_soberania = NodePath("BarraSuperior/VBoxContainer/FilaIndicadores/LblSoberania")
-bar_soberania = NodePath("BarraSuperior/VBoxContainer/FilaIndicadores/BarSoberania")
-lbl_dinero = NodePath("BarraSuperior/VBoxContainer/FilaIndicadores/LblDinero")
-lbl_ciencia = NodePath("BarraSuperior/VBoxContainer/FilaIndicadores/LblCiencia")
-lbl_astilleros = NodePath("BarraSuperior/VBoxContainer/FilaIndicadores/LblAstilleros")
-lbl_magdalena = NodePath("BarraSuperior/VBoxContainer/FilaIndicadores/LblMagdalena")
-lbl_modo_ruta = NodePath("BarraSuperior/VBoxContainer/FilaAvisos/LblModoRuta")
-lbl_log = NodePath("BarraSuperior/VBoxContainer/FilaAvisos/LblLog")
+lbl_soberania = NodePath("BarraSuperior/FilaIndicadores/VBoxContainer/HBoxContainer/LblSoberania")
+bar_soberania = NodePath("BarraSuperior/FilaIndicadores/VBoxContainer/HBoxContainer/BarSoberania")
+lbl_dinero = NodePath("BarraSuperior/FilaIndicadores/VBoxContainer/HBoxContainer/LblDinero")
+lbl_ciencia = NodePath("BarraSuperior/FilaIndicadores/VBoxContainer/HBoxContainer/LblCiencia")
+lbl_astilleros = NodePath("BarraSuperior/FilaIndicadores/VBoxContainer/HBoxContainer/LblAstilleros")
+lbl_magdalena = NodePath("BarraSuperior/FilaIndicadores/VBoxContainer/LblMagdalena")
+lbl_modo_ruta = NodePath("BarraSuperior/FilaIndicadores/VBoxContainer/FilaAvisos/LblModoRuta")
+lbl_log = NodePath("BarraSuperior/FilaIndicadores/VBoxContainer/FilaAvisos/LblLog")
 btn_inv_ciencia = NodePath("FoldableContainer/PanelContainer/Botones/BtnInvCiencia")
 btn_inv_magdalena = NodePath("FoldableContainer/PanelContainer/Botones/BtnInvMagdalena")
 btn_inv_astillero = NodePath("FoldableContainer/PanelContainer/Botones/BtnInvAstillero")
@@ -27,64 +50,75 @@ btn_opcion_2 = NodePath("PanelEvento/VBoxEvento/OpcionesContainer/BtnOpcion2")
 btn_opcion_3 = NodePath("PanelEvento/VBoxEvento/OpcionesContainer/BtnOpcion3")
 
 [node name="BarraSuperior" type="PanelContainer" parent="." unique_id=1938076175]
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 14.0
+anchors_preset = -1
+anchor_right = 0.98100007
+anchor_bottom = 0.006
+offset_left = 21.0
 offset_top = 4.0
-offset_right = -29.0
-offset_bottom = 58.0
+offset_right = 42.88794
+offset_bottom = 87.112
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_esxmk")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BarraSuperior" unique_id=2143938707]
-layout_mode = 2
-
-[node name="FilaIndicadores" type="HBoxContainer" parent="BarraSuperior/VBoxContainer" unique_id=1323206773]
+[node name="FilaIndicadores" type="VBoxContainer" parent="BarraSuperior" unique_id=1611175071]
 layout_mode = 2
 theme_override_constants/separation = 18
 
-[node name="LblSoberania" type="Label" parent="BarraSuperior/VBoxContainer/FilaIndicadores" unique_id=2144980138]
+[node name="VBoxContainer" type="VBoxContainer" parent="BarraSuperior/FilaIndicadores" unique_id=2143938707]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BarraSuperior/FilaIndicadores/VBoxContainer" unique_id=1665151609]
+layout_mode = 2
+
+[node name="LblSoberania" type="Label" parent="BarraSuperior/FilaIndicadores/VBoxContainer/HBoxContainer" unique_id=2144980138]
 layout_mode = 2
 text = "Soberanía: 20.0%"
+label_settings = SubResource("LabelSettings_y33vu")
 
-[node name="BarSoberania" type="ProgressBar" parent="BarraSuperior/VBoxContainer/FilaIndicadores" unique_id=114700611]
+[node name="BarSoberania" type="ProgressBar" parent="BarraSuperior/FilaIndicadores/VBoxContainer/HBoxContainer" unique_id=114700611]
+modulate = Color(0.08627451, 1, 1, 1)
 custom_minimum_size = Vector2(140, 22)
 layout_mode = 2
 value = 20.0
 
-[node name="LblDinero" type="Label" parent="BarraSuperior/VBoxContainer/FilaIndicadores" unique_id=449950574]
+[node name="LblDinero" type="Label" parent="BarraSuperior/FilaIndicadores/VBoxContainer/HBoxContainer" unique_id=449950574]
 layout_mode = 2
 text = "Dinero: $300"
+label_settings = SubResource("LabelSettings_esxmk")
 
-[node name="LblCiencia" type="Label" parent="BarraSuperior/VBoxContainer/FilaIndicadores" unique_id=491958477]
+[node name="LblCiencia" type="Label" parent="BarraSuperior/FilaIndicadores/VBoxContainer/HBoxContainer" unique_id=491958477]
 layout_mode = 2
 text = "Ciencia: Tier 1 (x1.00)"
+label_settings = SubResource("LabelSettings_1ak0m")
 
-[node name="LblAstilleros" type="Label" parent="BarraSuperior/VBoxContainer/FilaIndicadores" unique_id=1309701417]
+[node name="LblAstilleros" type="Label" parent="BarraSuperior/FilaIndicadores/VBoxContainer/HBoxContainer" unique_id=1309701417]
 layout_mode = 2
 text = "Fletes Mar: 1 / 1 Astilleros"
+label_settings = SubResource("LabelSettings_sjjlt")
 
-[node name="LblMagdalena" type="Label" parent="BarraSuperior/VBoxContainer/FilaIndicadores" unique_id=863346503]
+[node name="LblMagdalena" type="Label" parent="BarraSuperior/FilaIndicadores/VBoxContainer" unique_id=863346503]
 layout_mode = 2
 text = "Canal Magdalena: 0% (+0% Sob)"
+label_settings = SubResource("LabelSettings_c0kiu")
 
-[node name="FilaAvisos" type="HBoxContainer" parent="BarraSuperior/VBoxContainer" unique_id=1308716607]
+[node name="FilaAvisos" type="HBoxContainer" parent="BarraSuperior/FilaIndicadores/VBoxContainer" unique_id=1308716607]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="LblModoRuta" type="Label" parent="BarraSuperior/VBoxContainer/FilaAvisos" unique_id=586357583]
+[node name="LblModoRuta" type="Label" parent="BarraSuperior/FilaIndicadores/VBoxContainer/FilaAvisos" unique_id=586357583]
 modulate = Color(1, 0.85, 0.2, 1)
 layout_mode = 2
 
-[node name="LblLog" type="Label" parent="BarraSuperior/VBoxContainer/FilaAvisos" unique_id=800440359]
+[node name="LblLog" type="Label" parent="BarraSuperior/FilaIndicadores/VBoxContainer/FilaAvisos" unique_id=800440359]
 layout_mode = 2
 text = "Objetivo: Alcanzar 100% de Soberanía Nacional (Dragar Canal Magdalena otorga +70% fijo)."
 
 [node name="PanelEvento" type="PanelContainer" parent="." unique_id=1258489138]
 visible = false
-offset_left = 360.0
-offset_top = 110.0
-offset_right = 800.0
-offset_bottom = 320.0
+offset_left = 249.0
+offset_top = 150.0
+offset_right = 689.0
+offset_bottom = 360.0
 
 [node name="VBoxEvento" type="VBoxContainer" parent="PanelEvento" unique_id=2036466039]
 layout_mode = 2
@@ -107,21 +141,25 @@ theme_override_constants/separation = 6
 
 [node name="BtnOpcion1" type="Button" parent="PanelEvento/VBoxEvento/OpcionesContainer" unique_id=1417444240]
 layout_mode = 2
+theme = ExtResource("2_esxmk")
 text = "Opción 1"
 
 [node name="BtnOpcion2" type="Button" parent="PanelEvento/VBoxEvento/OpcionesContainer" unique_id=487949295]
 layout_mode = 2
+theme = ExtResource("2_esxmk")
 text = "Opción 2"
 
 [node name="BtnOpcion3" type="Button" parent="PanelEvento/VBoxEvento/OpcionesContainer" unique_id=1051204744]
 layout_mode = 2
+theme = ExtResource("2_esxmk")
 text = "Opción 3"
 
 [node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=2005983210]
-offset_left = 869.0
-offset_top = 58.0
-offset_right = 1124.0
-offset_bottom = 303.0
+offset_left = 855.0
+offset_top = 102.0
+offset_right = 1144.0
+offset_bottom = 406.0
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_sjjlt")
 title = "INVERSIONES"
 
 [node name="PanelContainer" type="PanelContainer" parent="FoldableContainer" unique_id=1052720966]
@@ -133,31 +171,44 @@ size_flags_vertical = 8
 
 [node name="BtnInvCiencia" type="Button" parent="FoldableContainer/PanelContainer/Botones" unique_id=842275756]
 layout_mode = 2
+theme = ExtResource("2_esxmk")
+theme_override_colors/font_color = Color(0.4392157, 1, 0.5137255, 1)
 text = "Invertir Ciencia ($100)"
 
 [node name="BtnInvMagdalena" type="Button" parent="FoldableContainer/PanelContainer/Botones" unique_id=163070629]
 layout_mode = 2
+theme = ExtResource("2_esxmk")
+theme_override_colors/font_color = Color(0.22352941, 0.8745098, 0.8745098, 1)
 text = "Dragar Magdalena +20% ($150)"
 
 [node name="BtnInvAstillero" type="Button" parent="FoldableContainer/PanelContainer/Botones" unique_id=697376044]
 layout_mode = 2
+theme = ExtResource("2_esxmk")
+theme_override_colors/font_color = Color(0.8745098, 0.40784314, 0.8745098, 1)
 text = "Construir Astillero ($120)"
 
 [node name="BtnRutaTierra" type="Button" parent="FoldableContainer/PanelContainer/Botones" unique_id=104476057]
 layout_mode = 2
+theme = ExtResource("2_esxmk")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.39607844, 1)
 text = "+ Nueva Ruta Tierra"
 
 [node name="BtnRutaMar" type="Button" parent="FoldableContainer/PanelContainer/Botones" unique_id=851942328]
 layout_mode = 2
+theme = ExtResource("2_esxmk")
+theme_override_colors/font_color = Color(0.8745098, 0.46666667, 0.8745098, 1)
 text = "+ Nueva Ruta Mar"
 
 [node name="BtnCancelarRuta" type="Button" parent="FoldableContainer/PanelContainer/Botones" unique_id=59613351]
 visible = false
 layout_mode = 2
+theme = ExtResource("2_esxmk")
 text = "Cancelar Conexión"
 
 [node name="BtnEventoTest" type="Button" parent="FoldableContainer/PanelContainer/Botones" unique_id=351094319]
+visible = false
 layout_mode = 2
+theme = ExtResource("2_esxmk")
 text = "Disparar Evento Ahora"
 
 [connection signal="pressed" from="PanelEvento/VBoxEvento/OpcionesContainer/BtnOpcion1" to="." method="_on_btn_opcion_1_pressed"]
