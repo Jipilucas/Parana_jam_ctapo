@@ -20,17 +20,17 @@ func _ready() -> void:
 		comandos = entidad.controlador
 
 	if lbl_nombre == null:
-		lbl_nombre = get_node_or_null("PanelContainer/VBoxContainer/Nombre") as Label
+		lbl_nombre = get_node_or_null("FoldableContainer/PanelContainer/VBoxContainer/Nombre") as Label
 	if lbl_estado == null:
-		lbl_estado = get_node_or_null("PanelContainer/VBoxContainer/Estado") as Label
+		lbl_estado = get_node_or_null("FoldableContainer/PanelContainer/VBoxContainer/Estado") as Label
 	if lbl_input == null:
-		lbl_input = get_node_or_null("PanelContainer/VBoxContainer/Stock_input") as Label
+		lbl_input = get_node_or_null("FoldableContainer/PanelContainer/VBoxContainer/Stock_input") as Label
 	if lbl_output == null:
-		lbl_output = get_node_or_null("PanelContainer/VBoxContainer/Stock_output") as Label
+		lbl_output = get_node_or_null("FoldableContainer/PanelContainer/VBoxContainer/Stock_output") as Label
 	if btn_accion_slot == null:
-		btn_accion_slot = get_node_or_null("PanelContainer/VBoxContainer/BtnAccionSlot") as Button
+		btn_accion_slot = get_node_or_null("FoldableContainer/PanelContainer/VBoxContainer/BtnAccionSlot") as Button
 	if btn_conectar == null:
-		btn_conectar = get_node_or_null("PanelContainer/VBoxContainer/BtnConectar") as Button
+		btn_conectar = get_node_or_null("FoldableContainer/PanelContainer/VBoxContainer/BtnConectar") as Button
 
 
 func _process(_delta: float) -> void:
@@ -123,3 +123,14 @@ func _on_btn_conectar_pressed() -> void:
 	var gestor := get_tree().get_first_node_in_group("gestor_rutas") as GestorRutas
 	if gestor:
 		gestor.registrar_clic_en_productor(entidad)
+
+
+func _on_texture_button_pressed() -> void:
+	var folder : FoldableContainer = $FoldableContainer
+	if folder.folded: 
+		folder.folded = false 
+		return
+	if !folder.folded: 
+		folder.folded = true 
+		return
+	pass # Replace with function body.

@@ -169,16 +169,17 @@ intervalo_rutina = 3.5
 rutina = Array[ExtResource("4_dtujo")]([SubResource("Resource_cmd_consumir"), SubResource("Resource_cmd_esperar_2s"), SubResource("Resource_cmd_producir")])
 
 [node name="Datos" parent="." unique_id=565952476 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("8_nqef2")]
-offset_left = -95.0
-offset_top = -239.0
-offset_right = -95.0
-offset_bottom = -239.0
+offset_left = -91.0
+offset_top = -260.0
+offset_right = -91.0
+offset_bottom = -260.0
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
 metadata/_edit_use_anchors_ = true
 
 [node name="SpriteLogistica" type="Sprite2D" parent="." unique_id=1146333627 node_paths=PackedStringArray("padre")]
-scale = Vector2(0.52082765, 0.46854603)
+position = Vector2(0, 75)
+scale = Vector2(0.5847154, 0.6013636)
 texture = ExtResource("9_8mdpq")
 script = ExtResource("10_qxqvv")
 padre = NodePath("..")
@@ -187,10 +188,9 @@ padre = NodePath("..")
 texture = ExtResource("11_vssv3")
 
 [node name="LabelRegalias" type="Label" parent="." unique_id=237896836]
-offset_left = 181.0
-offset_top = -61.0
-offset_right = 269.0
-offset_bottom = 7.0
+offset_left = 186.0
+offset_right = 274.0
+offset_bottom = 68.0
 text = "- $10"
 label_settings = SubResource("LabelSettings_m5784")
 horizontal_alignment = 1
@@ -202,10 +202,10 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("12_dtujo")
 
 [node name="LabelSoberania" type="Label" parent="." unique_id=292719946]
-offset_left = 187.0
-offset_top = 7.0
-offset_right = 275.0
-offset_bottom = 75.0
+offset_left = 192.0
+offset_top = 68.0
+offset_right = 280.0
+offset_bottom = 136.0
 text = "%10"
 label_settings = SubResource("LabelSettings_8mdpq")
 horizontal_alignment = 1

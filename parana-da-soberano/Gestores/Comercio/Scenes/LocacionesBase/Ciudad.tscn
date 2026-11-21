@@ -154,6 +154,7 @@ _data = {
 }
 
 [node name="Ciudad" type="Node2D" unique_id=2002332135 node_paths=PackedStringArray("controlador", "anim_player", "label_regalias", "label_soberania")]
+position = Vector2(0, 7)
 script = ExtResource("1_u5aes")
 config = SubResource("Cfg_IndPropia")
 controlador = NodePath("ControladorComandos")
@@ -170,24 +171,25 @@ rutina = Array[ExtResource("4_rrami")]([SubResource("Resource_cmd_consumir"), Su
 
 [node name="Datos" parent="." unique_id=565952476 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("8_osrts")]
 offset_left = -95.0
-offset_top = -239.0
+offset_top = -266.0
 offset_right = -95.0
-offset_bottom = -239.0
+offset_bottom = -266.0
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
 metadata/_edit_use_anchors_ = true
 
 [node name="SpriteLogistica" type="Sprite2D" parent="." unique_id=1146333627 node_paths=PackedStringArray("padre")]
-scale = Vector2(0.2664242, 0.26021826)
+position = Vector2(0, 47)
+scale = Vector2(0.35570636, 0.37790537)
 texture = ExtResource("9_u5aes")
 script = ExtResource("10_knytr")
 padre = NodePath("..")
 
 [node name="LabelRegalias" type="Label" parent="." unique_id=512682862]
-offset_left = 181.0
-offset_top = -61.0
-offset_right = 269.0
-offset_bottom = 7.0
+offset_left = 208.0
+offset_top = -23.0
+offset_right = 296.0
+offset_bottom = 45.0
 text = "- $10"
 label_settings = SubResource("LabelSettings_u5aes")
 horizontal_alignment = 1
@@ -199,10 +201,10 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("11_tja4b")
 
 [node name="LabelSoberania" type="Label" parent="." unique_id=999462089]
-offset_left = 187.0
-offset_top = 7.0
-offset_right = 275.0
-offset_bottom = 75.0
+offset_left = 214.0
+offset_top = 45.0
+offset_right = 302.0
+offset_bottom = 113.0
 text = "%10"
 label_settings = SubResource("LabelSettings_r5jky")
 horizontal_alignment = 1

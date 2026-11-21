@@ -2,6 +2,20 @@
 
 [ext_resource type="Script" uid="uid://b7ce7kjmsqnw0" path="res://Gestores/UI_Flete.gd" id="1_d8hxv"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_icor3"]
+font_size = 20
+font_color = Color(0.15686275, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d8hxv"]
+font_size = 10
+font_color = Color(0.66245234, 0.66245234, 0.6624523, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mm4qd"]
+font_color = Color(0.15686275, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7psdi"]
+font_color = Color(0.15686275, 1, 1, 1)
+
 [node name="Datos" type="Control" unique_id=338601756]
 layout_mode = 3
 anchors_preset = 0
@@ -9,38 +23,55 @@ offset_right = 175.0
 offset_bottom = 120.0
 script = ExtResource("1_d8hxv")
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=881920112]
+[node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=1931528576]
 layout_mode = 0
-offset_right = 175.0
-offset_bottom = 120.0
+offset_right = 24.0
+offset_bottom = 32.0
+title = "Abrir"
+title_position = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=286462393]
+[node name="PanelContainer" type="PanelContainer" parent="FoldableContainer" unique_id=881920112]
 layout_mode = 2
 
-[node name="Nombre" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1388469997]
+[node name="VBoxContainer" type="VBoxContainer" parent="FoldableContainer/PanelContainer" unique_id=286462393]
+layout_mode = 2
+
+[node name="Nombre" type="Label" parent="FoldableContainer/PanelContainer/VBoxContainer" unique_id=1388469997]
 layout_mode = 2
 text = "[TIERRA] Ruta"
+label_settings = SubResource("LabelSettings_icor3")
 
-[node name="Estado" type="Label" parent="PanelContainer/VBoxContainer" unique_id=850584957]
+[node name="Estado" type="Label" parent="FoldableContainer/PanelContainer/VBoxContainer" unique_id=850584957]
 layout_mode = 2
 text = "Estado: Activa"
+label_settings = SubResource("LabelSettings_d8hxv")
 
-[node name="Carga actual" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1919736560]
+[node name="Carga actual" type="Label" parent="FoldableContainer/PanelContainer/VBoxContainer" unique_id=1919736560]
 layout_mode = 2
 text = "Carga: 0 / 10"
+label_settings = SubResource("LabelSettings_mm4qd")
 
-[node name="CostoViaje" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1919736561]
+[node name="CostoViaje" type="Label" parent="FoldableContainer/PanelContainer/VBoxContainer" unique_id=1919736561]
 layout_mode = 2
 text = "Costo viaje: $2"
+label_settings = SubResource("LabelSettings_7psdi")
 
-[node name="BtnToggleRuta" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1919736562]
+[node name="BtnToggleRuta" type="Button" parent="FoldableContainer/PanelContainer/VBoxContainer" unique_id=1919736562]
 layout_mode = 2
 text = "Habilitar / Pausar"
 
-[node name="BtnEliminarEnemigo" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1919736563]
+[node name="BtnEliminarEnemigo" type="Button" parent="FoldableContainer/PanelContainer/VBoxContainer" unique_id=1919736563]
 visible = false
 layout_mode = 2
 text = "Eliminar ($100)"
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/BtnToggleRuta" to="." method="_on_btn_toggle_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/BtnEliminarEnemigo" to="." method="_on_btn_eliminar_pressed"]
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1890377209]
+layout_mode = 0
+offset_left = -9.0
+offset_top = 147.0
+offset_right = 184.0
+offset_bottom = 312.0
+
+[connection signal="pressed" from="FoldableContainer/PanelContainer/VBoxContainer/BtnToggleRuta" to="." method="_on_btn_toggle_pressed"]
+[connection signal="pressed" from="FoldableContainer/PanelContainer/VBoxContainer/BtnEliminarEnemigo" to="." method="_on_btn_eliminar_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

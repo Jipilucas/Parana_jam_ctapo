@@ -29,6 +29,8 @@ func cancelar_modo_conexion() -> void:
 
 
 func registrar_clic_en_productor(nodo: Productor) -> void:
+	
+	
 	if not modo_conectar_activo or nodo == null:
 		return
 
@@ -46,6 +48,13 @@ func registrar_clic_en_productor(nodo: Productor) -> void:
 
 
 func crear_ruta_en_ejecucion(origen: Productor, destino: Productor, tipo: Flete.TipoFlete) -> Flete:
+	if tipo == Flete.TipoFlete.TIERRA:
+		if origen.config.tipo_entidad == ConfigLogistica.TipoEntidad.PUERTO and origen.config.tipo_entidad == ConfigLogistica.TipoEntidad.PUERTO:
+			Partida.mensaje_log.emit("Un mionca por el agua? Tal loco?")
+			return
+	
+	
+	
 	if tipo == Flete.TipoFlete.MAR and not Partida.puede_activar_flete_mar():
 		Partida.mensaje_log.emit("No hay Astilleros Nacionales disponibles para abrir nueva ruta marítima.")
 		return null

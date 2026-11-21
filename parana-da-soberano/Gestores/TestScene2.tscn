@@ -139,7 +139,7 @@ texture = ExtResource("3_y4law")
 metadata/_edit_lock_ = true
 
 [node name="GestorRutas" type="Node2D" parent="." unique_id=1310782407]
-position = Vector2(-7, 0)
+position = Vector2(1315, 2936)
 script = ExtResource("13_8jnw6")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=992948584]
@@ -167,11 +167,6 @@ config = SubResource("Resource_4n6vb")
 [node name="Puerto" parent="Node2D" unique_id=777391857 instance=ExtResource("9_q3ccy")]
 position = Vector2(-628, -1194)
 config = SubResource("Resource_5gohb")
-
-[node name="FleteTierra2" parent="Node2D" unique_id=604154332 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
-position = Vector2(-1227, -1507)
-Remitente = NodePath("../Industria")
-Destinatario = NodePath("../Puerto")
 
 [node name="Puerto2" parent="Node2D" unique_id=1879632945 instance=ExtResource("9_q3ccy")]
 position = Vector2(-191, 102)

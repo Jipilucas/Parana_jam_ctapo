@@ -106,7 +106,7 @@ intervalo_rutina = 2.0
 rutina = Array[ExtResource("3_rh0qf")]([SubResource("Resource_cmd_recibir"), SubResource("Resource_cmd_esperar_1s"), SubResource("Resource_cmd_despachar")])
 
 [node name="LineaRuta" type="Line2D" parent="." unique_id=953007215]
-default_color = Color(0.917339, 0.646208, 1.1551381e-06, 1)
+default_color = Color(0.91764706, 0.64705884, 0, 1)
 texture = ExtResource("7_pdn4k")
 texture_mode = 1
 
@@ -116,9 +116,10 @@ comandos = NodePath("../ControladorComandos")
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1417223891]
-position = Vector2(83, 199.99997)
+position = Vector2(76, 230.00002)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("9_kfmjw")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D" unique_id=904017370]
 texture = ExtResource("10_5ht2y")
@@ -128,10 +129,10 @@ libraries/ = SubResource("AnimationLibrary_bqj5f")
 autoplay = &"mostrar"
 
 [node name="Label" type="Label" parent="." unique_id=869565256]
-offset_left = 224.0
-offset_top = 141.0
-offset_right = 312.0
-offset_bottom = 209.0
+offset_left = 225.0
+offset_top = 189.0
+offset_right = 313.0
+offset_bottom = 257.0
 text = "- $10"
 label_settings = SubResource("LabelSettings_fcui0")
 horizontal_alignment = 1

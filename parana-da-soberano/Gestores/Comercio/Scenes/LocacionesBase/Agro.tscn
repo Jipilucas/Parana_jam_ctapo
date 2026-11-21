@@ -167,15 +167,16 @@ rutina = Array[ExtResource("4_rs8l2")]([SubResource("Resource_cmd_consumir"), Su
 
 [node name="Datos" parent="." unique_id=565952476 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("8_itluf")]
 offset_left = -95.0
-offset_top = -239.0
+offset_top = -281.0
 offset_right = -95.0
-offset_bottom = -239.0
+offset_bottom = -281.0
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
 metadata/_edit_use_anchors_ = true
 
 [node name="SpriteLogistica" type="Sprite2D" parent="." unique_id=1146333627 node_paths=PackedStringArray("padre")]
-scale = Vector2(0.3513459, 0.31461495)
+position = Vector2(0, 27.000002)
+scale = Vector2(0.5643859, 0.48266938)
 texture = ExtResource("9_78cog")
 script = ExtResource("10_v17u1")
 padre = NodePath("..")

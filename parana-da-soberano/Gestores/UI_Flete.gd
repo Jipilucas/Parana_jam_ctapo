@@ -20,17 +20,17 @@ func _ready() -> void:
 		comandos = entidad.controlador
 
 	if lbl_nombre == null:
-		lbl_nombre = get_node_or_null("PanelContainer/VBoxContainer/Nombre") as Label
+		lbl_nombre = get_node_or_null("FoldableContainer/PanelContainer/VBoxContainer/Nombre") as Label
 	if lbl_estado == null:
-		lbl_estado = get_node_or_null("PanelContainer/VBoxContainer/Estado") as Label
+		lbl_estado = get_node_or_null("FoldableContainer/PanelContainer/VBoxContainer/Estado") as Label
 	if lbl_carga == null:
-		lbl_carga = get_node_or_null("PanelContainer/VBoxContainer/Carga actual") as Label
+		lbl_carga = get_node_or_null("FoldableContainer/PanelContainer/VBoxContainer/Carga actual") as Label
 	if lbl_costos == null:
-		lbl_costos = get_node_or_null("PanelContainer/VBoxContainer/CostoViaje") as Label
+		lbl_costos = get_node_or_null("FoldableContainer/PanelContainer/VBoxContainer/CostoViaje") as Label
 	if btn_toggle_ruta == null:
-		btn_toggle_ruta = get_node_or_null("PanelContainer/VBoxContainer/BtnToggleRuta") as Button
+		btn_toggle_ruta = get_node_or_null("FoldableContainer/PanelContainer/VBoxContainer/BtnToggleRuta") as Button
 	if btn_eliminar_enemigo == null:
-		btn_eliminar_enemigo = get_node_or_null("PanelContainer/VBoxContainer/BtnEliminarEnemigo") as Button
+		btn_eliminar_enemigo = get_node_or_null("FoldableContainer/PanelContainer/VBoxContainer/BtnEliminarEnemigo") as Button
 
 
 func _process(_delta: float) -> void:
@@ -93,3 +93,14 @@ func _on_btn_eliminar_pressed() -> void:
 	if entidad == null:
 		return
 	entidad.eliminar_flete_enemigo()
+
+
+func _on_texture_button_pressed() -> void:
+	var folder : FoldableContainer = $FoldableContainer
+	if folder.folded: 
+		folder.folded = false 
+		return
+	if !folder.folded: 
+		folder.folded = true 
+		return
+	pass # Replace with function body.
