@@ -7,10 +7,10 @@
 [ext_resource type="Script" uid="uid://dt57u64g2m08c" path="res://Gestores/Comandos/Commands/comando_esperar.gd" id="5_gxrb3"]
 [ext_resource type="Script" uid="uid://dcnsdbcuijdro" path="res://Gestores/Comandos/Commands/Comando_Despachar.gd" id="6_whox4"]
 [ext_resource type="PackedScene" uid="uid://bsofv2qtgrcml" path="res://Gestores/UI/datos-felte.tscn" id="7_06x1j"]
-[ext_resource type="Texture2D" uid="uid://d11erkxc4part" path="res://Assets/Texture_ruta.png" id="7_eoyjp"]
-[ext_resource type="Texture2D" uid="uid://b6skewlygrtp1" path="res://Assets/fondo_blanco.png" id="9_q7lqk"]
-[ext_resource type="Texture2D" uid="uid://dsm7tajpuijas" path="res://Assets/regalias_2.png" id="9_u1jr2"]
-[ext_resource type="Texture2D" uid="uid://b4vblhoqrx2oy" path="res://Assets/flete_maritimo_1.png" id="10_gxrb3"]
+[ext_resource type="Texture2D" uid="uid://d11erkxc4part" path="res://Assets/Images/Texture_ruta.png" id="7_eoyjp"]
+[ext_resource type="Texture2D" uid="uid://b6skewlygrtp1" path="res://Assets/Images/fondo_blanco.png" id="9_q7lqk"]
+[ext_resource type="Texture2D" uid="uid://dsm7tajpuijas" path="res://Assets/Images/regalias_2.png" id="9_u1jr2"]
+[ext_resource type="Texture2D" uid="uid://b4vblhoqrx2oy" path="res://Assets/Images/flete_maritimo_1.png" id="10_gxrb3"]
 
 [sub_resource type="Resource" id="Resource_cmd_recibir"]
 script = ExtResource("4_q7lqk")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjmng0vpi3481"
-path="res://.godot/imported/regalias_1.png-1de6526bfa6f4878032fdf963d66e6f6.ctex"
+uid="uid://bj44bqdo4lfyx"
+path="res://.godot/imported/puerto_1.png-3bcd09ace841acdb368ac8ea74371c27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/regalias_1.png"
-dest_files=["res://.godot/imported/regalias_1.png-1de6526bfa6f4878032fdf963d66e6f6.ctex"]
+source_file="res://Assets/Images/puerto_1.png"
+dest_files=["res://.godot/imported/puerto_1.png-3bcd09ace841acdb368ac8ea74371c27.ctex"]
 
 [params]
 

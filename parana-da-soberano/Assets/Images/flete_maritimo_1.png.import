@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ev75fka5wr8b"
-path="res://.godot/imported/mapa.png-a83a027f80aa2c4cacf21f9a1e815c90.ctex"
+uid="uid://b4vblhoqrx2oy"
+path="res://.godot/imported/flete_maritimo_1.png-fa2291c6dcbc0e6932052a5b5e97f5f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/mapa.png"
-dest_files=["res://.godot/imported/mapa.png-a83a027f80aa2c4cacf21f9a1e815c90.ctex"]
+source_file="res://Assets/Images/flete_maritimo_1.png"
+dest_files=["res://.godot/imported/flete_maritimo_1.png-fa2291c6dcbc0e6932052a5b5e97f5f8.ctex"]
 
 [params]
 

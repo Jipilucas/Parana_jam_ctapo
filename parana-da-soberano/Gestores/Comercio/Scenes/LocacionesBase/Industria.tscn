@@ -8,11 +8,11 @@
 [ext_resource type="Script" uid="uid://dt57u64g2m08c" path="res://Gestores/Comandos/Commands/comando_esperar.gd" id="6_56np0"]
 [ext_resource type="Script" uid="uid://cef7imth31asg" path="res://Gestores/Comandos/Commands/Comando_producir.gd" id="7_vch6l"]
 [ext_resource type="PackedScene" uid="uid://dgfv7uaavlrv1" path="res://Gestores/UI/datos.tscn" id="8_0btxc"]
-[ext_resource type="Texture2D" uid="uid://b6skewlygrtp1" path="res://Assets/fondo_blanco.png" id="9_ia47v"]
+[ext_resource type="Texture2D" uid="uid://b6skewlygrtp1" path="res://Assets/Images/fondo_blanco.png" id="9_ia47v"]
 [ext_resource type="Script" uid="uid://n5q154m8q2xd" path="res://Gestores/Comercio/Scenes/sprite_logistica.gd" id="10_2ux4y"]
-[ext_resource type="Texture2D" uid="uid://0pv4y2ijbgof" path="res://Assets/industria_1.png" id="11_1h1k6"]
-[ext_resource type="Texture2D" uid="uid://dsm7tajpuijas" path="res://Assets/regalias_2.png" id="11_fwkes"]
-[ext_resource type="Texture2D" uid="uid://c32la5pbmfn28" path="res://Assets/soberania_2.png" id="12_ia47v"]
+[ext_resource type="Texture2D" uid="uid://0pv4y2ijbgof" path="res://Assets/Images/industria_1.png" id="11_1h1k6"]
+[ext_resource type="Texture2D" uid="uid://dsm7tajpuijas" path="res://Assets/Images/regalias_2.png" id="11_fwkes"]
+[ext_resource type="Texture2D" uid="uid://c32la5pbmfn28" path="res://Assets/Images/soberania_2.png" id="12_ia47v"]
 
 [sub_resource type="Resource" id="Cfg_IndPropia"]
 script = ExtResource("2_8r52i")

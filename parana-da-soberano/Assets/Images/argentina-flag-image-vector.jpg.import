@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d11erkxc4part"
-path="res://.godot/imported/Texture_ruta.png-1cca87e4f459775cbd88a9e709c5ab7b.ctex"
+uid="uid://di6q262heagkt"
+path="res://.godot/imported/argentina-flag-image-vector.jpg-6ddc2c675fdff9b150080a7c1072d948.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Texture_ruta.png"
-dest_files=["res://.godot/imported/Texture_ruta.png-1cca87e4f459775cbd88a9e709c5ab7b.ctex"]
+source_file="res://Assets/Images/argentina-flag-image-vector.jpg"
+dest_files=["res://.godot/imported/argentina-flag-image-vector.jpg-6ddc2c675fdff9b150080a7c1072d948.ctex"]
 
 [params]
 

@@ -1,0 +1,14 @@
+[gd_resource type="Shader" format=3 uid="uid://dxse5mg0bs2mg"]
+
+[resource]
+code = "shader_type spatial;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+	VERTEX.y += sin(TIME + VERTEX.x);
+}
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"

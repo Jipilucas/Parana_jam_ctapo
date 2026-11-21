@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dpc1ge8771ds2"]
+
+[ext_resource type="Texture2D" uid="uid://di6q262heagkt" path="res://Assets/Images/argentina-flag-image-vector.jpg" id="1_ad8qu"]
+[ext_resource type="Shader" uid="uid://50ix02vewfrx" path="res://Assets/Shaders/flameo_bandera.gdshader" id="1_vtbsh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtbsh"]
+shader = ExtResource("1_vtbsh")
+shader_parameter/wave_speed = 5.0
+shader_parameter/wave_frequency = 10.0
+shader_parameter/wave_amplitude = 0.05
+shader_parameter/diagonal_tilt = 1.5
+shader_parameter/pin_left = 1.0
+shader_parameter/edge_padding = 0.08
+shader_parameter/shadow_strength = 0.22
+
+[node name="Argentina" type="Sprite2D" unique_id=1745868985]
+material = SubResource("ShaderMaterial_vtbsh")
+texture = ExtResource("1_ad8qu")

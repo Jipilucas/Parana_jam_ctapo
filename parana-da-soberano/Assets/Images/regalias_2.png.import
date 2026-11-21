@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dsm7tajpuijas"
-path="res://.godot/imported/regalias_2.png-69e8c9985ec5af7864a53b6d6f4656bc.ctex"
+path="res://.godot/imported/regalias_2.png-c3d4025085d496550083a7d3cb974330.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/regalias_2.png"
-dest_files=["res://.godot/imported/regalias_2.png-69e8c9985ec5af7864a53b6d6f4656bc.ctex"]
+source_file="res://Assets/Images/regalias_2.png"
+dest_files=["res://.godot/imported/regalias_2.png-c3d4025085d496550083a7d3cb974330.ctex"]
 
 [params]
 

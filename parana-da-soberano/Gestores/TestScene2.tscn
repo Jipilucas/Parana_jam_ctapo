@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://dnvqirv01aapp"]
 
+[ext_resource type="Texture2D" uid="uid://b7adhgen3odes" path="res://Assets/Images/mapa_c_agua.png" id="2_4n6vb"]
 [ext_resource type="Script" uid="uid://dawjvxehyvtl1" path="res://Gestores/Comercio/config_logistica.gd" id="2_ik08m"]
-[ext_resource type="Texture2D" uid="uid://ev75fka5wr8b" path="res://Assets/mapa.png" id="3_y4law"]
+[ext_resource type="Shader" uid="uid://dc1vdpgpsqli4" path="res://Assets/Shaders/rio_simple_v3.gdshader" id="3_4n6vb"]
+[ext_resource type="PackedScene" uid="uid://dpc1ge8771ds2" path="res://prefabs/Argentina.tscn" id="3_5gohb"]
 [ext_resource type="PackedScene" uid="uid://cppccqf8b5e4g" path="res://Gestores/Comercio/Scenes/LocacionesBase/Agro.tscn" id="6_s2r6c"]
 [ext_resource type="Script" uid="uid://co2o222mfulk" path="res://Gestores/camera_2d.gd" id="7_hal4f"]
 [ext_resource type="PackedScene" uid="uid://bn5371db6omwq" path="res://Gestores/Comercio/Scenes/LocacionesBase/Industria.tscn" id="7_mvvbc"]
@@ -12,6 +14,27 @@
 [ext_resource type="Script" uid="uid://vnivcbjgirr0" path="res://Gestores/Transportes/gestor_rutas.gd" id="13_8jnw6"]
 [ext_resource type="Script" uid="uid://lcofxuy56h4l" path="res://Gestores/Eventos/gestor_eventos.gd" id="14_py8nj"]
 [ext_resource type="PackedScene" uid="uid://bk57sjve4q578" path="res://Gestores/UI/hud_principal.tscn" id="15_w2vpa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bsbiv"]
+shader = ExtResource("3_4n6vb")
+shader_parameter/water_color = Color(0.13374737, 0.34937122, 0.6039227, 1)
+shader_parameter/line_color = Color(1.6749502e-05, 0.5903098, 0.8893759, 1)
+shader_parameter/line_count = 58.0
+shader_parameter/line_thickness = 0.01999999955296
+shader_parameter/flow_speed = 0.40000000596048
+shader_parameter/wave_amplitude = 2.0000000298024
+shader_parameter/wave_frequency = 32.0
+shader_parameter/sub_wave_amplitude = 0.03999999910594
+shader_parameter/sub_wave_frequency = 78.0
+shader_parameter/sub_wave_speed = 4.90000007301588
+shader_parameter/line_phase_shift = 0.0
+shader_parameter/mod_frequency = 73.0
+shader_parameter/mod_speed = 2.30000003427276
+shader_parameter/brightness_mod = 0.16
+shader_parameter/mod_tint = Color(0.55, 0.9, 1, 1)
+shader_parameter/tint_strength = 0.2500000037253
+shader_parameter/pulse_speed = 1.10000001639132
+shader_parameter/pulse_strength = 0.02999999932944
 
 [sub_resource type="Resource" id="Resource_xvdge"]
 script = ExtResource("2_ik08m")
@@ -123,20 +146,31 @@ impacto_soberania_enemigo = 0.0
 
 [node name="TestScene" type="Node2D" unique_id=1656906367]
 
+[node name="Mapa" type="Node2D" parent="." unique_id=1769207250]
+
+[node name="ColorRect" type="ColorRect" parent="Mapa" unique_id=488955323]
+material = SubResource("ShaderMaterial_bsbiv")
+offset_left = -4315.0
+offset_top = -6743.0
+offset_right = 2561.0
+offset_bottom = 5940.0
+
+[node name="MapaCAgua" type="Sprite2D" parent="Mapa" unique_id=731153155]
+position = Vector2(-877, -393)
+scale = Vector2(4, 4)
+texture = ExtResource("2_4n6vb")
+
 [node name="HUDPrincipal" parent="." unique_id=1888180789 node_paths=PackedStringArray("gestor_rutas", "gestor_eventos") instance=ExtResource("15_w2vpa")]
 gestor_rutas = NodePath("../GestorRutas")
 gestor_eventos = NodePath("../GestorEventos")
 
+[node name="Argentina" parent="." unique_id=1745868985 instance=ExtResource("3_5gohb")]
+position = Vector2(-5811, -1640)
+scale = Vector2(1.73, 1.73)
+
 [node name="GestorEventos" type="Node" parent="." unique_id=1845493683]
 script = ExtResource("14_py8nj")
 intervalo_eventos = 40.0
-
-[node name="MapaParana2" type="Sprite2D" parent="." unique_id=227241710]
-texture_filter = 5
-position = Vector2(-7, 0)
-scale = Vector2(4, 4)
-texture = ExtResource("3_y4law")
-metadata/_edit_lock_ = true
 
 [node name="GestorRutas" type="Node2D" parent="." unique_id=1310782407]
 position = Vector2(1315, 2936)

@@ -1,0 +1,33 @@
+shader_type canvas_item;
+
+// Shader 2D simple: lineas verticales onduladas tipo bandera que bajan como un rio.
+// Compatible con GL Compatibility, Mobile y Forward+ (0 lecturas de textura, sin noise).
+
+uniform vec4 water_color : source_color = vec4(0.24, 0.50, 0.82, 1.0);
+uniform vec4 line_color : source_color = vec4(0.68, 0.86, 1.0, 1.0);
+
+// Lineas verticales
+uniform float line_count : hint_range(1.0, 150.0, 1.0) = 30.0;
+uniform float line_thickness : hint_range(0.01, 0.8, 0.01) = 0.15;
+
+// Ondulamiento tipo bandera viajando hacia abajo
+uniform float flow_speed : hint_range(0.0, 15.0, 0.1) = 1.5;
+uniform float wave_amplitude : hint_range(0.0, 3.0, 0.05) = 0.45;
+uniform float wave_frequency : hint_range(1.0, 120.0, 1.0) = 45.0;
+
+void fragment() {
+	// 1. Onda tipo bandera a lo alto (Y) viajando hacia abajo (-TIME * flow_speed)
+	float onda = sin(UV.y * wave_frequency - TIME * flow_speed) * wave_amplitude;
+
+	// 2. Repetir lineas verticales a lo ancho (X) desplazadas por la onda
+	float pos_x = UV.x * line_count + onda;
+
+	// 3. Dibujar cada linea centrada en 0.5 con bordes suaves
+	float dist_centro = abs(fract(pos_x) - 0.5);
+	float mitad_grosor = line_thickness * 0.5;
+	float linea = smoothstep(mitad_grosor + 0.02, mitad_grosor, dist_centro);
+
+	// 4. Mezclar color del agua con el color de la linea
+	vec4 final_color = mix(water_color, line_color, linea);
+	COLOR = vec4(final_color.rgb, final_color.a * COLOR.a);
+}

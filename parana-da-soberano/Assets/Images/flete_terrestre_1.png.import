@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6skewlygrtp1"
-path="res://.godot/imported/fondo_blanco.png-3df631776f8a6a32176a823bdcd005ee.ctex"
+uid="uid://cl4gpmr4sv3ev"
+path="res://.godot/imported/flete_terrestre_1.png-b5675cc5afed0a26ffe8ac2b01bd6370.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/fondo_blanco.png"
-dest_files=["res://.godot/imported/fondo_blanco.png-3df631776f8a6a32176a823bdcd005ee.ctex"]
+source_file="res://Assets/Images/flete_terrestre_1.png"
+dest_files=["res://.godot/imported/flete_terrestre_1.png-b5675cc5afed0a26ffe8ac2b01bd6370.ctex"]
 
 [params]
 

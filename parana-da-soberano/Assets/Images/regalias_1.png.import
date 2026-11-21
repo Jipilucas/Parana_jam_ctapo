@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7bvdkcs8kyjj"
-path="res://.godot/imported/mapa parana.jpeg-4ca2fb9eef475c5e373e3fff5ec11ed3.ctex"
+uid="uid://bjmng0vpi3481"
+path="res://.godot/imported/regalias_1.png-2d48bfa8562ebc747f7986a8b247d6b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/mapa parana.jpeg"
-dest_files=["res://.godot/imported/mapa parana.jpeg-4ca2fb9eef475c5e373e3fff5ec11ed3.ctex"]
+source_file="res://Assets/Images/regalias_1.png"
+dest_files=["res://.godot/imported/regalias_1.png-2d48bfa8562ebc747f7986a8b247d6b8.ctex"]
 
 [params]
 

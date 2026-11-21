@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7adhgen3odes"
-path="res://.godot/imported/mapa_c_agua.png-9179ab65e0ebc506422b2d2e83532e18.ctex"
+uid="uid://jakycqyse3ct"
+path="res://.godot/imported/agro_1.png-8a029b1765266dec0261d2f3d845baa2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/mapa_c_agua.png"
-dest_files=["res://.godot/imported/mapa_c_agua.png-9179ab65e0ebc506422b2d2e83532e18.ctex"]
+source_file="res://Assets/Images/agro_1.png"
+dest_files=["res://.godot/imported/agro_1.png-8a029b1765266dec0261d2f3d845baa2.ctex"]
 
 [params]
 

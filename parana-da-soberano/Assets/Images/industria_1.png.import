@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://0pv4y2ijbgof"
-path="res://.godot/imported/industria_1.png-55a7527398c6e231a78de1fb99ba84f5.ctex"
+path="res://.godot/imported/industria_1.png-38a97049b546c86b4646356be81b9327.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/industria_1.png"
-dest_files=["res://.godot/imported/industria_1.png-55a7527398c6e231a78de1fb99ba84f5.ctex"]
+source_file="res://Assets/Images/industria_1.png"
+dest_files=["res://.godot/imported/industria_1.png-38a97049b546c86b4646356be81b9327.ctex"]
 
 [params]
 

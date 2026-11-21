@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dgfv7uaavlrv1" path="res://Gestores/UI/datos.tscn" id="8_osrts"]
 [ext_resource type="Texture2D" uid="uid://csk2teqirit24" path="res://Gestores/Comercio/Scenes/LocacionesBase/assets/Ciudad.png" id="9_u5aes"]
 [ext_resource type="Script" uid="uid://n5q154m8q2xd" path="res://Gestores/Comercio/Scenes/sprite_logistica.gd" id="10_knytr"]
-[ext_resource type="Texture2D" uid="uid://dsm7tajpuijas" path="res://Assets/regalias_2.png" id="11_tja4b"]
-[ext_resource type="Texture2D" uid="uid://c32la5pbmfn28" path="res://Assets/soberania_2.png" id="12_rrami"]
+[ext_resource type="Texture2D" uid="uid://dsm7tajpuijas" path="res://Assets/Images/regalias_2.png" id="11_tja4b"]
+[ext_resource type="Texture2D" uid="uid://c32la5pbmfn28" path="res://Assets/Images/soberania_2.png" id="12_rrami"]
 
 [sub_resource type="Resource" id="Cfg_IndPropia"]
 script = ExtResource("2_r5jky")

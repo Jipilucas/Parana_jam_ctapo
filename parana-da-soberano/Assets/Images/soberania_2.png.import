@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj44bqdo4lfyx"
-path="res://.godot/imported/puerto_1.png-8b3294faf5a583f2373d5ae874d1392b.ctex"
+uid="uid://c32la5pbmfn28"
+path="res://.godot/imported/soberania_2.png-2eea22879c195f0f12a4b88d1457de49.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/puerto_1.png"
-dest_files=["res://.godot/imported/puerto_1.png-8b3294faf5a583f2373d5ae874d1392b.ctex"]
+source_file="res://Assets/Images/soberania_2.png"
+dest_files=["res://.godot/imported/soberania_2.png-2eea22879c195f0f12a4b88d1457de49.ctex"]
 
 [params]
 
