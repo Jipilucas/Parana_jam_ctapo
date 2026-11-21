@@ -39,9 +39,9 @@ rutina = Array[ExtResource("4_i46wv")]([SubResource("Resource_cmd_consumir"), Su
 
 [node name="Datos" parent="." unique_id=565952476 node_paths=PackedStringArray("entidad", "comandos") instance=ExtResource("8_2ex76")]
 offset_left = -95.0
-offset_top = -239.0
+offset_top = -337.0
 offset_right = -95.0
-offset_bottom = -239.0
+offset_bottom = -337.0
 entidad = NodePath("..")
 comandos = NodePath("../ControladorComandos")
 metadata/_edit_use_anchors_ = true

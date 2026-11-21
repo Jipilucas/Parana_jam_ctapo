@@ -118,7 +118,7 @@ comandos = NodePath("../ControladorComandos")
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1417223891]
-position = Vector2(76, 266)
+position = Vector2(91, 348)
 scale = Vector2(0.44326514, 0.47590968)
 texture = ExtResource("9_q7lqk")
 metadata/_edit_group_ = true
@@ -127,10 +127,10 @@ metadata/_edit_group_ = true
 texture = ExtResource("10_gxrb3")
 
 [node name="Label" type="Label" parent="." unique_id=422596185]
-offset_left = 262.0
-offset_top = 233.0
-offset_right = 350.0
-offset_bottom = 301.0
+offset_left = 277.0
+offset_top = 315.0
+offset_right = 365.0
+offset_bottom = 383.0
 text = "- $10"
 label_settings = SubResource("LabelSettings_eoyjp")
 horizontal_alignment = 1
