@@ -13,6 +13,8 @@ config_version=5
 config/name="Parana_da_soberano"
 run/main_scene="uid://gmstlmsqfb1h"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://bx8naq188hbys"
 config/icon="uid://c32la5pbmfn28"
 
 [autoload]

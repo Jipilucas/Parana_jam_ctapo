@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://gmstlmsqfb1h"]
 
-[ext_resource type="Script" uid="uid://bvnwq36us1aip" path="res://prefabs/pantalla_inicio.gd" id="1_xveo3"]
+[ext_resource type="Script" uid="uid://bvnwq36us1aip" path="res://prefabs/pantallas/pantalla_inicio.gd" id="1_xveo3"]
 [ext_resource type="Texture2D" uid="uid://c32la5pbmfn28" path="res://Assets/Images/soberania_2.png" id="2_2enq0"]
 [ext_resource type="Theme" uid="uid://bdmxsqf50jslt" path="res://Configs/Marco3Base/Boton_marco_2.tres" id="3_flkwd"]
 [ext_resource type="FontFile" uid="uid://b2r2d5nc45n2i" path="res://Assets/Fuentes/SHO-CARD.TTF" id="4_2enq0"]
