@@ -1,0 +1,59 @@
+[gd_resource type="Theme" format=3 uid="uid://bdmxsqf50jslt"]
+
+[ext_resource type="Texture2D" uid="uid://c84edh0uxyk7" path="res://Assets/marco_2.png" id="1_qreb2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_06x1j"]
+texture = ExtResource("1_qreb2")
+texture_margin_left = 25.0
+texture_margin_top = 15.0
+texture_margin_right = 25.0
+texture_margin_bottom = 15.0
+modulate_color = Color(8.288057, 8.288057, 8.288057, 0.28235295)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q7lqk"]
+texture = ExtResource("1_qreb2")
+texture_margin_left = 25.0
+texture_margin_top = 15.0
+texture_margin_right = 25.0
+texture_margin_bottom = 15.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_whox4"]
+texture = ExtResource("1_qreb2")
+texture_margin_left = 25.0
+texture_margin_top = 15.0
+texture_margin_right = 25.0
+texture_margin_bottom = 15.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+modulate_color = Color(15.246237, 15.246237, 15.246237, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gxrb3"]
+texture = ExtResource("1_qreb2")
+texture_margin_left = 25.0
+texture_margin_top = 15.0
+texture_margin_right = 25.0
+texture_margin_bottom = 15.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+modulate_color = Color(0.022964265, 0.022964265, 0.022964265, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kgmht"]
+texture = ExtResource("1_qreb2")
+texture_margin_left = 25.0
+texture_margin_top = 15.0
+texture_margin_right = 25.0
+texture_margin_bottom = 15.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.056600068, 0.056600068, 0.056600068, 0.76862746)
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxTexture_06x1j")
+Button/styles/focus = SubResource("StyleBoxTexture_q7lqk")
+Button/styles/hover = SubResource("StyleBoxTexture_whox4")
+Button/styles/normal = SubResource("StyleBoxTexture_q7lqk")
+Button/styles/pressed = SubResource("StyleBoxTexture_gxrb3")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxTexture_kgmht")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxTexture_kgmht")
