@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="Parana_da_soberano"
-run/main_scene="uid://dnvqirv01aapp"
+run/main_scene="uid://gmstlmsqfb1h"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://c32la5pbmfn28"
 
 [autoload]
 
