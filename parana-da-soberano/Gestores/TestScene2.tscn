@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dnvqirv01aapp"]
 
+[ext_resource type="Texture2D" uid="uid://ccre4rj6bqikf" path="res://Assets/Images/olas.png" id="1_ajgmc"]
+[ext_resource type="Shader" uid="uid://13cp6tfcktio" path="res://Assets/Shaders/rio_textura_scroll.gdshader" id="1_ik08m"]
 [ext_resource type="Texture2D" uid="uid://b7adhgen3odes" path="res://Assets/Images/mapa_c_agua.png" id="2_4n6vb"]
 [ext_resource type="Script" uid="uid://dawjvxehyvtl1" path="res://Gestores/Comercio/config_logistica.gd" id="2_ik08m"]
 [ext_resource type="Shader" uid="uid://dc1vdpgpsqli4" path="res://Assets/Shaders/rio_simple_v3.gdshader" id="3_4n6vb"]
@@ -14,6 +16,17 @@
 [ext_resource type="Script" uid="uid://vnivcbjgirr0" path="res://Gestores/Transportes/gestor_rutas.gd" id="13_8jnw6"]
 [ext_resource type="Script" uid="uid://lcofxuy56h4l" path="res://Gestores/Eventos/gestor_eventos.gd" id="14_py8nj"]
 [ext_resource type="PackedScene" uid="uid://bk57sjve4q578" path="res://Gestores/UI/hud_principal.tscn" id="15_w2vpa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbfhj"]
+shader = ExtResource("1_ik08m")
+shader_parameter/tile_size = Vector2(600, 400)
+shader_parameter/wrap_uv = true
+shader_parameter/scroll_speed = 0.15000015124718047
+shader_parameter/fade_top = 0.0
+shader_parameter/fade_bottom = 0.0
+shader_parameter/wave_amplitude = 0.0
+shader_parameter/wave_frequency = 4.5000000670554
+shader_parameter/wave_speed = 6.800000399352161
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bsbiv"]
 shader = ExtResource("3_4n6vb")
@@ -148,7 +161,25 @@ impacto_soberania_enemigo = 0.0
 
 [node name="Mapa" type="Node2D" parent="." unique_id=1769207250]
 
+[node name="ColorRect2" type="ColorRect" parent="Mapa" unique_id=497619844]
+offset_left = -4315.0
+offset_top = -6743.0
+offset_right = 2561.0
+offset_bottom = 5940.0
+color = Color(0.3019608, 0.6313726, 0.53333336, 1)
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Mapa" unique_id=2000210974]
+modulate = Color(1, 1, 1, 0.9647059)
+material = SubResource("ShaderMaterial_dbfhj")
+offset_left = -4315.0
+offset_top = -6743.0
+offset_right = 2561.0
+offset_bottom = 5914.0
+texture = ExtResource("1_ajgmc")
+
 [node name="ColorRect" type="ColorRect" parent="Mapa" unique_id=488955323]
+visible = false
 material = SubResource("ShaderMaterial_bsbiv")
 offset_left = -4315.0
 offset_top = -6743.0
