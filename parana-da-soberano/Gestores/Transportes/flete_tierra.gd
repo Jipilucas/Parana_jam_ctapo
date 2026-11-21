@@ -40,6 +40,14 @@ enum TipoFlete {
 @export var linea_visual: Line2D
 @export var sprite_flete: Sprite2D
 
+@export_group("Visual de Ruta")
+@export var radio_circulo_origen: float = 16.0
+@export var tamano_flecha_destino: float = 34.0
+## Separación desde el centro del nodo origen para que el círculo no quede tapado por su sprite
+@export var margen_origen: float = 75.0
+## Separación desde el centro del nodo destino para que la flecha apunte al borde del sprite
+@export var margen_destino: float = 80.0
+
 @export_group("User Interface")
 @export var textlabel : Label
 @export var anim_player : AnimationPlayer
@@ -49,6 +57,10 @@ var ruta_habilitada: bool = false
 var faccion_actual: ConfigLogistica.Faccion = ConfigLogistica.Faccion.PROPIO
 var bien_transportado: ConfigLogistica.TipoBien = ConfigLogistica.TipoBien.CUALQUIERA
 var _registrado_en_astillero: bool = false
+var _punto_origen_dibujo: Vector2 = Vector2.ZERO
+var _punto_destino_dibujo: Vector2 = Vector2.ZERO
+var _dir_destino_dibujo: Vector2 = Vector2.RIGHT
+var _extremos_validos: bool = false
 
 
 func _ready() -> void:
@@ -140,6 +152,7 @@ func _actualizar_visual_faccion() -> void:
 			linea_visual.default_color = Color(0.2, 0.75, 1.0, 0.9)
 		if sprite_flete:
 			sprite_flete.modulate = Color(0.45, 1.0, 0.6, 1.0)
+	queue_redraw()
 
 
 func _sincronizar_controlador() -> void:
@@ -275,11 +288,73 @@ func Despachar(cant: int = Capacidad) -> void:
 
 func _actualizar_linea_visual() -> void:
 	if linea_visual == null or Remitente == null or Destinatario == null:
+		_extremos_validos = false
 		return
-	var p_origen: Vector2 = linea_visual.to_local(Remitente.global_position)
-	var p_destino: Vector2 = linea_visual.to_local(Destinatario.global_position)
-	linea_visual.points = PackedVector2Array([p_origen, p_destino])
+
+	var origen_local: Vector2 = to_local(Remitente.global_position)
+	var padre_local: Vector2 = Vector2.ZERO
+	var destino_local: Vector2 = to_local(Destinatario.global_position)
+
+	var vec_inicio: Vector2 = padre_local - origen_local
+	if vec_inicio.length_squared() < 0.001:
+		vec_inicio = destino_local - origen_local
+	var dist_inicio: float = vec_inicio.length()
+	var dir_inicio: Vector2 = vec_inicio / dist_inicio if dist_inicio > 0.001 else Vector2.RIGHT
+	var offset_ini: float = minf(margen_origen, dist_inicio * 0.4)
+	var p_inicio_local: Vector2 = origen_local + dir_inicio * offset_ini
+
+	var vec_fin: Vector2 = destino_local - padre_local
+	if vec_fin.length_squared() < 0.001:
+		vec_fin = destino_local - origen_local
+	var dist_fin: float = vec_fin.length()
+	var dir_fin: Vector2 = vec_fin / dist_fin if dist_fin > 0.001 else Vector2.RIGHT
+	var offset_fin: float = minf(margen_destino, dist_fin * 0.4)
+	var p_fin_local: Vector2 = destino_local - dir_fin * offset_fin
+
+	# Terminar el Line2D en la base de la flecha para que el grosor de la línea no sobresalga por la punta
+	var recorte_flecha: float = minf(tamano_flecha_destino * 0.8, p_fin_local.distance_to(padre_local) * 0.8)
+	var p_linea_fin_local: Vector2 = p_fin_local - dir_fin * recorte_flecha
+
+	var p_origen: Vector2 = linea_visual.to_local(to_global(p_inicio_local))
+	var p_padre: Vector2 = linea_visual.to_local(global_position)
+	var p_destino: Vector2 = linea_visual.to_local(to_global(p_linea_fin_local))
+	linea_visual.points = PackedVector2Array([p_origen, p_padre, p_destino])
+
 	if not ruta_habilitada:
 		linea_visual.modulate.a = 0.35
 	else:
 		linea_visual.modulate.a = 1.0
+
+	var cambio_dibujo: bool = (
+		not _extremos_validos
+		or not _punto_origen_dibujo.is_equal_approx(p_inicio_local)
+		or not _punto_destino_dibujo.is_equal_approx(p_fin_local)
+		or not _dir_destino_dibujo.is_equal_approx(dir_fin)
+	)
+	_punto_origen_dibujo = p_inicio_local
+	_punto_destino_dibujo = p_fin_local
+	_dir_destino_dibujo = dir_fin
+	_extremos_validos = true
+	if cambio_dibujo:
+		queue_redraw()
+
+
+func _draw() -> void:
+	if not _extremos_validos or linea_visual == null:
+		return
+
+	var color_actual: Color = linea_visual.default_color
+	color_actual.a *= linea_visual.modulate.a
+
+	# Círculo en el punto inicial
+	if radio_circulo_origen > 0.0:
+		draw_circle(_punto_origen_dibujo, radio_circulo_origen, color_actual)
+
+	# Flecha en el destino apuntando hacia el destinatario
+	if tamano_flecha_destino > 0.0:
+		var punta: Vector2 = _punto_destino_dibujo
+		var base: Vector2 = punta - _dir_destino_dibujo * tamano_flecha_destino
+		var perp: Vector2 = Vector2(-_dir_destino_dibujo.y, _dir_destino_dibujo.x)
+		var ala_izq: Vector2 = base + perp * (tamano_flecha_destino * 0.55)
+		var ala_der: Vector2 = base - perp * (tamano_flecha_destino * 0.55)
+		draw_colored_polygon(PackedVector2Array([punta, ala_izq, ala_der]), color_actual)
