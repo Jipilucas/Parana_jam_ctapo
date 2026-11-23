@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bsofv2qtgrcml" path="res://Gestores/UI/datos-felte.tscn" id="7_qxcm4"]
 [ext_resource type="Texture2D" uid="uid://dsm7tajpuijas" path="res://Assets/Images/regalias_2.png" id="9_bqj5f"]
 [ext_resource type="Texture2D" uid="uid://b6skewlygrtp1" path="res://Assets/Images/fondo_blanco.png" id="9_kfmjw"]
-[ext_resource type="Texture2D" uid="uid://cl4gpmr4sv3ev" path="res://Assets/Images/flete_terrestre_1.png" id="10_5ht2y"]
+[ext_resource type="Texture2D" uid="uid://dtrtix4bo88xw" path="res://Assets/Images/flete_terrestre_2.png" id="10_kfmjw"]
 
 [sub_resource type="Resource" id="Resource_cmd_recibir"]
 script = ExtResource("4_7xbp8")
@@ -123,7 +123,7 @@ texture = ExtResource("9_kfmjw")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D" unique_id=904017370]
-texture = ExtResource("10_5ht2y")
+texture = ExtResource("10_kfmjw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1637667438]
 libraries/ = SubResource("AnimationLibrary_bqj5f")
