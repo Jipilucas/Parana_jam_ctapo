@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dnvqirv01aapp"]
 
 [ext_resource type="Texture2D" uid="uid://ccre4rj6bqikf" path="res://Assets/Images/olas.png" id="1_ajgmc"]
+[ext_resource type="Script" uid="uid://c3jkre6iekw32" path="res://Gestores/config_partida.gd" id="1_dbfhj"]
 [ext_resource type="Shader" uid="uid://13cp6tfcktio" path="res://Assets/Shaders/rio_textura_scroll.gdshader" id="1_ik08m"]
 [ext_resource type="Texture2D" uid="uid://b7adhgen3odes" path="res://Assets/Images/mapa_c_agua.png" id="2_4n6vb"]
 [ext_resource type="Script" uid="uid://dawjvxehyvtl1" path="res://Gestores/Comercio/config_logistica.gd" id="2_ik08m"]
@@ -56,8 +57,8 @@ tipo_entidad = 2
 faccion_inicial = 2
 bien_entrada = 1
 cantidad_consumo = 10
-ganancia_propio = 10
-impacto_soberania_enemigo = -2.0
+ganancia_propio = 20
+impacto_soberania_enemigo = -3.0
 
 [sub_resource type="Resource" id="Resource_5gohb"]
 script = ExtResource("2_ik08m")
@@ -67,8 +68,7 @@ faccion_inicial = 1
 bien_entrada = 2
 cantidad_consumo = 10
 bien_salida = 2
-ganancia_propio = 10
-impacto_soberania_propio = 5.0
+ganancia_propio = 20
 impacto_soberania_enemigo = -2.0
 
 [sub_resource type="Resource" id="Resource_snfgk"]
@@ -78,7 +78,7 @@ tipo_entidad = 2
 faccion_inicial = 2
 bien_entrada = 1
 cantidad_consumo = 10
-ganancia_propio = 10
+ganancia_propio = 20
 impacto_soberania_enemigo = -2.0
 
 [sub_resource type="Resource" id="Resource_l5wk2"]
@@ -86,7 +86,6 @@ script = ExtResource("2_ik08m")
 nombre_mostrar = "Puerto"
 tipo_entidad = 2
 faccion_inicial = 2
-bien_entrada = 1
 cantidad_consumo = 10
 ganancia_propio = 10
 impacto_soberania_enemigo = -2.0
@@ -98,16 +97,7 @@ tipo_entidad = 2
 faccion_inicial = 2
 bien_entrada = 1
 cantidad_consumo = 10
-ganancia_propio = 10
-impacto_soberania_enemigo = -2.0
-
-[sub_resource type="Resource" id="Resource_ajgmc"]
-script = ExtResource("2_ik08m")
-nombre_mostrar = "Puerto"
-tipo_entidad = 2
-faccion_inicial = 2
-bien_salida = 0
-ganancia_propio = 10
+ganancia_propio = 20
 impacto_soberania_enemigo = -2.0
 
 [sub_resource type="Resource" id="Resource_1d3yi"]
@@ -117,8 +107,17 @@ tipo_entidad = 2
 faccion_inicial = 2
 bien_entrada = 1
 cantidad_consumo = 10
-ganancia_propio = 10
-impacto_soberania_enemigo = -2.0
+ganancia_propio = 20
+impacto_soberania_enemigo = -3.0
+
+[sub_resource type="Resource" id="Resource_ajgmc"]
+script = ExtResource("2_ik08m")
+nombre_mostrar = "Puerto"
+tipo_entidad = 2
+faccion_inicial = 2
+bien_salida = 0
+ganancia_propio = 20
+impacto_soberania_enemigo = -3.0
 
 [sub_resource type="Resource" id="Resource_ik08m"]
 script = ExtResource("2_ik08m")
@@ -163,6 +162,17 @@ bien_salida = 2
 cantidad_produccion = 5
 ganancia_propio = 15
 
+[sub_resource type="Resource" id="Resource_io1x1"]
+script = ExtResource("2_ik08m")
+nombre_mostrar = "Industria"
+tipo_entidad = 1
+faccion_inicial = 2
+bien_entrada = 1
+cantidad_consumo = 10
+bien_salida = 2
+cantidad_produccion = 5
+ganancia_propio = 15
+
 [sub_resource type="Resource" id="Resource_7sx6q"]
 script = ExtResource("2_ik08m")
 nombre_mostrar = "Exportador Manufactura"
@@ -170,6 +180,7 @@ tipo_entidad = 2
 faccion_inicial = 2
 cantidad_consumo = 10
 bien_salida = 2
+cantidad_produccion = 20
 ganancia_propio = 0
 ganancia_enemigo = 0
 costo_importacion_puerto = 0
@@ -241,6 +252,7 @@ tier_ciencia_requerido = 20
 script = ExtResource("2_ik08m")
 nombre_mostrar = "Agro"
 faccion_inicial = 2
+cantidad_produccion = 20
 ganancia_propio = 0
 ganancia_enemigo = 0
 costo_importacion_puerto = 0
@@ -278,7 +290,7 @@ faccion_inicial = 2
 bien_entrada = 1
 cantidad_consumo = 10
 bien_salida = 2
-cantidad_produccion = 20
+cantidad_produccion = 40
 ganancia_propio = 0
 ganancia_enemigo = 0
 costo_importacion_puerto = 0
@@ -330,15 +342,22 @@ tier_ciencia_requerido = 200
 
 [node name="TestScene" type="Node2D" unique_id=1656906367]
 
+[node name="Config_Partida" type="Node" parent="." unique_id=126590223]
+script = ExtResource("1_dbfhj")
+dinero = 2000
+costo_base_ciencia = 200
+costo_tramo_magdalena = 500
+soberania_total_magdalena = 50.0
+
 [node name="Mapa" type="Node2D" parent="." unique_id=1769207250]
-position = Vector2(1026, 393)
-scale = Vector2(1.045, 1.045)
+position = Vector2(907, 399)
+scale = Vector2(1.04, 1.04)
 
 [node name="ColorRect2" type="ColorRect" parent="Mapa" unique_id=497619844]
 offset_left = -4315.0
 offset_top = -6743.0
 offset_right = 2561.0
-offset_bottom = 5940.0
+offset_bottom = 7811.4824
 color = Color(0.3019608, 0.6313726, 0.53333336, 1)
 metadata/_edit_lock_ = true
 
@@ -348,7 +367,7 @@ material = SubResource("ShaderMaterial_dbfhj")
 offset_left = -4315.0
 offset_top = -6743.0
 offset_right = 2561.0
-offset_bottom = 5914.0
+offset_bottom = 7811.4824
 texture = ExtResource("1_ajgmc")
 metadata/_edit_lock_ = true
 
@@ -359,18 +378,16 @@ offset_left = -4315.0
 offset_top = -6743.0
 offset_right = 2561.0
 offset_bottom = 5940.0
-
-[node name="MapaCAgua" type="Sprite2D" parent="Mapa" unique_id=731153155]
-position = Vector2(-877, -393)
-scale = Vector2(4, 4)
-texture = ExtResource("2_4n6vb")
+metadata/_edit_lock_ = true
 
 [node name="MapaCAgua2" type="Sprite2D" parent="Mapa" unique_id=866849317]
 position = Vector2(-877, -393)
 scale = Vector2(4, 4)
 texture = ExtResource("2_4n6vb")
+metadata/_edit_lock_ = true
 
 [node name="HUDPrincipal" parent="." unique_id=1888180789 node_paths=PackedStringArray("gestor_rutas", "gestor_eventos") instance=ExtResource("15_w2vpa")]
+process_mode = 0
 scale = Vector2(0.9, 0.9)
 transform = Transform2D(0.9, 0, 0, 0.9, 0, 0)
 gestor_rutas = NodePath("../GestorRutas")
@@ -384,18 +401,19 @@ intervalo_eventos = 40.0
 position = Vector2(1315, 2936)
 script = ExtResource("13_8jnw6")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=992948584]
-position = Vector2(576, 323)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=992948584 node_paths=PackedStringArray("bounds_node")]
+position = Vector2(20, 19)
+zoom = Vector2(0.225, 0.225)
 script = ExtResource("7_hal4f")
+bounds_node = NodePath("../Mapa")
 min_zoom = 0.1
 max_zoom = 2.125
-metadata/_edit_lock_ = true
 
 [node name="Argentina" type="Node2D" parent="." unique_id=773177816]
 
 [node name="BanderaArgentina" parent="Argentina" unique_id=1745868985 instance=ExtResource("3_5gohb")]
-position = Vector2(-5811, -1640)
-scale = Vector2(1.73, 1.73)
+position = Vector2(-3233.0002, 1188.0001)
+scale = Vector2(0.21, 0.21)
 
 [node name="Puertos" type="Node2D" parent="Argentina" unique_id=1521269544]
 
@@ -404,7 +422,7 @@ position = Vector2(-960, -382)
 config = SubResource("Resource_dbfhj")
 
 [node name="Puerto" parent="Argentina/Puertos" unique_id=777391857 instance=ExtResource("9_q3ccy")]
-position = Vector2(-628, -1194)
+position = Vector2(-629, -1186)
 config = SubResource("Resource_5gohb")
 
 [node name="Puerto2" parent="Argentina/Puertos" unique_id=1879632945 instance=ExtResource("9_q3ccy")]
@@ -412,25 +430,25 @@ position = Vector2(-748, 2719)
 config = SubResource("Resource_snfgk")
 
 [node name="Puerto7" parent="Argentina/Puertos" unique_id=2002332135 instance=ExtResource("9_q3ccy")]
-position = Vector2(-1809, 5070)
+position = Vector2(-1812, 5070)
 config = SubResource("Resource_l5wk2")
 
 [node name="Puerto6" parent="Argentina/Puertos" unique_id=476093189 instance=ExtResource("9_q3ccy")]
-position = Vector2(-1779, 1946)
+position = Vector2(-1836, 2002)
 config = SubResource("Resource_tiljc")
+
+[node name="Puerto8" parent="Argentina/Puertos" unique_id=1137674326 instance=ExtResource("9_q3ccy")]
+position = Vector2(-1972, 2577)
+config = SubResource("Resource_1d3yi")
 
 [node name="Puerto3" parent="Argentina/Puertos" unique_id=1194214783 instance=ExtResource("9_q3ccy")]
 position = Vector2(-1452, 773)
 config = SubResource("Resource_ajgmc")
 
-[node name="Puerto4" parent="Argentina/Puertos" unique_id=713110383 instance=ExtResource("9_q3ccy")]
-position = Vector2(-1227, 141)
-config = SubResource("Resource_1d3yi")
-
 [node name="Ciudades" type="Node2D" parent="Argentina" unique_id=2137595857]
 
 [node name="Ciudad" parent="Argentina/Ciudades" unique_id=1958207568 instance=ExtResource("11_q3ccy")]
-position = Vector2(-2543, 219)
+position = Vector2(-2688, -125)
 config = SubResource("Resource_ik08m")
 
 [node name="Ciudad2" parent="Argentina/Ciudades" unique_id=1793775614 instance=ExtResource("11_q3ccy")]
@@ -444,18 +462,26 @@ position = Vector2(-1953, -889)
 Remitente = NodePath("../../Productores Materia Prima/Agro2")
 Destinatario = NodePath("../../Puertos/Puerto5")
 
-[node name="FleteTierra4" parent="Argentina/Flete Tierra" unique_id=818835001 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
-position = Vector2(-2055, -513)
-Remitente = NodePath("../../Productores Materia Prima/Agro2")
-Destinatario = NodePath("../../Puertos/Puerto4")
-
 [node name="FleteTierra" parent="Argentina/Flete Tierra" unique_id=751793760 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
 position = Vector2(-2198, -1863)
 Remitente = NodePath("../../Productores Materia Prima/Agro")
 Destinatario = NodePath("../../Industrias/Industria")
 
+[node name="FleteTierra9" parent="Argentina/Flete Tierra" unique_id=1913492471 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
+position = Vector2(-2241, -1328)
+activa_al_inicio = false
+Remitente = NodePath("../../Productores Materia Prima/Agro2")
+Destinatario = NodePath("../../Industrias/Industria")
+costo_por_viaje = 5
+
+[node name="FleteTierra4" parent="Argentina/Flete Tierra" unique_id=1488481402 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
+position = Vector2(-1075, -1372)
+Remitente = NodePath("../../Industrias/Industria")
+Destinatario = NodePath("../../Puertos/Puerto")
+costo_por_viaje = 2
+
 [node name="FleteTierra2" parent="Argentina/Flete Tierra" unique_id=1684214272 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
-position = Vector2(-1896, 524)
+position = Vector2(-1987, 278)
 Remitente = NodePath("../../Puertos/Puerto3")
 Destinatario = NodePath("../../Ciudades/Ciudad")
 
@@ -465,22 +491,52 @@ Remitente = NodePath("../../Puertos/Puerto7")
 Destinatario = NodePath("../../Ciudades/Ciudad2")
 
 [node name="FleteTierra5" parent="Argentina/Flete Tierra" unique_id=235037552 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
-position = Vector2(-2464, 841)
+position = Vector2(-2658, 464)
 activa_al_inicio = false
 Remitente = NodePath("../../Industrias/Industria2")
 Destinatario = NodePath("../../Ciudades/Ciudad")
 
 [node name="FleteTierra7" parent="Argentina/Flete Tierra" unique_id=1594183896 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
-position = Vector2(-2523, 1700)
-activa_al_inicio = false
+position = Vector2(-3009, 2416)
 Remitente = NodePath("../../Productores Materia Prima/Agro3")
-Destinatario = NodePath("../../Puertos/Puerto6")
+Destinatario = NodePath("../../Industrias/Industria3")
+
+[node name="FleteTierra10" parent="Argentina/Flete Tierra" unique_id=1480326097 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
+position = Vector2(-2249, 1992)
+activa_al_inicio = false
+Remitente = NodePath("../../Puertos/Puerto6")
+Destinatario = NodePath("../../Industrias/Industria3")
+costo_habilitar = 10
+costo_por_viaje = 1
+
+[node name="FleteTierra13" parent="Argentina/Flete Tierra" unique_id=852363259 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
+position = Vector2(-2412, 2346)
+Remitente = NodePath("../../Industrias/Industria3")
+Destinatario = NodePath("../../Puertos/Puerto8")
+costo_habilitar = 10
+costo_por_viaje = 1
+
+[node name="FleteTierra12" parent="Argentina/Flete Tierra" unique_id=840962328 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
+position = Vector2(-2059, 1421)
+activa_al_inicio = false
+Remitente = NodePath("../../Puertos/Puerto6")
+Destinatario = NodePath("../../Industrias/Industria2")
+costo_habilitar = 10
+costo_por_viaje = 2
 
 [node name="FleteTierra8" parent="Argentina/Flete Tierra" unique_id=1228198866 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
 position = Vector2(-297, 2348)
 activa_al_inicio = false
 Remitente = NodePath("../../Productores Materia Prima/Agro5")
 Destinatario = NodePath("../../Puertos/Puerto2")
+costo_por_viaje = 5
+
+[node name="FleteTierra11" parent="Argentina/Flete Tierra" unique_id=1472075792 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
+position = Vector2(-468, 1831)
+activa_al_inicio = false
+Remitente = NodePath("../../Productores Materia Prima/Agro4")
+Destinatario = NodePath("../../Puertos/Puerto2")
+costo_por_viaje = 5
 
 [node name="Productores Materia Prima" type="Node2D" parent="Argentina" unique_id=97998566]
 
@@ -493,11 +549,11 @@ position = Vector2(-2787, -1018)
 config = SubResource("Resource_rqk4y")
 
 [node name="Agro3" parent="Argentina/Productores Materia Prima" unique_id=481571347 instance=ExtResource("6_s2r6c")]
-position = Vector2(-3186, 1423)
+position = Vector2(-3352, 2818)
 config = SubResource("Resource_rqk4y")
 
 [node name="Agro4" parent="Argentina/Productores Materia Prima" unique_id=561288192 instance=ExtResource("6_s2r6c")]
-position = Vector2(-490, 3523)
+position = Vector2(-198, 1330)
 config = SubResource("Resource_rqk4y")
 
 [node name="Agro5" parent="Argentina/Productores Materia Prima" unique_id=727330653 instance=ExtResource("6_s2r6c")]
@@ -511,14 +567,13 @@ position = Vector2(-1639, -1532)
 config = SubResource("Resource_4n6vb")
 
 [node name="Industria2" parent="Argentina/Industrias" unique_id=723007278 instance=ExtResource("7_mvvbc")]
-position = Vector2(-2149, 1358)
+position = Vector2(-2183, 948)
 slot_ocupado = false
 config = SubResource("Resource_q3ccy")
 
 [node name="Industria3" parent="Argentina/Industrias" unique_id=1452765547 instance=ExtResource("7_mvvbc")]
-position = Vector2(-2653, 2363)
-slot_ocupado = false
-config = SubResource("Resource_q3ccy")
+position = Vector2(-2702, 1959)
+config = SubResource("Resource_io1x1")
 
 [node name="FletesMaritimos" type="Node2D" parent="Argentina" unique_id=1328222169]
 
@@ -533,28 +588,35 @@ Remitente = NodePath("../../../Exterior2/Puerto_Exp_Man")
 Destinatario = NodePath("../../Puertos/Puerto3")
 faccion_inicial = 2
 
-[node name="FleteMar5" parent="Argentina/FletesMaritimos" unique_id=1396471300 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("12_xvdge")]
-position = Vector2(-1499, 2416)
-Remitente = NodePath("../../Puertos/Puerto6")
-Destinatario = NodePath("../../../Exterior2/Puerto_Imp_MP")
+[node name="FleteMar3" parent="Argentina/FletesMaritimos" unique_id=726246728 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("12_xvdge")]
+position = Vector2(-1725, 3048)
+Remitente = NodePath("../../Puertos/Puerto8")
+Destinatario = NodePath("../../../Exterior2/Puerto_Imp_Man")
 faccion_inicial = 2
+
+[node name="FleteMar6" parent="Argentina/FletesMaritimos" unique_id=1546715627 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("12_xvdge")]
+position = Vector2(-1337, 2577)
+activa_al_inicio = false
+Remitente = NodePath("../../Puertos/Puerto2")
+Destinatario = NodePath("../../Puertos/Puerto6")
+costo_habilitar = 20
+faccion_inicial = 0
 
 [node name="FleteMar4" parent="Argentina/FletesMaritimos" unique_id=383788387 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("12_xvdge")]
 position = Vector2(-979, 5206)
-Remitente = NodePath("../../../Exterior2/Puerto_Exp_Man")
+Remitente = NodePath("../../../Exterior2/Puerto_Exp_Man2")
 Destinatario = NodePath("../../Puertos/Puerto7")
-faccion_inicial = 2
-
-[node name="FleteMar3" parent="Argentina/FletesMaritimos" unique_id=909251160 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("12_xvdge")]
-position = Vector2(-912, 488)
-Remitente = NodePath("../../Puertos/Puerto4")
-Destinatario = NodePath("../../../Exterior2/Puerto_Imp_MP")
+costo_por_viaje = 10
 faccion_inicial = 2
 
 [node name="Exterior2" type="Node2D" parent="." unique_id=1839039484]
 
 [node name="Puerto_Exp_Man" parent="Exterior2" unique_id=1966710946 instance=ExtResource("9_q3ccy")]
-position = Vector2(1395, 6572)
+position = Vector2(1631, 6562)
+config = SubResource("Resource_7sx6q")
+
+[node name="Puerto_Exp_Man2" parent="Exterior2" unique_id=656958836 instance=ExtResource("9_q3ccy")]
+position = Vector2(1196, 6562)
 config = SubResource("Resource_7sx6q")
 
 [node name="Puerto_Exp_MP" parent="Exterior2" unique_id=98075726 instance=ExtResource("9_q3ccy")]
@@ -578,7 +640,7 @@ position = Vector2(657, 8089)
 config = SubResource("Resource_b5x7s")
 
 [node name="Industria2" parent="Exterior2" unique_id=1636091865 instance=ExtResource("7_mvvbc")]
-position = Vector2(1402, 7257)
+position = Vector2(1402, 7252)
 config = SubResource("Resource_py8nj")
 
 [node name="Industria3" parent="Exterior2" unique_id=732925095 instance=ExtResource("7_mvvbc")]
@@ -589,7 +651,7 @@ config = SubResource("Resource_w2vpa")
 position = Vector2(1402, 7641)
 Remitente = NodePath("../Agro")
 Destinatario = NodePath("../Industria2")
-Capacidad = 10
+Capacidad = 20
 costo_habilitar = 0
 costo_por_viaje = 0
 
@@ -626,7 +688,7 @@ costo_habilitar = 0
 costo_por_viaje = 0
 
 [node name="FleteTierra_Agro2" parent="Exterior2" unique_id=1087856245 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
-position = Vector2(656, 7705)
+position = Vector2(656, 7239)
 Remitente = NodePath("../Agro2")
 Destinatario = NodePath("../Puerto_Exp_MP")
 Capacidad = 10
@@ -634,10 +696,18 @@ costo_habilitar = 0
 costo_por_viaje = 0
 
 [node name="FleteTierra2_Indus" parent="Exterior2" unique_id=527462777 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
-position = Vector2(1389, 6931)
+position = Vector2(1569, 6937)
 Remitente = NodePath("../Industria2")
 Destinatario = NodePath("../Puerto_Exp_Man")
-Capacidad = 10
+Capacidad = 20
+costo_habilitar = 0
+costo_por_viaje = 0
+
+[node name="FleteTierra2_Indus2" parent="Exterior2" unique_id=1481431361 node_paths=PackedStringArray("Remitente", "Destinatario") instance=ExtResource("8_v3pjp")]
+position = Vector2(1211, 6912)
+Remitente = NodePath("../Industria2")
+Destinatario = NodePath("../Puerto_Exp_Man2")
+Capacidad = 20
 costo_habilitar = 0
 costo_por_viaje = 0
 

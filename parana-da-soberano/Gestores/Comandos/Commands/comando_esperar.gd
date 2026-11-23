@@ -11,7 +11,7 @@ func execute(actor: Node) -> void:
 	if actor.has_method("esperar"):
 		await actor.esperar(duracion)
 	elif actor.is_inside_tree():
-		await actor.get_tree().create_timer(duracion).timeout
+		await actor.get_tree().create_timer(duracion, false).timeout
 
 func get_command_name() -> String:
 	return "Esperar (%.1fs)" % duracion

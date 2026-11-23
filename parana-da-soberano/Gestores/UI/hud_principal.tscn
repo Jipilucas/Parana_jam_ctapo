@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cha41rh3ybykh" path="res://Gestores/UI/hud_principal.gd" id="1_hud"]
 [ext_resource type="Theme" uid="uid://bdmxsqf50jslt" path="res://Configs/Marco3Base/Boton_marco_2.tres" id="2_esxmk"]
+[ext_resource type="PackedScene" uid="uid://dpc1ge8771ds2" path="res://prefabs/Argentina.tscn" id="3_1ak0m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esxmk"]
 bg_color = Color(0.18039216, 0.18039216, 0.18039216, 0.89411765)
@@ -25,7 +26,40 @@ font_color = Color(0, 0.7526474, 0.75301546, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjjlt"]
 bg_color = Color(0.6431373, 0.53333336, 0.84705883, 0.41960785)
 
-[node name="HUDPrincipal" type="CanvasLayer" unique_id=1845110227 node_paths=PackedStringArray("lbl_soberania", "bar_soberania", "lbl_dinero", "lbl_ciencia", "lbl_astilleros", "lbl_magdalena", "lbl_modo_ruta", "lbl_log", "btn_inv_ciencia", "btn_inv_magdalena", "btn_inv_astillero", "btn_ruta_tierra", "btn_ruta_mar", "btn_cancelar_ruta", "btn_evento_test", "panel_evento", "lbl_titulo_evento", "lbl_desc_evento", "btn_opcion_1", "btn_opcion_2", "btn_opcion_3")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pausa"]
+content_margin_left = 14.0
+content_margin_top = 6.0
+content_margin_right = 14.0
+content_margin_bottom = 6.0
+bg_color = Color(0.12, 0.12, 0.16, 0.88)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.85, 0.25, 0.9)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fin"]
+content_margin_left = 18.0
+content_margin_top = 16.0
+content_margin_right = 18.0
+content_margin_bottom = 16.0
+bg_color = Color(0.11, 0.13, 0.18, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25, 0.9, 1, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="HUDPrincipal" type="CanvasLayer" unique_id=1845110227 node_paths=PackedStringArray("lbl_soberania", "bar_soberania", "lbl_dinero", "lbl_ciencia", "lbl_astilleros", "lbl_magdalena", "lbl_modo_ruta", "lbl_log", "btn_inv_ciencia", "btn_inv_magdalena", "btn_inv_astillero", "btn_ruta_tierra", "btn_ruta_mar", "btn_cancelar_ruta", "btn_evento_test", "panel_evento", "lbl_titulo_evento", "lbl_desc_evento", "btn_opcion_1", "btn_opcion_2", "btn_opcion_3", "btn_pausa", "panel_pausa", "lbl_pausa_info", "panel_fin_partida", "lbl_titulo_fin", "lbl_desc_fin", "btn_continuar_sandbox", "btn_volver_menu")]
+process_mode = 3
 script = ExtResource("1_hud")
 lbl_soberania = NodePath("BarraSuperior/FilaIndicadores/VBoxContainer/HBoxContainer/LblSoberania")
 bar_soberania = NodePath("BarraSuperior/FilaIndicadores/VBoxContainer/HBoxContainer/BarSoberania")
@@ -48,15 +82,23 @@ lbl_desc_evento = NodePath("PanelEvento/VBoxEvento/LblDescEvento")
 btn_opcion_1 = NodePath("PanelEvento/VBoxEvento/OpcionesContainer/BtnOpcion1")
 btn_opcion_2 = NodePath("PanelEvento/VBoxEvento/OpcionesContainer/BtnOpcion2")
 btn_opcion_3 = NodePath("PanelEvento/VBoxEvento/OpcionesContainer/BtnOpcion3")
+btn_pausa = NodePath("BarraSuperior/FilaIndicadores/VBoxContainer/HBoxContainer/BtnPausa")
+panel_pausa = NodePath("BannerPausa")
+lbl_pausa_info = NodePath("BannerPausa/LblPausaInfo")
+panel_fin_partida = NodePath("PanelFinPartida")
+lbl_titulo_fin = NodePath("PanelFinPartida/VBoxFin/LblTituloFin")
+lbl_desc_fin = NodePath("PanelFinPartida/VBoxFin/LblDescFin")
+btn_continuar_sandbox = NodePath("PanelFinPartida/VBoxFin/BotonesFin/BtnContinuarSandbox")
+btn_volver_menu = NodePath("PanelFinPartida/VBoxFin/BotonesFin/BtnVolverMenu")
 
 [node name="BarraSuperior" type="PanelContainer" parent="." unique_id=1938076175]
 anchors_preset = -1
 anchor_right = 0.98100007
 anchor_bottom = 0.006
-offset_left = 21.0
+offset_left = 18.0
 offset_top = 4.0
-offset_right = 42.88794
-offset_bottom = 87.112
+offset_right = 2.8879395
+offset_bottom = 107.112
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_esxmk")
 
@@ -69,6 +111,7 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="BarraSuperior/FilaIndicadores/VBoxContainer" unique_id=1665151609]
 layout_mode = 2
+theme_override_constants/separation = 12
 
 [node name="LblSoberania" type="Label" parent="BarraSuperior/FilaIndicadores/VBoxContainer/HBoxContainer" unique_id=2144980138]
 layout_mode = 2
@@ -95,6 +138,17 @@ label_settings = SubResource("LabelSettings_1ak0m")
 layout_mode = 2
 text = "Fletes Mar: 1 / 1 Astilleros"
 label_settings = SubResource("LabelSettings_sjjlt")
+
+[node name="EspaciadorPausa" type="Control" parent="BarraSuperior/FilaIndicadores/VBoxContainer/HBoxContainer" unique_id=1811223344]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BtnPausa" type="Button" parent="BarraSuperior/FilaIndicadores/VBoxContainer/HBoxContainer" unique_id=1811223345]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_esxmk")
+theme_override_colors/font_color = Color(1, 0.95, 0.65, 1)
+text = "PAUSAR [Espacio]"
 
 [node name="LblMagdalena" type="Label" parent="BarraSuperior/FilaIndicadores/VBoxContainer" unique_id=863346503]
 layout_mode = 2
@@ -155,10 +209,10 @@ theme = ExtResource("2_esxmk")
 text = "Opción 3"
 
 [node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=2005983210]
-offset_left = 855.0
-offset_top = 102.0
-offset_right = 1144.0
-offset_bottom = 406.0
+offset_left = 832.0
+offset_top = 111.0
+offset_right = 1129.0
+offset_bottom = 423.0
 theme_override_styles/title_panel = SubResource("StyleBoxFlat_sjjlt")
 title = "INVERSIONES"
 
@@ -211,6 +265,70 @@ layout_mode = 2
 theme = ExtResource("2_esxmk")
 text = "Disparar Evento Ahora"
 
+[node name="BannerPausa" type="PanelContainer" parent="." unique_id=1811223346]
+visible = false
+offset_left = 260.0
+offset_top = 104.0
+offset_right = 820.0
+offset_bottom = 140.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pausa")
+
+[node name="LblPausaInfo" type="Label" parent="BannerPausa" unique_id=1811223347]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.35, 1)
+text = "JUEGO EN PAUSA — Modo Exploración / Inspección (Espacio para reanudar)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelFinPartida" type="PanelContainer" parent="." unique_id=1811223348]
+visible = false
+offset_left = 270.0
+offset_top = 180.0
+offset_right = 790.0
+offset_bottom = 410.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fin")
+
+[node name="VBoxFin" type="VBoxContainer" parent="PanelFinPartida" unique_id=1811223349]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Argentina" parent="PanelFinPartida/VBoxFin" unique_id=1745868985 instance=ExtResource("3_1ak0m")]
+visible = false
+position = Vector2(502, -5)
+scale = Vector2(0.12499997, 0.11928572)
+
+[node name="LblTituloFin" type="Label" parent="PanelFinPartida/VBoxFin" unique_id=1811223350]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "¡VICTORIA SOBERANA (100%)!"
+horizontal_alignment = 1
+
+[node name="LblDescFin" type="Label" parent="PanelFinPartida/VBoxFin" unique_id=1811223351]
+custom_minimum_size = Vector2(460, 60)
+layout_mode = 2
+text = "Alcanzaste el 100% de Soberanía Nacional en el Paraná."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="BotonesFin" type="VBoxContainer" parent="PanelFinPartida/VBoxFin" unique_id=1811223352]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BtnContinuarSandbox" type="Button" parent="PanelFinPartida/VBoxFin/BotonesFin" unique_id=1811223353]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_esxmk")
+theme_override_colors/font_color = Color(0.25, 1, 0.45, 1)
+text = "Continuar en Modo Sandbox (Meta: 1000%)"
+
+[node name="BtnVolverMenu" type="Button" parent="PanelFinPartida/VBoxFin/BotonesFin" unique_id=1811223354]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_esxmk")
+text = "Volver al Menú Principal"
+
+[connection signal="pressed" from="BarraSuperior/FilaIndicadores/VBoxContainer/HBoxContainer/BtnPausa" to="." method="_on_btn_pausa_pressed"]
 [connection signal="pressed" from="PanelEvento/VBoxEvento/OpcionesContainer/BtnOpcion1" to="." method="_on_btn_opcion_1_pressed"]
 [connection signal="pressed" from="PanelEvento/VBoxEvento/OpcionesContainer/BtnOpcion2" to="." method="_on_btn_opcion_2_pressed"]
 [connection signal="pressed" from="PanelEvento/VBoxEvento/OpcionesContainer/BtnOpcion3" to="." method="_on_btn_opcion_3_pressed"]
@@ -221,3 +339,5 @@ text = "Disparar Evento Ahora"
 [connection signal="pressed" from="FoldableContainer/PanelContainer/Botones/BtnRutaMar" to="." method="_on_btn_ruta_mar_pressed"]
 [connection signal="pressed" from="FoldableContainer/PanelContainer/Botones/BtnCancelarRuta" to="." method="_on_btn_cancelar_ruta_pressed"]
 [connection signal="pressed" from="FoldableContainer/PanelContainer/Botones/BtnEventoTest" to="." method="_on_btn_evento_test_pressed"]
+[connection signal="pressed" from="PanelFinPartida/VBoxFin/BotonesFin/BtnContinuarSandbox" to="." method="_on_btn_continuar_sandbox_pressed"]
+[connection signal="pressed" from="PanelFinPartida/VBoxFin/BotonesFin/BtnVolverMenu" to="." method="_on_btn_volver_menu_pressed"]

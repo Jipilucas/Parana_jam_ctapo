@@ -20,6 +20,7 @@ offset_bottom = 648.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GridContainer" unique_id=359339916]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="TextureRect" type="TextureRect" parent="GridContainer/VBoxContainer" unique_id=1384565218]
 layout_mode = 2
@@ -31,6 +32,12 @@ layout_mode = 2
 theme = ExtResource("3_flkwd")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "COMENZAR"
+
+[node name="Sandbox" type="Button" parent="GridContainer/VBoxContainer" unique_id=823012935]
+layout_mode = 2
+theme = ExtResource("3_flkwd")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "MODO SANDBOX (1000%)"
 
 [node name="Titulo" type="Label" parent="." unique_id=1070893147]
 offset_left = 184.0
@@ -66,4 +73,5 @@ offset_bottom = 85.97
 flat = true
 
 [connection signal="pressed" from="GridContainer/VBoxContainer/Comenzar" to="." method="_on_comenzar_pressed"]
+[connection signal="pressed" from="GridContainer/VBoxContainer/Sandbox" to="." method="_on_sandbox_pressed"]
 [connection signal="pressed" from="TextureRect2/Jam_link" to="." method="_on_jam_link_pressed"]

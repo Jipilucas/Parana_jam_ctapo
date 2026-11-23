@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c4kmpjxx2at0o"]
 
-[ext_resource type="Script" uid="uid://dfd5afk1ytlqo" path="res://Gestores/Transportes/flete_tierra.gd" id="1_tw1kq"]
+[ext_resource type="Script" uid="uid://dfd5afk1ytlqo" path="res://Gestores/Transportes/flete.gd" id="1_tw1kq"]
 [ext_resource type="Script" uid="uid://d2dnwpyf8yokl" path="res://Gestores/Comandos/controlador_comandos.gd" id="2_u1jr2"]
 [ext_resource type="Script" uid="uid://dr0pxy3kx633g" path="res://Gestores/Comandos/Commands/command.gd" id="3_eoyjp"]
 [ext_resource type="Script" uid="uid://b8vho8fdq8lmn" path="res://Gestores/Comandos/Commands/Comando_Recibir.gd" id="4_q7lqk"]
@@ -93,9 +93,10 @@ _data = {
 script = ExtResource("1_tw1kq")
 nombre_ruta = "FleteMar"
 tipo_flete = 1
-Capacidad = 8
 costo_habilitar = 30
 costo_por_viaje = 2
+costo_por_viaje_enemigo = 0
+bonus_soberania_eliminar = 1.0
 controlador = NodePath("ControladorComandos")
 linea_visual = NodePath("LineaRuta")
 textlabel = NodePath("Label")

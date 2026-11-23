@@ -14,6 +14,7 @@ extends Control
 
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	if entidad == null and get_parent() is Flete:
 		entidad = get_parent() as Flete
 	if comandos == null and entidad != null:
@@ -64,9 +65,11 @@ func _process(_delta: float) -> void:
 		else:
 			lbl_costos.text = "Costo viaje: $%d" % costo_actual
 
+	var pausado: bool = Partida.esta_pausado()
 	var es_enemiga: bool = entidad.es_enemigo()
 	if btn_toggle_ruta:
 		btn_toggle_ruta.visible = not es_enemiga
+		btn_toggle_ruta.disabled = pausado
 		if not es_enemiga:
 			if entidad.ruta_habilitada:
 				btn_toggle_ruta.text = "Pausar Ruta"
@@ -76,12 +79,13 @@ func _process(_delta: float) -> void:
 
 	if btn_eliminar_enemigo:
 		btn_eliminar_enemigo.visible = es_enemiga
+		btn_eliminar_enemigo.disabled = pausado
 		if es_enemiga:
 			btn_eliminar_enemigo.text = "Eliminar ($%d)" % entidad.costo_eliminar
 
 
 func _on_btn_toggle_pressed() -> void:
-	if entidad == null:
+	if entidad == null or Partida.esta_pausado():
 		return
 	if entidad.ruta_habilitada:
 		entidad.desactivar_ruta()
@@ -90,7 +94,7 @@ func _on_btn_toggle_pressed() -> void:
 
 
 func _on_btn_eliminar_pressed() -> void:
-	if entidad == null:
+	if entidad == null or Partida.esta_pausado():
 		return
 	entidad.eliminar_flete_enemigo()
 

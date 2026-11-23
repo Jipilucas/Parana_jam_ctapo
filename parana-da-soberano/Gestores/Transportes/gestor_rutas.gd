@@ -15,6 +15,8 @@ var nodo_origen_seleccionado: Productor = null
 
 
 func iniciar_modo_conexion(tipo: Flete.TipoFlete) -> void:
+	if Partida.esta_pausado():
+		return
 	modo_conectar_activo = true
 	tipo_flete_a_crear = tipo
 	nodo_origen_seleccionado = null
@@ -29,8 +31,8 @@ func cancelar_modo_conexion() -> void:
 
 
 func registrar_clic_en_productor(nodo: Productor) -> void:
-	
-	
+	if Partida.esta_pausado():
+		return
 	if not modo_conectar_activo or nodo == null:
 		return
 

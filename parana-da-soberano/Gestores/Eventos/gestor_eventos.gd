@@ -25,15 +25,21 @@ func _ready() -> void:
 		_timer.start()
 
 
+func _exit_tree() -> void:
+	if is_instance_valid(Partida):
+		Partida.set_pausa_evento(false)
+
+
 func _on_timer_timeout() -> void:
 	if evento_actual == null and not Partida.juego_terminado:
 		disparar_evento_aleatorio()
 
 
 func disparar_evento_aleatorio() -> void:
-	if catalogo_eventos.is_empty() or Partida.juego_terminado:
+	if catalogo_eventos.is_empty() or Partida.juego_terminado or evento_actual != null:
 		return
 	evento_actual = catalogo_eventos.pick_random()
+	Partida.set_pausa_evento(true)
 	evento_disparado.emit(evento_actual)
 
 
@@ -41,8 +47,9 @@ func elegir_opcion(indice: int) -> void:
 	if evento_actual == null or indice < 0 or indice >= evento_actual.opciones.size():
 		return
 	var opcion: OpcionEvento = evento_actual.opciones[indice]
-	aplicar_opcion(opcion)
 	evento_actual = null
+	aplicar_opcion(opcion)
+	Partida.set_pausa_evento(false)
 	evento_resuelto.emit()
 
 

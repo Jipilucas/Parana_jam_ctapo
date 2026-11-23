@@ -56,7 +56,7 @@ enum ModoPuerto {
 ## Multiplicador de soberanía al exportar MANUFACTURA respecto a MATERIA_PRIMA en un Puerto
 @export var multiplicador_soberania_manufactura: float = 2.0
 ## Multa en dinero por ciclo si una CIUDAD no tiene el mínimo de insumos para consumir
-@export var multa_desabastecimiento_dinero: int = 20
+@export var multa_desabastecimiento_dinero: int = 10
 ## Multa en Soberanía (%) por ciclo si una CIUDAD no tiene el mínimo de insumos (negativo)
 @export var multa_desabastecimiento_soberania: float = -1.0
 

@@ -14,6 +14,7 @@ extends Control
 
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	if entidad == null and get_parent() is Productor:
 		entidad = get_parent() as Productor
 	if comandos == null and entidad != null:
@@ -40,6 +41,10 @@ func _process(_delta: float) -> void:
 	var cfg: ConfigLogistica = entidad.config
 	var etiqueta_faccion: String = ConfigLogistica.nombre_faccion(entidad.faccion_actual)
 
+	var pausado: bool = Partida.esta_pausado()
+	if btn_conectar:
+		btn_conectar.disabled = pausado
+
 	if not entidad.slot_ocupado:
 		lbl_nombre.text = "[SLOT VACÍO] %s" % entidad.obtener_nombre()
 		lbl_estado.text = "Sin construir"
@@ -47,6 +52,7 @@ func _process(_delta: float) -> void:
 		lbl_output.text = "Salida (%s): -" % ConfigLogistica.nombre_bien(cfg.bien_salida)
 		if btn_accion_slot:
 			btn_accion_slot.visible = true
+			btn_accion_slot.disabled = pausado
 			btn_accion_slot.text = "Construir ($%d)" % entidad.costo_construir_en_slot
 		return
 
@@ -103,13 +109,14 @@ func _process(_delta: float) -> void:
 	if btn_accion_slot:
 		if entidad.faccion_actual == ConfigLogistica.Faccion.ENEMIGO:
 			btn_accion_slot.visible = true
+			btn_accion_slot.disabled = pausado
 			btn_accion_slot.text = "Nacionalizar ($%d | Ciencia %d)" % [cfg.costo_compra, cfg.tier_ciencia_requerido]
 		else:
 			btn_accion_slot.visible = false
 
 
 func _on_btn_accion_pressed() -> void:
-	if entidad == null:
+	if entidad == null or Partida.esta_pausado():
 		return
 	if not entidad.slot_ocupado:
 		entidad.construir_en_slot()
@@ -118,7 +125,7 @@ func _on_btn_accion_pressed() -> void:
 
 
 func _on_btn_conectar_pressed() -> void:
-	if entidad == null:
+	if entidad == null or Partida.esta_pausado():
 		return
 	var gestor := get_tree().get_first_node_in_group("gestor_rutas") as GestorRutas
 	if gestor:

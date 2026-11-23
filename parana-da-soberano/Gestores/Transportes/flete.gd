@@ -203,6 +203,12 @@ func desactivar_ruta() -> void:
 	if es_enemigo():
 		Partida.mensaje_log.emit("No puedes pausar una Marina Mercante enemiga (%s). Debes eliminarla primero." % obtener_nombre_ruta())
 		return
+	if Remitente.faccion_actual == ConfigLogistica.Faccion.ENEMIGO and Destinatario.faccion_actual == ConfigLogistica.Faccion.ENEMIGO:
+		Partida.mensaje_log.emit("No puedes pausar una ruta que no te pertenece")
+		return
+	#if Destinatario.faccion_actual == ConfigLogistica.Faccion.ENEMIGO:
+		#Partida.mensaje_log.emit("No puedes pausar una ruta que no te pertenece")
+		#return
 	ruta_habilitada = false
 	if _registrado_en_astillero:
 		Partida.registrar_flete_mar(false)
@@ -217,6 +223,9 @@ func eliminar_flete_enemigo() -> bool:
 		return false
 	if Partida.dinero < costo_eliminar:
 		Partida.mensaje_log.emit("Fondos insuficientes para eliminar %s (Requiere $%d)" % [obtener_nombre_ruta(), costo_eliminar])
+		return false
+	if !Partida.puede_activar_flete_mar():
+		Partida.mensaje_log.emit("Sin cupo en Astilleros Nacionales para eliminar (%s)" % obtener_nombre_ruta())
 		return false
 
 	Partida.modificar_dinero(-costo_eliminar, "Eliminación de Marina Mercante Enemiga (%s)" % obtener_nombre_ruta())

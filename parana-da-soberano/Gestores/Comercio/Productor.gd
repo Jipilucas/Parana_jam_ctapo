@@ -39,6 +39,20 @@ func _ready() -> void:
 		_inicializar_stocks()
 	if controlador == null and has_node("ControladorComandos"):
 		controlador = $ControladorComandos as ControladorComandos
+	if anim_player == null:
+		anim_player = get_node_or_null("AnimationPlayer") as AnimationPlayer
+	if label_regalias == null:
+		label_regalias = get_node_or_null("LabelRegalias") as Label
+	if label_soberania == null:
+		label_soberania = get_node_or_null("LabelSoberania") as Label
+	if label_regalias:
+		label_regalias.visible = false
+	if label_soberania:
+		label_soberania.visible = false
+	if anim_player:
+		anim_player.stop()
+		if not anim_player.animation_finished.is_connected(_on_anim_intercambio_finished):
+			anim_player.animation_finished.connect(_on_anim_intercambio_finished)
 	_sincronizar_estado_controlador()
 	queue_redraw()
 
@@ -166,14 +180,43 @@ func Consumir() -> void:
 				_insumo_consumido_en_ciclo = not _lote_en_proceso.is_empty()
 				stock_actualizado.emit()
 
-func mostrar_intercambio(cant_reg:float=0,cant_sob:float=0):
-	if label_regalias == null or label_soberania == null or anim_player == null: return
-	label_regalias.text = '$' + str(cant_reg)
-	label_soberania.text = '%' + str(cant_sob)
-	
-	if cant_reg != 0: label_regalias.visible = true
-	if cant_sob != 0: label_soberania.visible = true
-	
+func _on_anim_intercambio_finished(anim_name: StringName) -> void:
+	if anim_name == &"mostrar":
+		if label_regalias:
+			label_regalias.visible = false
+		if label_soberania:
+			label_soberania.visible = false
+
+
+func _formatear_valor(valor: float) -> String:
+	var signo: String = "+" if valor > 0.0 else "-"
+	var abs_val: float = absf(valor)
+	if is_equal_approx(abs_val, roundf(abs_val)):
+		return "%s%d" % [signo, int(roundf(abs_val))]
+	return "%s%.1f" % [signo, abs_val]
+
+
+func mostrar_intercambio(cant_reg: float = 0.0, cant_sob: float = 0.0) -> void:
+	if label_regalias == null or label_soberania == null or anim_player == null:
+		return
+	if is_zero_approx(cant_reg) and is_zero_approx(cant_sob):
+		return
+
+	var mostrar_reg: bool = not is_zero_approx(cant_reg)
+	var mostrar_sob: bool = not is_zero_approx(cant_sob)
+
+	label_regalias.modulate = Color.WHITE
+	label_soberania.modulate = Color.WHITE
+	label_regalias.visible = mostrar_reg
+	label_soberania.visible = mostrar_sob
+
+	if mostrar_reg:
+		var signo_reg: String = "+" if cant_reg > 0.0 else "-"
+		label_regalias.text = "%s$%s" % [signo_reg, str(int(roundf(absf(cant_reg)))) if is_equal_approx(absf(cant_reg), roundf(absf(cant_reg))) else ("%.1f" % absf(cant_reg))]
+	if mostrar_sob:
+		label_soberania.text = "%s%%" % _formatear_valor(cant_sob)
+
+	anim_player.stop()
 	anim_player.play("mostrar")
 	
 func Producir() -> void:
@@ -209,10 +252,12 @@ func Producir() -> void:
 			stock_salida += cant_producida
 			if faccion_actual == ConfigLogistica.Faccion.PROPIO:
 				Partida.modificar_soberania(config.impacto_soberania_propio, "Industria Nacional (%s)" % obtener_nombre())
-				mostrar_intercambio(0,config.impacto_soberania_propio)
+				Partida.modificar_dinero(config.ganancia_propio,"Industria Nacional (%s)" % obtener_nombre())
+				mostrar_intercambio(config.ganancia_propio,config.impacto_soberania_propio)
 			elif faccion_actual == ConfigLogistica.Faccion.ENEMIGO:
 				Partida.modificar_soberania(config.impacto_soberania_enemigo, "Industria Extranjera (%s)" % obtener_nombre())
-				mostrar_intercambio(0,config.impacto_soberania_enemigo)
+				Partida.modificar_dinero(config.ganancia_enemigo, "Industria Extranjera (%s)" % obtener_nombre())
+				mostrar_intercambio(config.ganancia_enemigo,config.impacto_soberania_enemigo)
 
 		ConfigLogistica.TipoEntidad.PUERTO:
 			# En puertos, Producir únicamente mueve los bienes de entrada a la lista FIFO de salida
@@ -228,18 +273,16 @@ func Producir() -> void:
 func Recibir(
 	cant: int,
 	tipo_bien: ConfigLogistica.TipoBien = ConfigLogistica.TipoBien.CUALQUIERA,
-	definir_por_flete_tierra: bool = false
+	_definir_por_flete_tierra: bool = false
 ) -> int:
 	if not slot_ocupado or cant <= 0:
 		return 0
 	if es_puerto():
 		var bien_a_ingresar: ConfigLogistica.TipoBien = ConfigLogistica.TipoBien.CUALQUIERA
-		if definir_por_flete_tierra and tipo_bien != ConfigLogistica.TipoBien.CUALQUIERA:
+		if tipo_bien != ConfigLogistica.TipoBien.CUALQUIERA:
 			bien_a_ingresar = tipo_bien
 		elif config.bien_entrada != ConfigLogistica.TipoBien.CUALQUIERA:
 			bien_a_ingresar = config.bien_entrada
-		elif tipo_bien != ConfigLogistica.TipoBien.CUALQUIERA:
-			bien_a_ingresar = tipo_bien
 		else:
 			bien_a_ingresar = ConfigLogistica.TipoBien.MATERIA_PRIMA
 		_encolar_fifo(cola_entrada, bien_a_ingresar, cant)

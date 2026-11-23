@@ -40,7 +40,7 @@ func _ready() -> void:
 func iniciar_ciclo() -> void:
 	_activo = true
 	while _activo and is_inside_tree():
-		await get_tree().create_timer(intervalo_rutina).timeout
+		await get_tree().create_timer(intervalo_rutina, false).timeout
 		if not _activo or not is_inside_tree():
 			break
 		await ejecutar_rutina()
