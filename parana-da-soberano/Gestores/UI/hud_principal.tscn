@@ -242,6 +242,7 @@ theme_override_colors/font_color = Color(0.8745098, 0.40784314, 0.8745098, 1)
 text = "Construir Astillero ($120)"
 
 [node name="BtnRutaTierra" type="Button" parent="FoldableContainer/PanelContainer/Botones" unique_id=104476057]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_esxmk")
 theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.39607844, 1)
