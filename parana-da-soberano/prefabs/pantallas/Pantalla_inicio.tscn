@@ -22,6 +22,7 @@ offset_bottom = 648.0
 [node name="VBoxContainer" type="VBoxContainer" parent="GridContainer" unique_id=359339916]
 layout_mode = 2
 offset_transform_enabled = true
+offset_transform_position = Vector2(0, 20)
 offset_transform_scale = Vector2(0.9, 0.9)
 theme_override_constants/separation = 10
 
@@ -51,9 +52,9 @@ text = "CRÉDITOS"
 
 [node name="Titulo" type="Label" parent="." unique_id=1070893147]
 offset_left = 184.0
-offset_top = 20.0
+offset_top = 27.0
 offset_right = 967.0
-offset_bottom = 92.0
+offset_bottom = 99.0
 theme_override_colors/font_color = Color(0.9669736, 0.9815813, 0, 1)
 theme_override_fonts/font = ExtResource("4_2enq0")
 theme_override_font_sizes/font_size = 72
