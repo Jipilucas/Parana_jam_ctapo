@@ -18,3 +18,10 @@ func _on_sandbox_pressed() -> void:
 
 func _on_jam_link_pressed() -> void:
 	OS.shell_open("https://itch.io/jam/liberen-el-parana-gamejam")
+
+
+func _on_creditos_boton_pressed() -> void:
+	$Creditos.visible = true
+
+func _on_volver_pressed() -> void:
+	$Creditos.visible = false
