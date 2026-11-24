@@ -5,6 +5,7 @@
 [ext_resource type="Theme" uid="uid://bdmxsqf50jslt" path="res://Configs/Marco3Base/Boton_marco_2.tres" id="3_flkwd"]
 [ext_resource type="FontFile" uid="uid://b2r2d5nc45n2i" path="res://Assets/Fuentes/SHO-CARD.TTF" id="4_2enq0"]
 [ext_resource type="Texture2D" uid="uid://d362xhggxbrl7" path="res://Assets/Images/liberen_el_parana.png" id="4_pktvo"]
+[ext_resource type="Texture2D" uid="uid://hukntf8p6m08" path="res://Assets/Images/títulos .png" id="6_yk4x8"]
 
 [node name="PantallaInicio" type="Node" unique_id=2041476531]
 script = ExtResource("1_xveo3")
@@ -20,10 +21,14 @@ offset_bottom = 648.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GridContainer" unique_id=359339916]
 layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 20)
+offset_transform_scale = Vector2(0.9, 0.9)
 theme_override_constants/separation = 10
 
 [node name="TextureRect" type="TextureRect" parent="GridContainer/VBoxContainer" unique_id=1384565218]
 layout_mode = 2
+offset_transform_enabled = true
 texture = ExtResource("2_2enq0")
 stretch_mode = 5
 
@@ -39,11 +44,17 @@ theme = ExtResource("3_flkwd")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "MODO SANDBOX (1000%)"
 
+[node name="CreditosBoton" type="Button" parent="GridContainer/VBoxContainer" unique_id=1778587153]
+layout_mode = 2
+theme = ExtResource("3_flkwd")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "CRÉDITOS"
+
 [node name="Titulo" type="Label" parent="." unique_id=1070893147]
 offset_left = 184.0
-offset_top = 36.0
+offset_top = 27.0
 offset_right = 967.0
-offset_bottom = 108.0
+offset_bottom = 99.0
 theme_override_colors/font_color = Color(0.9669736, 0.9815813, 0, 1)
 theme_override_fonts/font = ExtResource("4_2enq0")
 theme_override_font_sizes/font_size = 72
@@ -72,6 +83,37 @@ offset_right = 172.008
 offset_bottom = 85.97
 flat = true
 
+[node name="Creditos" type="Control" parent="." unique_id=395625320]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Creditos" unique_id=1440966211]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.5774303, 0.6825956, 0.9886704, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Creditos" unique_id=1650386950]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_yk4x8")
+
+[node name="Volver" type="Button" parent="Creditos" unique_id=762228709]
+layout_mode = 0
+offset_left = 861.0
+offset_top = 493.0
+offset_right = 1018.0
+offset_bottom = 546.0
+theme = ExtResource("3_flkwd")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "VOLVER"
+
 [connection signal="pressed" from="GridContainer/VBoxContainer/Comenzar" to="." method="_on_comenzar_pressed"]
 [connection signal="pressed" from="GridContainer/VBoxContainer/Sandbox" to="." method="_on_sandbox_pressed"]
+[connection signal="pressed" from="GridContainer/VBoxContainer/CreditosBoton" to="." method="_on_creditos_boton_pressed"]
 [connection signal="pressed" from="TextureRect2/Jam_link" to="." method="_on_jam_link_pressed"]
+[connection signal="pressed" from="Creditos/Volver" to="." method="_on_volver_pressed"]
