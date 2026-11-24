@@ -356,6 +356,7 @@ func _formatear_detalle_exportacion(cant_mp: int, cant_manuf: int) -> String:
 
 
 func construir_en_slot() -> bool:
+	
 	if slot_ocupado:
 		return false
 	if Partida.dinero < costo_construir_en_slot:
@@ -363,12 +364,14 @@ func construir_en_slot() -> bool:
 		return false
 	Partida.modificar_dinero(-costo_construir_en_slot, "Construcción de %s" % obtener_nombre())
 	activar_slot_como_propio()
+	AudioSignals.Soberania_play.emit()
 	Partida.modificar_soberania(4.0, "Nueva planta nacional (%s)" % obtener_nombre())
 	mostrar_intercambio(-costo_construir_en_slot, 4.0)
 	return true
 
 
 func activar_slot_como_propio() -> void:
+	AudioSignals.Soberania_play.emit()
 	slot_ocupado = true
 	faccion_actual = ConfigLogistica.Faccion.PROPIO
 	_inicializar_stocks()
@@ -387,7 +390,8 @@ func nacionalizar() -> bool:
 	if Partida.dinero < config.costo_compra:
 		Partida.mensaje_log.emit("Fondos insuficientes para nacionalizar %s ($%d)" % [obtener_nombre(), config.costo_compra])
 		return false
-
+		
+	AudioSignals.Soberania_play.emit()
 	Partida.modificar_dinero(-config.costo_compra, "Nacionalización de %s" % obtener_nombre())
 	faccion_actual = ConfigLogistica.Faccion.PROPIO
 	Partida.modificar_soberania(6.0, "Recuperación soberana de %s" % obtener_nombre())

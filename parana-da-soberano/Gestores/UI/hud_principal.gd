@@ -81,7 +81,7 @@ func _input(event: InputEvent) -> void:
 func _actualizar_hud() -> void:
 	if lbl_soberania:
 		if Partida.modo_sandbox:
-			lbl_soberania.text = "Soberanía: %.1f%% / %.0f%% [SANDBOX]" % [Partida.soberania, Partida.objetivo_soberania]
+			lbl_soberania.text = "Soberanía: %.1f%% / %.0f%% " % [Partida.soberania, Partida.objetivo_soberania]
 		else:
 			lbl_soberania.text = "Soberanía: %.1f%%" % Partida.soberania
 	if bar_soberania:
@@ -308,6 +308,7 @@ func _on_btn_continuar_sandbox_pressed() -> void:
 
 
 func _on_btn_volver_menu_pressed() -> void:
+	AudioSignals.Ambiente.emit(false)
 	$PanelFinPartida/VBoxFin/Argentina.visible = false
-	Partida.reiniciar_partida(false)
+	#Partida.reiniciar_partida(false)
 	get_tree().change_scene_to_file("res://prefabs/pantallas/Pantalla_inicio.tscn")

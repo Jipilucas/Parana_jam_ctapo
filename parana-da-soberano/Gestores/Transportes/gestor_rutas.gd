@@ -113,5 +113,8 @@ func crear_ruta_en_ejecucion(origen: Productor, destino: Productor, tipo: Flete.
 	nuevo_flete.global_position = (origen.global_position + destino.global_position) * 0.5
 
 	get_parent().add_child(nuevo_flete)
+	
 	nuevo_flete.habilitar_ruta()
+	#if tipo == Flete.TipoFlete.MAR : AudioSignals.FleteMar_Play.emit()
+	#if tipo == Flete.TipoFlete.TIERRA : AudioSignals.FleteTierra_Play.emit()
 	return nuevo_flete

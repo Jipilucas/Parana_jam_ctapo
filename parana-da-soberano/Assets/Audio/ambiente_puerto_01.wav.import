@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://kct8sapmdpuh"
+uid="uid://rjksbkignxwi"
 path="res://.godot/imported/ambiente_puerto_01.wav-070eb711ed783afb01db9e50c281fed5.sample"
 
 [deps]
@@ -18,7 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=0
+edit/loop_mode=2
 edit/loop_begin=0
 edit/loop_end=-1
 compress/mode=2

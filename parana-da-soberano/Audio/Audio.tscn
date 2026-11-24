@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dfkdycs0vsylc"]
+
+[ext_resource type="Script" uid="uid://bfdd4pqo2kseg" path="res://Audio/audio.gd" id="1_oh8ej"]
+[ext_resource type="AudioStream" uid="uid://rjksbkignxwi" path="res://Assets/Audio/ambiente_puerto_01.wav" id="1_s6s1o"]
+[ext_resource type="AudioStream" uid="uid://kas4ebbqlper" path="res://Assets/Audio/Notificacion/ganar_soberania_01.wav" id="2_oh8ej"]
+[ext_resource type="AudioStream" uid="uid://c44s5hcaqr271" path="res://Assets/Audio/Notificacion/gastar_moneda_01.wav" id="3_ohi06"]
+[ext_resource type="AudioStream" uid="uid://dtdp3kych37gc" path="res://Assets/Audio/chamame wav.wav" id="3_pu10f"]
+[ext_resource type="AudioStream" uid="uid://3exhx73ajpic" path="res://Assets/Audio/Notificacion/nuevo_flete_tierra_01.wav" id="4_pu10f"]
+[ext_resource type="AudioStream" uid="uid://dfy6ivjjyj721" path="res://Assets/Audio/Notificacion/nuevo_flete_mar_01.wav" id="5_gc34k"]
+
+[node name="Audio" type="Node" unique_id=1073154285]
+script = ExtResource("1_oh8ej")
+
+[node name="Ambiente" type="AudioStreamPlayer" parent="." unique_id=1970518216]
+stream = ExtResource("1_s6s1o")
+bus = &"Ambient"
+
+[node name="Musica" type="AudioStreamPlayer" parent="." unique_id=685200461]
+process_mode = 3
+stream = ExtResource("3_pu10f")
+volume_db = -3.0
+autoplay = true
+bus = &"Music"
+
+[node name="Soberania" type="AudioStreamPlayer" parent="." unique_id=267759676]
+stream = ExtResource("2_oh8ej")
+pitch_scale = 0.8
+bus = &"UI"
+
+[node name="Moneda" type="AudioStreamPlayer" parent="." unique_id=1912475546]
+stream = ExtResource("3_ohi06")
+bus = &"UI"
+
+[node name="FleteTierra" type="AudioStreamPlayer" parent="." unique_id=111169997]
+stream = ExtResource("4_pu10f")
+bus = &"UI"
+
+[node name="FleteMar" type="AudioStreamPlayer" parent="." unique_id=1376624068]
+stream = ExtResource("5_gc34k")
+pitch_scale = 0.94
+bus = &"UI"

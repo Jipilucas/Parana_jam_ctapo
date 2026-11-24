@@ -1,0 +1,72 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://8t3osastgcs5"]
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_g28q7"]
+resource_name = "EQ"
+band_db/32_hz = -12.8
+band_db/100_hz = -19.2
+band_db/320_hz = -13.7
+band_db/1000_hz = -9.8
+band_db/3200_hz = -3.8
+band_db/10000_hz = -14.1
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_j3pel"]
+resource_name = "Compressor"
+threshold = -12.0
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_j3pel"]
+resource_name = "EQ"
+band_db/32_hz = -3.3
+band_db/100_hz = -11.4
+band_db/320_hz = -17.1
+band_db/1000_hz = -15.8
+band_db/3200_hz = -9.2
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_g28q7"]
+resource_name = "Compressor"
+threshold = -15.0
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_n8wo2"]
+resource_name = "EQ"
+band_db/32_hz = -1.7
+band_db/100_hz = -3.0
+band_db/320_hz = -5.1
+band_db/1000_hz = -3.8
+band_db/3200_hz = -3.0
+band_db/10000_hz = -1.3
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_n8wo2"]
+resource_name = "Compressor"
+threshold = -10.0
+ratio = 2.0
+
+[resource]
+bus/1/name = &"UI"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = -2.5102587
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectEQ_g28q7")
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectCompressor_j3pel")
+bus/1/effect/1/enabled = true
+bus/2/name = &"Ambient"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = -5.625
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectEQ_j3pel")
+bus/2/effect/0/enabled = true
+bus/2/effect/1/effect = SubResource("AudioEffectCompressor_g28q7")
+bus/2/effect/1/enabled = true
+bus/3/name = &"Music"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = -8.009033
+bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectEQ_n8wo2")
+bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource("AudioEffectCompressor_n8wo2")
+bus/3/effect/1/enabled = true

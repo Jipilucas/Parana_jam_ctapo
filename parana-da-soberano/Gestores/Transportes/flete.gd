@@ -168,7 +168,9 @@ func _sincronizar_controlador() -> void:
 func habilitar_ruta() -> bool:
 	if ruta_habilitada:
 		return true
-
+	
+	
+	
 	if es_enemigo():
 		ruta_habilitada = true
 		_sincronizar_controlador()
@@ -183,12 +185,16 @@ func habilitar_ruta() -> bool:
 	if Partida.dinero < costo_habilitar:
 		Partida.mensaje_log.emit("Fondos insuficientes para habilitar %s (Requiere $%d)" % [obtener_nombre_ruta(), costo_habilitar])
 		return false
-
+	
+	#AudioSignals.Moneda_Play.emit()
 	Partida.modificar_dinero(-costo_habilitar, "Apertura de %s" % obtener_nombre_ruta())
-	if tipo_flete == TipoFlete.MAR:
+	if tipo_flete == 1:
+		AudioSignals.FleteMar_Play.emit()
 		Partida.registrar_flete_mar(true)
 		_registrado_en_astillero = true
-
+	if tipo_flete == 0:
+		AudioSignals.FleteTierra_Play.emit()
+	
 	ruta_habilitada = true
 	_sincronizar_controlador()
 	_actualizar_visual_faccion()
@@ -227,7 +233,7 @@ func eliminar_flete_enemigo() -> bool:
 	if !Partida.puede_activar_flete_mar():
 		Partida.mensaje_log.emit("Sin cupo en Astilleros Nacionales para eliminar (%s)" % obtener_nombre_ruta())
 		return false
-
+	AudioSignals.Moneda_Play.emit()
 	Partida.modificar_dinero(-costo_eliminar, "Eliminación de Marina Mercante Enemiga (%s)" % obtener_nombre_ruta())
 	if bonus_soberania_eliminar != 0.0:
 		Partida.modificar_soberania(bonus_soberania_eliminar, "Expulsión de naviera extranjera (%s)" % obtener_nombre_ruta())

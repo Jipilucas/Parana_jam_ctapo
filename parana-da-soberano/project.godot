@@ -17,10 +17,15 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="uid://bx8naq188hbys"
 config/icon="uid://c32la5pbmfn28"
 
+[audio]
+
+buses/default_bus_layout="uid://8t3osastgcs5"
+
 [autoload]
 
-Signals="*uid://djeevkxlwdvop"
+AudioSignals="*uid://djeevkxlwdvop"
 Partida="*res://Gestores/gestor_partida.gd"
+Audio="*uid://dfkdycs0vsylc"
 
 [display]
 

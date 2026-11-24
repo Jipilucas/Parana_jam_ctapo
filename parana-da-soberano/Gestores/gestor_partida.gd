@@ -53,6 +53,8 @@ func _ready() -> void:
 
 
 func reiniciar_partida(activar_sandbox: bool = false) -> void:
+	#AudioSignals.Ambiente.emit(false)
+	AudioSignals.Ambiente.emit(true)
 	dinero = _dinero_inicial
 	soberania = _soberania_inicial
 	tier_ciencia = _tier_ciencia_inicial
@@ -163,6 +165,7 @@ func obtener_costo_ciencia() -> int:
 
 
 func invertir_ciencia() -> bool:
+	AudioSignals.Soberania_play.emit()
 	if juego_terminado or esta_pausado():
 		return false
 	var costo: int = obtener_costo_ciencia()
@@ -178,6 +181,7 @@ func invertir_ciencia() -> bool:
 
 
 func invertir_magdalena() -> bool:
+	AudioSignals.Soberania_play.emit()
 	if juego_terminado or esta_pausado():
 		return false
 	if tramos_magdalena_completados >= tramos_totales_magdalena:
@@ -201,6 +205,7 @@ func obtener_costo_astillero() -> int:
 
 
 func invertir_astillero() -> bool:
+	AudioSignals.Soberania_play.emit()
 	if juego_terminado or esta_pausado():
 		return false
 	var costo: int = obtener_costo_astillero()
